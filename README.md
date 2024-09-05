@@ -7,7 +7,14 @@
 - General functions: Dual user interface (welcome page and home page), handling 404 errors. 500 and 403 via a dedicated page, and creation of a chat room.
 - User Management: Registration, Login, Logout, Ability to change all credentials entered.
 - Book Management: Crud Features, Searches, Related Books, Statistics and Reviews.
-- Loan Management: Creation with Ajax Title Suggestion, Extension, Termination, Printing and Cancellation.
+- Loan Management: Creation with Ajax title suggestion, Extension, Termination, Printing and Deletion. For Managers there is then the ability to see:
+- - Loans that will expire soon;
+- - Loans that have been terminated and not repaid;
+- - Loans broken down by book genre;
+- - Outlier loans; 
+- - Loan statistics;
+- - The history of a book;
+- - All with a simple administrative interface.
 - Course Management: CRUD Functionality.
 - Reservation Management: Creation with Ajax name suggestion, Confirmation, Printing and Cancellation.
 
