@@ -17,8 +17,9 @@
     All with a simple administrative interface.
 - Course Management: CRUD Functionality.
 - Reservation Management: Creation with Ajax name suggestion, Confirmation, Printing and Cancellation.
+- E-Commerce: Each book is associated with a price and a number of copies in stock. A user can add books to his or her cart and place an order, which is then managed by the manager on duty. 
 
-## Technologies Used.
+## Technologies Used
 - Python: Programming language used to develop the application.
 - Flask: Web framework for Python.
 - MySQL: Database used to store data.
