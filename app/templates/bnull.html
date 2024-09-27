@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bindex.css') }}">
+{% endblock %}
+{% block title %}Book{% endblock %}
+
+{% block content %}
+    <div class="container my-5">
+        <header class="page-header">
+            <h1 class="bh">Browse the Books</h1>
+        </header>
+       
+        <section class="row">
+            <div class="accordion-container">
+                <!-- Ciclo per ogni genere -->
+                {% for genere, count in genres %}
+                <div class="accordion-item">
+                    
+                    <div class="accordion-header">
+                        {{ genere }} ({{ count }})
+                    </div>
+                    
+                </div>
+                {% endfor %}
+            </div>
+
+            <form id="genreForm" method="POST" action="/book/genere" style="display:none;">
+                <input type="hidden" name="genere" id="genereInput">
+            </form>
+        </section>
+
+        <script>
+            function sendGenre(genere) {
+                // Aggiorna il valore dell'input hidden con il genere selezionato
+                document.getElementById('genereInput').value = genere;
+        
+                // Invia il form al server
+                document.getElementById('genreForm').submit();
+            }
+        </script>
+    </div>
+{% endblock %}

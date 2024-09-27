@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block title %}Loans due to maturity{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/lexpiring.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="display-4">Loans due to maturity</h1>
+
+    {% if loans %}
+    <div class="tab-container">
+        <ul class="nav nav-tabs" id="loanTab" role="tablist">
+            {% for loan in loans %}
+            <li class="nav-item" role="presentation">
+                <a class="nav-link {% if loop.first %}active{% endif %}" id="loan-{{ loan.id }}-tab" data-bs-toggle="tab" href="#loan-{{ loan.id }}" role="tab" aria-controls="loan-{{ loan.id }}" aria-selected="true">{{ loan.book.title }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <div class="tab-content" id="loanTabContent">
+            {% for loan in loans %}
+            <div class="tab-pane fade {% if loop.first %}show active{% endif %}" id="loan-{{ loan.id }}" role="tabpanel" aria-labelledby="loan-{{ loan.id }}-tab">
+                
+                {% if loan.id % 2 == 0 %}
+                    <img src="{{ url_for('static', filename='images/prestito1.jpg') }}" alt="Loan Image" class="tab-image">
+                {% else %}
+                    <img src="{{ url_for('static', filename='images/prestito2.jpg') }}" alt="Loan Image" class="tab-image">
+                {% endif %}
+                
+                <div class="loan-details">
+                    <h5>{{ loan.libro.titolo }}</h5>
+                    <p><strong><i class="fa fa-solid fa-hashtag"></i> Utente:</strong> {{ loan.utente.nome }}</p>
+                    <p><strong><i class="fa fa-solid fa-hashtag"></i> Data di Scadenza:</strong> {{ loan.rientro.strftime('%d/%m/%Y') }}</p>
+                    <p><strong><i class="fa fa-solid fa-hashtag"></i> Data di Prestito:</strong> {{ loan.uscita.strftime('%d/%m/%Y') }}</p>
+                    <p><strong><i class="fa fa-solid fa-hashtag"></i> Stato:</strong> {% if loan.terminato == "No" %}Attivo{% else %}Concluso{% endif %}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% else %}
+    <div class="alert alert-info mt-5 text-center" role="alert">
+        <p class="lead">Nessun prestito in scadenza nei prossimi giorni.</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

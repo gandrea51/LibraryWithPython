@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/lstats.css') }}">
+{% endblock %}
+{% block title %}Statistiche sui Prestiti{% endblock %}
+
+{% block content %}
+<div class="container stats-container">
+    <div class="row text-center">
+        <div class="col-md-12">
+            <h1 class="display-4 title">Statistiche sui Prestiti</h1>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-8">
+            <div class="main-stats">
+                <div class="stat-box">
+                    <h3 class="stat-title">Totale Prestiti</h3>
+                    <p class="stat-value">{{ tloans }}</p>
+                </div>
+                <div class="stat-box">
+                    <h3 class="stat-title">Durata Media dei Prestiti</h3>
+                    <p class="stat-value">{{ average_duration | round(1) }} giorni</p>
+                </div>
+                <div class="stat-box">
+                    <h3 class="stat-title">Prestiti Scaduti</h3>
+                    <p class="stat-value">{{ overdue_loans_count }}</p>
+                </div>
+                <div class="stat-box">
+                    <h3 class="stat-title">Prestiti Attivi</h3>
+                    <p class="stat-value">{{ current_loans_count }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="sidebar">
+                <h3>Dettagli Aggiuntivi</h3>
+                <p>Puoi trovare ulteriori informazioni sui prestiti nella tua area personale.</p>
+                <p>Contatta l'amministratore per assistenza.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

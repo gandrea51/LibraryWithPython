@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/loverdue.css') }}">
+{% endblock %}
+{% block title %}Prestiti Scaduti e Non Restituiti{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="display-4 mb-5">Prestiti Scaduti e Non Restituiti</h1>
+
+    {% if loans %}
+    <div class="loan-overdue-list">
+        {% for loan in loans %}
+        <div class="loan-item">
+            <div class="loan-header">
+                <strong><i class="fa fa-solid fa-bookmark"></i> Libro:</strong> {{ loan.libro.titolo }}
+            </div>
+            <div class="loan-info">
+                <p><strong><i class="fa fa-user"></i> Utente:</strong> {{ loan.utente.nome }}</p>
+                <p><strong><i class="fa fa-regular fa-clock"></i> Data di Fine Prestito:</strong> {{ loan.rientro.strftime('%d/%m/%Y') }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="alert alert-info" role="alert">
+        Nessun prestito scaduto e non restituito.
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/group.css') }}">
+{% endblock %}
+{% block title %}Reading group{% endblock %}
+
+{% block content %}
+    <div class="group-reading-container">
+        <h1 class="group-title animated fadeIn slower">Reading Group</h1>
+        <p class="group-description animated fadeIn slower">We meet once a month to comment on the book we have read.</p>
+
+        <div class="monthly-book animated fadeIn slower">
+            <h3 class="section-title">Book of the month</h3>
+            <p class="book-info">For this month, it has been chosen <strong>{{ month.titolo }}</strong>
+                
+            </p>
+        </div>
+
+        <div class="location animated fadeIn slower">
+            <h4 class="section-title">Where we are</h4>
+            <p class="location-info">Corso Isonzo, 42 - Ferrara 
+                <a class="map-link" href="https://www.google.com/maps/place/Corso+Isonzo,+42,+44121+Ferrara+FE/@44.8368185,11.6077029,16z/data=!3m1!4b1!4m6!3m5!1s0x477e4e73016cb6b7:0x1b17465b8ef03694!8m2!3d44.8368147!4d11.6102778!16s%2Fg%2F11cshg48pw?authuser=0&entry=ttu" target="_blank">
+                    <i class="fa fa-map-marker animated pulse infinite"></i>
+                </a>
+            </p>
+        </div>
+
+        <div class="join-us animated fadeIn slower">
+            <h2 class="section-title">🔗 Join us!</h2>
+            <p class="join-info">If you would like to join our reading group, please contact us at:</p>
+            <a href="mailto:#" class="btn btn-success">Write Email</a>
+        </div>
+    </div>
+{% endblock %}

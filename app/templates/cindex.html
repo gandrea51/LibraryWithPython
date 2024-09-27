@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cindex.css') }}">
+{% endblock %}
+{% block title %}Courses{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <!-- Titolo della pagina -->
+        <h1 class="page-title">The way to learning</h1>
+
+        <!-- Sezione di introduzione -->
+        <p class="intro">
+            Welcome to our learning centre. Discover our courses, taught by experts in the field. Whether you are interested in improving your personal 
+            skills or exploring new areas of study, we have a course for you. Don’t miss the chance to learn from qualified professionals. Places are limited, so hurry up and sign up!
+        </p>
+
+        {% if current_user.ruolo == 'Amministratore' %}
+            <div class="stats-container">
+                <h2 class="stats-title">Course Statistics</h2>
+                <ul class="stats-list">
+                    <li>Total views: {{ stats.tview }}</li>
+                    <li>Most Viewed Courses: {{ stats.mcourses|map(attribute='nome')|join(', ') }}</li>
+                </ul>
+            </div>
+        {% endif %}
+
+        <div class="pdf-btn">
+            <a href="/course/pdf" class="btn-action">Scarica PDF</a>
+        </div>
+
+        <!-- Lista corsi -->
+        <div class="courses-list">
+            {% for course in courses %}
+                <div class="course-item" onclick="toggleDetails('{{ course.id }}')">
+                    <div class="course-header">{{ course.nome }}</div>
+                    <div class="course-docente">Teacher: {{ course.docente }}</div>
+                    <div class="course-info">Bookings: {{ course.prenotazioni }} | Registrations: {{ course.iscrizioni }}</div>
+                    <div id="details-{{ course.id }}" class="course-details">
+                        <p><strong>Course program:</strong><br>{{ course.programma|replace('\n', '<br>')|safe }}</p>
+                        <p><strong>Start:</strong> {{ course.inizio.strftime('%d/%m/%Y') if course.inizio else 'Data da definire' }}</p>
+                        <p><strong>Price:</strong> €{{ course.prezzo }} (Card: €{{ course.tessera }})</p>
+                        {% if course.place > 0 %}
+                            <p class="prenotati">Places left: {{ course.place }}</p>
+                            <a href="/prenotazione/create" class="btn-action">Booking now</a>
+                        {% else %}
+                            <p class="prenotati">Full course</p>
+                        {% endif %}
+                    </div>
+                    <button class="toggle-btn">Maggiori info</button>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- JavaScript per mostrare/nascondere i dettagli del corso -->
+    <script>
+        function toggleDetails(corsoId) {
+            const details = document.getElementById('details-' + corsoId);
+            if (details.style.display === "none" || details.style.display === "") {
+                details.style.display = "block";
+            } else {
+                details.style.display = "none";
+            }
+        }
+    </script>
+{% endblock %}

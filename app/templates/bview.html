@@ -1,0 +1,138 @@
+{% extends "layout.html" %}
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bview.css') }}">
+{% endblock %}
+{% block title %}Book{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <section class="title-section">
+            <h1 class="genre-title">
+                <a href="{{ url_for('main.bprint', genere=genre) }}">{{ genre }}</a>
+            </h1>
+        </section>
+
+        {% if current_user.ruolo != "Socio" %}
+        <section class="edit-genre-section">
+            <button class="toggle-button" onclick="toggleEditGenre()">Modifica Genere</button>
+        </section>
+        {% endif %}
+        
+        <div id="editGenreSection" class="hidden-section">
+            <form method="POST" action="/book/genere/update" class="genre-form">
+                <input type="hidden" name="old_genere" value="{{ genre }}">
+                <label for="new_genere" class="form-label">Nuovo Genere:</label>
+                <input type="text" name="new_genere" id="new_genere" required class="form-input">
+                <button type="submit" class="submit-button">Aggiorna Genere</button>
+            </form>
+        </div>
+
+        <section class="intro-sections">
+            <p class="intro-texts">
+                Our library is the result of years of donations or the flair of our contributors, who have given a second chance to titles that seemed to have said it all. 
+                And it is above all the work of careful cataloguing, distinguished by genre and author. 
+                Browse our catalogue or do a free search. Get inspired by our book of the month.
+            </p>
+        </section>
+
+        <section class="accordion-section">
+            <div class="accordion-container">
+                {% for book in books %}
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                       {{ book.titolo }} ({{ book.copie }} copie)
+                    </div>
+                    <div class="accordion-body">
+                        <div class="book-details">
+                            <p>
+                                <span class="book-label">Author:</span> {{ book.autore }}<br>
+                                <span class="book-label">Publisher:</span> {{ book.editore }}<br>
+                                <span class="book-label">Published:</span> {{ book.anno }}<br>
+                                <span class="book-label">Genre:</span> {{ book.genere }}<br>
+                                <span class="book-label">Related books:</span> <a href="{{ url_for('main.brelated', id=book.id) }}" class="btn btn-related">
+                                    <i class="fa fa-solid fa-bookmark"></i> Libri Correlati</a><br><br>
+                                <span class="book-label">Scheda del libro:</span> <a class="btn btn-print" href="{{ url_for('main.bdownload', id=book.id) }}">
+                                    <i class="fa fa-solid fa-download"></i> Scarica PDF</a><br><br>
+                                <span class="book-label">Statistiche:</span> <a href="{{ url_for('main.bstats', id=book.id) }}" class="btn btn-stats">
+                                    <i class="fa fa-solid fa-chart-simple"></i> Statistiche</a><br><br>
+                            </p>
+                    
+                            {% if book.copie >= 2 %}
+                                <p class="loan-status available">
+                                    Ci sono ancora <span class="copies">{{ book.copie }}</span> copie di questo libro.<br>
+                                    <strong>Prendilo in prestito!</strong>
+                                </p>
+                                <a type="button" class="btn btn-custom loan-button" href="{{ url_for('main.lcreate') }}">
+                                    <i class="fas fa-book-open"></i> New loan
+                                </a>
+                    
+                            {% elif book.copie == 1 %}
+                                <p class="loan-status limited">
+                                    È rimasta soltanto <span class="copies">una</span> copia di questo libro.<br>
+                                    <strong>Prendilo in prestito, ora!</strong>
+                                </p>
+                                <a type="button" class="btn btn-custom loan-button" href="{{ url_for('main.lcreate') }}">
+                                    <i class="fas fa-book-open"></i> New loan
+                                </a>
+                    
+                            {% else %}
+                                <p class="loan-status unavailable">
+                                    Attualmente non vi sono copie disponibili per il prestito.<br><br>
+                                    Il libro ritornerà disponibile il: <strong>{{ends[book.id]}}</strong>
+                                </p>
+                            {% endif %}
+                            <br><br><br>
+
+                            <span class="book-label">Recensioni:</span><br>
+                            {% if reviews[book.id] %}
+                                <div class="review-section">
+                                    {% for review in book.reviews[:3] %}
+                                        <li class="list-group-item">
+                                            <small><strong>{{ review.utente.nome }}</strong>: 
+                                                {% for i in range(1, 6) %}
+                                                    {% if i <= review.rating %}
+                                                        ★
+                                                    {% else %}
+                                                        ☆
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </small>
+                                            <p>{{ review.comment[:100] }}...</p>
+                                        </li>
+                                    {% endfor %}
+                                    <a href="{{ url_for('main.breviews', id=book.id) }}" class="btn btn-rev">Visualizza tutte le recensioni</a>
+                                </div>
+                            {% else %}
+                            <p class="no-reviews">Nessuna recensione disponibile per questo libro.</p>
+                            {% endif %}
+                    
+                            {% if current_user.ruolo != "Socio" %}
+                                <div class="admin-buttons">
+                                    <a href="{{ url_for('main.bookedit', id=book.id) }}" class="btn btn-warning">Modifica</a>
+                                    <a href="{{ url_for('main.bdrop', id=book.id) }}" class="btn btn-danger">Elimina</a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+
+        function toggleEditGenre() {
+            var section = document.getElementById('editGenreSection');
+            section.style.display = (section.style.display === "none") ? "block" : "none";
+        }
+        function toggleAccordion(header) {
+            const body = header.nextElementSibling;
+            body.classList.toggle('active');
+            header.classList.toggle('open');
+        }
+        
+    </script>
+{% endblock %}

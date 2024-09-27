@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bstats.css') }}">
+{% endblock %}
+
+{% block title %}Statistiche di Lettura per {{ book.titolo }}{% endblock %}
+
+{% block content %}
+<div class="container-fluid stats-container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1 class="display-4 title">Statistiche di Lettura per <span>"{{ book.titolo }}"</span></h1>
+        </div>
+    </div>
+
+    <div class="row stat-section mt-5">
+        <div class="col-md-6">
+            <div class="stat-box total-loans">
+                <h3>Totale Prestiti</h3>
+                <p>{{ total_loans }}</p>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="stat-box average-rating">
+                <h3>Media delle Valutazioni</h3>
+                <p>{{ average_rating | round(1) }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <h4 class="section-title">Distribuzione delle Recensioni per Stelle</h4>
+            <ul class="rating-distribution">
+                {% for star, count in rating_distribution.items() %}
+                <li>
+                    <strong>{{ star }} Stelle:</strong> {{ count }} Recensioni
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <h4 class="section-title">Popolarità nel Tempo</h4>
+            <ul class="monthly-loans">
+                {% for month, count in monthly_loans.items() %}
+                <li>
+                    <strong>{{ month }}:</strong> {{ count }} Prestiti
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

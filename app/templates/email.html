@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/email.css') }}">
+{% endblock %}
+{% block title %}Reset Email{% endblock %}
+
+{% block content %}
+    <div class="reset-email-container">
+        <h1 class="reset-email-title">Ripristina il tuo indirizzo Email</h1>
+        <form method="post" action="/email" class="reset-email-form">
+            <div class="form-group">
+                <label for="vecchia" class="form-label">Vecchia email</label>
+                <input id="vecchia" type="email" class="form-input" name="vecchia" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="nuova" class="form-label">Nuova email</label>
+                <input id="nuova" type="email" class="form-input" name="nuova" required>
+            </div>
+            
+            <button type="submit" class="btn btn-submit">Cambia</button>
+        </form>
+    </div>
+{% endblock %}

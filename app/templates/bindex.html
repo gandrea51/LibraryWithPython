@@ -1,0 +1,115 @@
+{% extends "layout.html" %}
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bindex.css') }}">
+{% endblock %}
+{% block title %}Book{% endblock %}
+
+{% block content %}
+    <div class="container my-5">
+        <header class="page-header">
+            <h1 class="bh">Browse the Books</h1>
+        </header>
+
+        {% if current_user.ruolo == "Amministratore" %}
+        <section>
+            <a href="/book/create" class="custom-btn">
+                <i class="fa fa-solid fa-book-open"></i> Add new book
+                <span class="notification-badge">
+                    <span class="visually-hidden">Nuove notifiche</span>
+                </span>
+            </a>
+            <br>
+        </section>
+        {% endif %}        
+
+        <section class="search-section">
+            <div class="search-box">
+                <h2 class="bh">Search by Title</h2>
+                <form action="/book/search/titolo" method="POST">
+                    <input type="text" name="titolo" placeholder="Enter book title" required>
+                    <button type="submit"><i class="fas fa-search"></i> Search</button>
+                </form>
+            </div>
+
+            <div class="search-box">
+                <h2 class="bh">Search by Author</h2>
+                <form action="/book/search/autore" method="POST">
+                    <input type="text" name="autore" placeholder="Enter author name" required>
+                    <button type="submit"><i class="fas fa-search"></i> Search</button>
+                </form>
+            </div>
+
+            <div class="search-box">
+                <h2 class="bh">Search by Genre</h2>
+                <form action="/book/search/genere" method="POST">
+                    <input type="text" name="genere" placeholder="Enter book genre" required>
+                    <button type="submit"><i class="fas fa-search"></i> Search</button>
+                </form>
+            </div>
+        </section>
+
+        {% if month %}
+        <div class="book-of-the-month-container mb-5">
+            <div class="book-card">
+                <div class="book-image">
+                    <img src="{{ url_for('static', filename='images/libro.jpg') }}" alt="Immagine del libro" class="img-fluid" />
+                </div>
+                <div class="book-details">
+                    <h5 class="card-title display-6">📚 Book of the Month</h5>
+                    <p class="card-text">The book of this month is {{ month.titolo }}<br>
+                        Discover the reading group today <a href="/group">here</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+
+        <section class="stats-section">
+            <div class="stats-container">
+                <h3>Library Stats</h3>
+                <p>Total Books: {{ stats.tbooks }}</p>
+                <p>Total Views: {{ stats.tviews }}</p>
+                <p>Total Downloads: {{ stats.tdowns }}</p>
+            </div>
+
+            <div class="most-viewed">
+                <h3 class="bh">Most Viewed Books</h3>
+                <ul>
+                    {% for book in stats.mbooks %}
+                    <strong>{{ book.titolo }}</strong>, {{ book.autore }} ({{ book.viste }} view)<br>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+
+        <section class="row">
+            <div class="accordion-container">
+                <!-- Ciclo per ogni genere -->
+                {% for genere, count in genres %}
+                <div class="accordion-item">
+                    
+                    <div class="accordion-header" onclick="sendGenre('{{ genere }}')">
+                        {{ genere }} ({{ count }})
+                    </div>
+                    
+                </div>
+                {% endfor %}
+            </div>
+
+            <form id="genreForm" method="POST" action="/book/genere" style="display:none;">
+                <input type="hidden" name="genere" id="genereInput">
+            </form>
+        </section>
+
+        <script>
+            function sendGenre(genere) {
+                // Aggiorna il valore dell'input hidden con il genere selezionato
+                document.getElementById('genereInput').value = genere;
+        
+                // Invia il form al server
+                document.getElementById('genreForm').submit();
+            }
+        </script>
+    </div>
+{% endblock %}

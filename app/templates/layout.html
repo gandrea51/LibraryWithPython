@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Web application for the Centro Acquedotto of Ferrara.">
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css') }}">
+        <link rel="stylesheet" href="https://unpkg.com/intro.js/minified/introjs.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">  
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui/1.12.1/jquery-ui.min.css"> 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        {% block css %}{% endblock %}
+
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/icon.png') }}">           
+        
+        <style>
+            .contenitore-libri{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            .risultati {
+                transition: transform .2s ease, box-shadow .2s ease;
+                border-radius: 10px;
+            }
+            .risultati:hover {
+                transform: scale(1.05);
+                box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            }
+            #libro-detail .btn-info {
+                transition: background-color 0.3s ease;
+            }
+            #libro-detail .btn-info:hover {
+                background-color: #17a2b8;
+                color: #fff;
+            }
+            #libro-detail .card {
+                border: 1px solid #ddd;
+                border-radius: 10px;
+                overflow: hidden;
+                transition: box-shadow 0.3s ease;
+            }
+            #libro-detail .card:hover {
+                box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            }
+            #libro-detail hr {
+                border-top: 2px solid #ddd;
+                margin-top: 2rem;
+                margin-bottom: 2rem;
+            }
+            body {
+                font-size: 1.2rem;
+            }
+            .navbar-nav .nav-link {
+                font-size: 1.2rem;
+                margin: 0 10px;
+            }
+            .navbar {
+                padding: 0.5rem;
+            }
+            .navbar-nav .nav-link {
+                font-size: 1.2rem;
+            }
+            .offcanvas-header, .offcanvas-body .nav-link {
+                font-size: 1.2rem;
+            }
+            #offcanvasNavbar {
+                width: 250px;
+            }
+            .social-media a {
+                color: #333;
+                font-size: 1.5rem;
+                margin: 0 8px;
+                transition: color 0.3s;
+            }
+            .social-media a:hover {
+                color: #007bff;
+            }
+            footer {
+                padding: 15px 0;
+                text-align: center;
+            }
+            footer hr {
+                margin: 15px 0;
+            }
+            .btn {
+                font-size: 1rem;
+            }
+            .btn-top {
+                position: fixed;
+                z-index: 1000;
+                bottom: 0;
+                right: 0;
+                margin: 10px;
+            }
+            .btn-doc {
+                position: fixed;
+                z-index: 1000;
+                bottom: 0;
+                left: 0;
+                margin: 10px;
+            }
+            @media (max-width: 768px) {
+                .navbar-nav {
+                    flex-direction: column;
+                    align-items: center;
+                }
+                .navbar-nav .nav-link {
+                    margin: 5px 0;
+                }
+                footer {
+                    font-size: 0.9rem;
+                }
+            }
+        </style>
+    </head>
+
+    <body class="text-center">
+        <header class="header-section">
+            <div class="logo">
+                <h1>Aqueduct Centre</h1>
+            </div>
+
+            <button class="btn btn-primary d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu">
+                <i class="fa fa-bars"></i> Menu
+            </button>
+        
+            <div class="offcanvas offcanvas-start d-md-none" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasMenuLabel">Menu</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul>
+                        {% if current_user.is_authenticated %}   
+                        <li><a href="{{ url_for('main.uprofile', id=current_user.id) }}"><i class="fa fa-solid fa-user"></i> My Profile</a></li>
+                        <li><a href="/home"><i class="fa fa-home"></i> Home page</a></li>
+                        <li><a href="/logout"><i class="fa fa-sign-out"></i> Logout</a></li>
+                        {% else %}
+                        <li><a href="/home"><i class="fa fa-home"></i> Home page</a></li>
+                        <li><a href="/login"><i class="fa fa-sign-in"></i> Sign in</a></li>
+                        <li><a href="/register"><i class="fa fa-user-plus"></i> Sign up</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        
+            <nav class="navigation d-none d-md-block">
+                <ul class="nav-links">
+                    {% if current_user.is_authenticated %}   
+                    <li><a href="{{ url_for('main.uprofile', id=current_user.id) }}"><i class="fa fa-solid fa-user"></i> My Profile</a></li>
+                    <li><a href="/home"><i class="fa fa-home"></i> Home page</a></li>
+                    <li><a href="/logout"><i class="fa fa-sign-out"></i> Logout</a></li>
+                    {% else %}
+                    <li><a href="/home"><i class="fa fa-home"></i> Home page</a></li>
+                    <li><a href="/login"><i class="fa fa-sign-in"></i> Sign in</a></li>
+                    <li><a href="/register"><i class="fa fa-user-plus"></i> Sign up</a></li>
+                    {% endif %}
+                </ul>
+            </nav>         
+        </header>
+    
+        <section class="intro-section">
+            <div class="intro-content">
+                <h2>Welcome to the Aqueduct Centre</h2> 
+                <p>Discover our courses and our library!</p>
+            </div>
+        </section>
+    
+        <section class="main-content">{% block content %}{% endblock %}</section>
+    
+        <button onclick="topFunction()" id="btnTop" title="Torna su" class="btn-top">
+            <i class="fa fa-arrow-up"></i>
+        </button>
+    
+        <footer>
+            <p>© 2024 Aqueduct Centre of Ferrara</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </footer>
+        </div>
+
+        <script src="https://unpkg.com/intro.js/minified/intro.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>    
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui/1.12.1/jquery-ui.min.js"></script>
+
+        <script>
+            window.onscroll = function() {scrollFunction()};
+            function scrollFunction() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    document.getElementById("btnTop").style.display = "block";
+                } else {
+                    document.getElementById("btnTop").style.display = "none";
+                }
+            }
+    
+            function topFunction() {
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+            }
+
+            function startTour() 
+            {
+                introJs().start();
+            }
+        </script>
+        </script>
+    </body>
+</html>

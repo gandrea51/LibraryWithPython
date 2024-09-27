@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/telefono.css') }}">
+{% endblock %}
+{% block title %}Reset Telefono{% endblock %}
+
+{% block content %}
+<div class="reset-phone-container">
+    <form method="post" action="/phone" class="reset-phone-form">
+        <div class="reset-phone-header">Ripristina il numero di Telefono</div>
+        <div class="mb-3">
+            <label for="nuovo" class="form-label">Numero di Telefono</label>
+            <input id="nuovo" type="text" class="form-control" name="nuovo" required placeholder="Inserisci il nuovo numero...">
+        </div>
+        <div class="mb-0">
+            <input type="submit" class="btn btn-primary" value="Cambia">
+        </div>
+        <div class="form-footer">
+            <p>Ti invieremo un SMS di conferma al nuovo numero.</p>
+        </div>
+    </form>
+</div>
+{% endblock %}

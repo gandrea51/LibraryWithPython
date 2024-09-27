@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+{% block title %}New loan{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/lcreate.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <h1 class="display-4">Create a New Loan</h1>
+                <p class="lead">Complete the form below to register a new loan. Please be sure to fill in all required information.</p>
+            </div>
+        </div>
+        <br><hr><br>
+
+        <form action="{{ url_for('main.lcreate') }}" method="post" class="custom-form">
+
+            <div class="form-group mb-4">
+                <label for="titolo">Title</label>
+                <input required type="text" id="titolo" name="titolo" class="form-control" autocomplete="off">
+                <div class="suggestions" id="suggestions"></div>
+                <small class="form-text">Book's Title</small>
+            </div>
+
+            <div class="form-group mb-4">
+                <label for="uscita">Date exit</label>
+                <input required id="uscita" class="form-control" name="uscita" type="date" placeholder="Inserisci la data di uscita">
+                <small class="form-text">Book's exit date</small>
+            </div>
+
+            <div>
+                <button type="submit" class="btn btn-success custom-button">Aggiungi</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#titolo').on('input', function() {
+                let query = $(this).val();
+                if (query.length >= 2) {
+                    $.get('/suggest', { query: query }, function(data) {
+                        $('#suggestions').empty();
+                        data.forEach(function(title) {
+                            $('#suggestions').append('<div class="suggestion">' + title + '</div>');
+                        });
+                    });
+                } else {
+                    $('#suggestions').empty();
+                }
+            });
+
+            $(document).on('click', '.suggestion', function() {
+                $('#titolo').val($(this).text());
+                $('#suggestions').empty();
+            });
+        });
+    </script>
+{% endblock %}

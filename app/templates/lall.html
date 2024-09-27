@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+{% block title %}Prestiti{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/lall.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="container my-5">
+        <h1 class="mb-4 title">
+            <a href="/loan/download" class="atitle">Panoramica dei Prestiti</a>
+        </h1>
+
+        <section class="books-grid">
+            {% for loan in loans %}
+            <div class="book-item" onclick="openModal('modal-{{ loan.id}}')">
+
+                <h3 class="book-title">{{loan.libro.titolo}} (id: {{loan.id}})</h3>
+                <h5 class="book-author">{{loan.utente.nome}}</h5>
+            </div>
+
+            <div id="modal-{{loan.id}}" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn" onclick="closeModal('modal-{{loan.id}}')">&times;</span>
+                    <div class="modal-book-details">
+                        <h2>{{loan.libro.titolo}}</h2>
+                        <p><strong>Utente:</strong> {{loan.utente.nome}}</p>
+                        <p><strong>Data prestito:</strong> {{loan.uscita.strftime('%d %B %Y')}}</p>
+                        <p><strong>Data rientro:</strong> {{loan.rientro.strftime('%d %B %Y')}}</p>
+                        <p>
+                            <strong>Rientro:</strong>
+                            {% if loan.terminato == 'No' %}
+                                <span class="{% if day[loan.id]|int < 7 %}text-danger{% elif day[loan.id]|int <= 15 %}text-warning{% else %}text-success{% endif %}">
+                                    {{ day[loan.id] }} giorni
+                                </span>
+                            {% else %}
+                                {{ loan.rientro.strftime('%d-%m-%Y') }}
+                            {% endif %}
+                        </p>
+                        <p>
+                            {% if loan.terminato == 'No' %}
+                                <a href="{{ url_for('main.lterm', id=loan.id) }}" class="btn btn-term">
+                                    <i class="fa fa-solid fa-hourglass-end"></i> Termina</a><br><br>
+                            {% endif %}
+                        </p>
+                        <p>
+                            <form action="{{ url_for('main.ldrop', id=loan.id) }}" method="POST" class="delete-form">
+                                <button type="submit" class="btn btn-delete"><i class="fa fa-trash"></i> Elimina</button>
+                            </form>                            
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+        </section>
+
+        <script>
+            function openModal(modalId) {
+                document.getElementById(modalId).style.display = 'block';
+            }
+            function closeModal(modalId) {
+                document.getElementById(modalId).style.display = 'none';
+            }
+            window.onclick = function(e) {
+                const modals = document.getElementsByClassName('modal');
+                for (let i = 0; i < modals.length; i++){
+                    if (e.target == modals[i]){
+                        modals[i].style.display = 'none';
+                    }
+                }                
+            }
+        </script>
+    </div>
+
+
+{% endblock %}

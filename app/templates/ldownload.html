@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Prestiti</title>
+        <style>
+            body{
+                text-align: center;
+                font-size: larger;
+            }
+        </style>      
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Tutti i prestiti</h1>
+                </div>
+            </div>
+            <br><hr><br>
+            {% for loan in loans %}
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>{{loan.libro.titolo}} effettuato da {{loan.utente.nome}}</h3>
+                        <p>Iniziato il {{loan.uscita.strftime('%d %B %Y')}}. Scadenza: {{loan.rientro.strftime('%d %B %Y')}}</p>
+                        <p>Proroga effettuata: {{loan.prorogato}}</p>
+                        <br><hr><br>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </body>
+</html>

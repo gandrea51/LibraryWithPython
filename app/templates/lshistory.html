@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block title %}Seleziona Cronologia Prestiti{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/lshistory.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="header text-center">
+        <h1 class="title">Seleziona la Cronologia Prestiti</h1>
+    </div>
+
+    <div class="form-container">
+        <form action="{{ url_for('main.lshistory') }}" method="POST">
+            <div class="form-group">
+                <label for="id" class="form-label">Inserisci ID</label>
+                <input type="text" class="form-input" id="id" name="id" placeholder="ID del libro o dell'utente" required>
+            </div>
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="form-label">Seleziona il tipo:</label>
+                        <div class="radio-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="history_type" id="book" value="book" required>
+                                <label class="form-check-label" for="book">Libro</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="history_type" id="user" value="user">
+                                <label class="form-check-label" for="user">Utente</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+            
+        
+            <button type="submit" class="btn btn-primary">Visualizza Cronologia</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

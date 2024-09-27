@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/rcreate.css') }}">
+{% endblock %}
+{% block title %}Recensione{% endblock %}
+
+{% block content %}
+<div class="container review-page">
+    <h1 class="page-title">Scrivi una Recensione</h1>
+    <div class="review-form-container">
+        <form method="post" action="{{ url_for('main.rcreate', id=book.id) }}">
+            <div class="form-group">
+                <label for="rating">Valutazione (1-5):</label>
+                <input type="number" id="rating" name="rating" class="form-control" min="1" max="5" required>
+            </div>
+            <div class="form-group">
+                <label for="comment">Commento:</label>
+                <textarea id="comment" name="comment" class="form-control" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Invia Recensione</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

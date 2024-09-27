@@ -1,0 +1,101 @@
+{% extends "layout.html" %}
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/uprofile.css') }}">
+{% endblock %}
+{% block title %}My Profile{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <h1 class="profile-title">Profilo di {{ user.nome }}</h1>
+                <a id="startTour" onclick="startTour()" class="tour"><i class="fa fa-solid fa-arrow-right"></i> Guida Interattiva</a>
+            </div>
+        </div>
+
+        <div class="account-details mb-4">
+            
+            <div id="step1" data-intro="Qui puoi modificare i tuoi dati oppure controllare che siano corretti."></div>
+            <h2>Dettagli Account</h2>
+            <div class="account-info">
+                <p><strong>Nome:</strong> {{ user.nome }}</p>
+                <p><strong>Email:</strong> {{ user.email }} 
+                    <a href="/email" class="btn-action"><i class="fa fa-regular fa-pen-to-square"></i> Cambia email</a>
+                </p>
+                <p><strong>Telefono:</strong> {{ user.telefono }} 
+                    <a href="/phone" class="btn-action"><i class="fa fa-regular fa-pen-to-square"></i> Cambia telefono</a>
+                </p>
+                <p><strong>Ruolo:</strong> {{ user.ruolo }}</p>
+                <a href="/password" class="btn-action"><i class="fa fa-regular fa-pen-to-square"></i> Cambia password</a>
+            </div>
+        </div>
+
+        <div class="section-title mb-4">
+            <h2>
+                <div id="step2" data-intro="Cliccando sul titolo, puoi scaricare tutti i tuoi prestiti."></div>
+                <a href="/loan/print" class="aprestiti">Prestiti</a>
+            </h2>
+        </div>
+
+        {% if mloan %}
+            <div class="alert-message animated-fade">
+                <p>{{ mloan|safe }}</p>
+                <a href="/book" class="btn-custom">Scopri di più sui prestiti</a>
+            </div>
+        {% endif %}
+
+        {% if loans %}
+            <div class="prestiti-list">
+                {% for loan in loans %}
+                    <div class="prestito-item animated-fade">
+                        <h4>Libro: {{ loan.libro.titolo }}</h4>
+                        <p>Scadenza: {{ loan.rientro.strftime('%d %B %Y') }}<br>
+                        Prorogato: {{ loan.prorogato }}</p>
+                        {% if loan.prorogato == "No" %}
+                            <a href="{{ url_for('main.lextend', id=loan.id) }}" class="btn btn-action"><i class="fas fa-edit"></i> Estendi</a>
+                        {% endif %}
+                        <p class="pw">
+                            {% for loan in loans %}
+                                {% if loan.libro_id not in reviewed_books_ids %} <!-- Controllo se il libro non è stato recensito -->
+                                    Hai letto questo libro? Lascia una recensione per aiutare altri utenti a scegliere!
+                                    <a href="{{ url_for('main.rcreate', id=loan.libro_id) }}" class="btn btn-write">
+                                        <i class="fas fa-edit"></i> Scrivi una recensione
+                                    </a>
+                                {% else %}
+                                    <span class="reviewed-message">Hai già scritto una recensione per questo libro.</span>
+                                {% endif %}
+                            {% endfor %}
+                        </p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <div class="section-title mb-4">
+            <h2>
+                <a href="" class="aprestiti">Prenotazioni</a>
+            </h2>
+        </div>
+
+        <!-- if messaggio book -->
+            <div class="alert-message animated-fade">
+                <p><!-- mbooking|safe --></p>
+                <a href="/course" class="btn-custom">Prenota ora</a>
+            </div>
+        <!-- endif -->
+
+        <!-- if booking -->
+            <div class="prenotazioni-list">
+                <!-- for  -->
+                    <div class="prenotazione-item animated-fade">
+                        <h4>Corso: <!-- Corso nome --></h4>
+                        <p>Stato: <!-- stato --></p>
+                    </div>
+                <!-- endfor -->
+            </div>
+        <!-- endif -->
+
+    </div>
+
+{% endblock %}

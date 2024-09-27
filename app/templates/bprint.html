@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <title>Genere: {{ genre }}</title>        
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <style>
+            @page {
+                size: landscape;
+            }
+            h1{
+                padding-top: 20px;
+                text-align: center;
+                font-size: 2.5rem;
+            }         
+        </style>        
+    </head>
+    <body>
+        <h1>Libri del genere "{{ genre }}"</h1>        
+        <br><br><hr>
+
+        {% for book in books %}
+            <h2>{{book.titolo}}, scritto da {{book.autore}}</h2>
+            <br>
+            <p>Pubblicato nel {{book.anno}}<br>
+            Editore {{book.editore}}<br></p>
+            <hr>
+        {% endfor %}
+    </body>
+</html>

@@ -1,0 +1,138 @@
+{% extends "layout.html" %}
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bsearch.css') }}">
+{% endblock %}
+{% block title %}Book{% endblock %}
+
+{% block content %}
+    <div class="container my-5">
+        <header class="title-section">
+            <h1 class="genre-title">Browse the Books</h1>
+        </header>
+
+        <section class="intro-sections">
+            <p class="intro-texts">
+                Our library is the result of years of donations or the flair of our contributors, who have given a second chance to titles that seemed to have said it all. 
+                And it is above all the work of careful cataloguing, distinguished by genre and author. 
+                Browse our catalogue or do a free search. Get inspired by our book of the month.
+            </p>
+        </section>
+
+        <section class="results-section mb-5">
+            <p class="lead search-description">
+                You searched for <strong>{{ hidden }}</strong>. Here are the results we found for you:
+            </p>
+        </section>        
+
+        <section class="books-grid">
+            {% for book in books %}
+            <div class="book-item" onclick="openModal('modal-{{ book.id }}')">
+                <h3 class="book-title">{{ book.titolo }}</h3>
+                <h5 class="book-author">{{ book.autore }}</h5>
+                <p class="book-details">
+                    Casa editrice: {{ book.editore }}<br>
+                    Pubblicato nel: {{ book.anno }}
+                </p>
+            </div>
+
+            <div id="modal-{{ book.id }}" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn" onclick="closeModal('modal-{{ book.id }}')">&times;</span>
+                    <div class="modal-book-details">
+                        <h2>{{ book.titolo }}</h2>
+                        <p><strong>Autore:</strong> {{ book.autore }}</p>
+                        <p><strong>Editore:</strong> {{ book.editore }}</p>
+                        <p><strong>Anno di Pubblicazione:</strong> {{ book.anno }}</p>
+                        <p><strong>Genere:</strong> {{ book.genere }}</p>
+                        <p><strong>Related books:</strong> <a href="{{ url_for('main.brelated', id=book.id) }}" class="btn btn-related">
+                            <i class="fa fa-solid fa-bookmark"></i> Libri Correlati</a></p>
+                        <p><strong>Scheda del libro:</strong> <a class="btn btn-print" href="{{ url_for('main.bdownload', id=book.id) }}">
+                            <i class="fa fa-solid fa-download"></i> Scarica PDF</a></p>
+                        <p><strong>Statistiche:</strong> <a href="{{ url_for('main.bstats', id=book.id) }}" class="btn btn-stats">
+                            <i class="fa fa-solid fa-chart-simple"></i> Statistiche</a></p>
+                        <p>
+                            {% if book.copie >= 2 %}
+                                <p class="loan-status available">
+                                    Ci sono ancora <span class="copies">{{ book.copie }}</span> copie di questo libro.<br>
+                                    <strong>Prendilo in prestito!</strong>
+                                </p>
+                                <a type="button" class="btn btn-custom loan-button" href="{{ url_for('main.lcreate') }}">
+                                    <i class="fas fa-book-open"></i> New loan
+                                </a>
+                    
+                            {% elif book.copie == 1 %}
+                                <p class="loan-status limited">
+                                    È rimasta soltanto <span class="copies">una</span> copia di questo libro.<br>
+                                    <strong>Prendilo in prestito, ora!</strong>
+                                </p>
+                                <a type="button" class="btn btn-custom loan-button" href="{{ url_for('main.lcreate') }}">
+                                    <i class="fas fa-book-open"></i> New loan
+                                </a>
+                    
+                            {% else %}
+                                <p class="loan-status unavailable">
+                                    Attualmente non vi sono copie disponibili per il prestito.<br><br>
+                                    Il libro ritornerà disponibile il: <strong>{{ends[book.id]}}</strong>
+                                </p>
+                            {% endif %}
+                        </p>
+
+                        <p>
+                            <strong>Recensioni:</strong><br>
+                            {% if reviews[book.id] %}
+                                <div class="review-section">
+                                    {% for review in book.reviews[:3] %}
+                                        <li class="list-group-item">
+                                            <small><strong>{{ review.utente.nome }}</strong>: 
+                                                {% for i in range(1, 6) %}
+                                                    {% if i <= review.rating %}
+                                                        ★
+                                                    {% else %}
+                                                        ☆
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </small>
+                                            <p>{{ review.comment[:100] }}...</p>
+                                        </li>
+                                    {% endfor %}
+                                    <a href="{{ url_for('main.breviews', id=book.id) }}" class="btn btn-rev">Visualizza tutte le recensioni</a>
+                                </div>
+                            {% else %}
+                            <p class="no-reviews">Nessuna recensione disponibile per questo libro.</p>
+                            {% endif %}
+                        </p>
+                        <p>
+                            {% if current_user.ruolo != "Socio" %}
+                                <div class="admin-buttons">
+                                    <a href="{{ url_for('main.bookedit', id=book.id) }}" class="btn btn-warning">Modifica</a>
+                                    <a href="{{ url_for('main.bdrop', id=book.id) }}" class="btn btn-danger">Elimina</a>
+                                </div>
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </section>
+
+        <script>
+            function openModal(modalId) {
+                document.getElementById(modalId).style.display = 'block';
+            }
+        
+            function closeModal(modalId) {
+                document.getElementById(modalId).style.display = 'none';
+            }
+            // Chiudi il modal se clicchi all'esterno
+            window.onclick = function(event) {
+                const modals = document.getElementsByClassName('modal');
+                for (let i = 0; i < modals.length; i++) {
+                    if (event.target == modals[i]) {
+                        modals[i].style.display = 'none';
+                    }
+                }
+            }
+        </script>
+        
+    </div>
+{% endblock %}
