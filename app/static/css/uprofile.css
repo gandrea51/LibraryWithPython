@@ -1,0 +1,226 @@
+/* Generale */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    font-family: 'Arial', sans-serif;
+}
+
+.profile-title {
+    font-size: 3rem;
+    color: #1e88e5;
+    margin-bottom: 1rem;
+}
+
+.section-title {
+    text-align: center; /* Centra il titolo */
+    margin-bottom: 20px; /* Margine inferiore */
+}
+
+.section-title h2 {
+    font-size: 2.5rem; /* Dimensione del font grande */
+    font-weight: bold; /* Grassetto */
+    color: #2c3e50; /* Colore scuro per il testo */
+    margin: 0; /* Rimuove margini di default */
+}
+
+.aprestiti {
+    text-decoration: none; /* Rimuove la sottolineatura */
+    color: #3498db; /* Colore blu per il link */
+    transition: color 0.3s, transform 0.2s; /* Transizioni per effetti hover */
+}
+
+/* Effetto hover per il link */
+.aprestiti:hover {
+    color: #2980b9; /* Colore blu scuro al passaggio del mouse */
+    transform: scale(1.05); /* Leggero ingrandimento al passaggio del mouse */
+}
+
+.aprestiti:active {
+    color: #1c5986; /* Colore blu ancora più scuro quando viene cliccato */
+}
+
+
+.account-details, .prestiti-list, .prenotazioni-list {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.account-details h2 {
+    color: #495057;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+.account-info p {
+    font-size: 1.1rem;
+    color: #495057;
+    margin-bottom: 10px;
+}
+
+.prestito-item, .prenotazione-item {
+    background-color: #fff;
+    border-left: 5px solid #007bff;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    transition: background-color 0.3s;
+}
+
+.prestito-item:hover, .prenotazione-item:hover {
+    background-color: #f0f0f0;
+}
+
+.prestito-item h4, .prenotazione-item h4 {
+    font-size: 1.5rem;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.prestito-item p, .prenotazione-item p {
+    font-size: 1.1rem;
+    color: #495057;
+}
+
+.alert-message {
+    background-color: #e0f7fa;
+    border-left: 5px solid #00acc1;
+    padding: 20px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.alert-message p {
+    font-size: 1.1rem;
+    color: #007bff;
+}
+
+/* Pulsanti */
+.btn-custom {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.btn-custom:hover {
+    background-color: #0056b3;
+}
+
+.btn-action {
+    background-color: #343a40;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 5px;
+    margin-left: 10px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.btn-action:hover {
+    background-color: #495057;
+}
+
+/* Animazioni */
+.animated-fade {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.account-details {
+    background-color: #ffffff; /* Sfondo bianco per contrasto */
+    border-radius: 10px; /* Angoli arrotondati */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Ombra leggera */
+    padding: 20px; /* Padding interno */
+    margin: 20px; /* Margine esterno */
+}
+
+
+.account-info p {
+    font-size: 1rem; /* Dimensione del testo */
+    color: #495057; /* Colore del testo */
+    margin: 10px 0; /* Margine tra i paragrafi */
+}
+
+.btn-action {
+    display: inline-block; /* Display inline-block per margini e padding */
+    margin-left: 10px; /* Spazio tra testo e bottone */
+    padding: 5px 10px; /* Padding interno del bottone */
+    border-radius: 5px; /* Angoli arrotondati del bottone */
+    background-color: #007bff; /* Colore di sfondo del bottone */
+    color: #ffffff; /* Colore del testo del bottone */
+    text-decoration: none; /* Rimuovere sottolineatura */
+    transition: background-color 0.3s; /* Transizione del colore di sfondo */
+}
+
+.btn-action:hover {
+    background-color: #0056b3; /* Colore di sfondo al hover */
+}
+
+/* Responsività */
+@media (max-width: 576px) {
+    .account-details {
+        padding: 15px; /* Ridurre il padding per dispositivi piccoli */
+        margin: 10px; /* Ridurre il margine */
+    }
+
+    h2 {
+        font-size: 1.25rem; /* Ridurre la dimensione del titolo */
+    }
+
+    .account-info p {
+        font-size: 0.9rem; /* Ridurre la dimensione del testo */
+    }
+
+    .btn-action {
+        font-size: 0.9rem; /* Dimensione del testo del bottone */
+        padding: 4px 8px; /* Ridurre il padding del bottone */
+    }
+}
+
+/* Stile per il paragrafo */
+.pw {
+    font-size: 1.1rem; /* Dimensione del font */
+    color: #555; /* Colore del testo */
+    margin: 20px 0; /* Margini superiori e inferiori */
+    line-height: 1.6; /* Altezza della linea per una migliore leggibilità */
+}
+
+/* Stile per il pulsante di scrittura recensione */
+.btn-write {
+    display: inline-block; /* Pulsante come blocco in linea */
+    padding: 10px 15px; /* Padding interno */
+    background-color: #3498db; /* Colore di sfondo blu */
+    color: #fff; /* Colore del testo bianco */
+    border-radius: 5px; /* Angoli arrotondati */
+    text-decoration: none; /* Rimuove la sottolineatura */
+    transition: background-color 0.3s, transform 0.3s; /* Transizione per il colore e la trasformazione */
+    font-weight: bold; /* Grassetto per il testo */
+    margin-left: 10px; /* Margine a sinistra per distanziare dal testo */
+}
+
+/* Hover sul pulsante */
+.btn-write:hover {
+    background-color: #2980b9; /* Colore blu più scuro al passaggio del mouse */
+    transform: scale(1.05); /* Effetto di ingrandimento al passaggio del mouse */
+}
+
+/* Icona nel pulsante */
+.btn-write i {
+    margin-right: 5px; /* Spazio tra l'icona e il testo */
+}

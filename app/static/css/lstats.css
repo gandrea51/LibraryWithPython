@@ -1,0 +1,108 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #eaeaea;
+}
+
+/* Contenitore principale */
+.stats-container {
+    background: linear-gradient(135deg, #6a5acd, #a2a2e1);
+    border-radius: 15px;
+    padding: 40px;
+    max-width: 1200px;
+    width: 90%; /* Mantiene la larghezza del contenitore */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin: 0 auto; /* Centra il contenitore */
+}
+
+/* Titolo */
+.title {
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+/* Griglia principale delle statistiche */
+.main-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Box delle statistiche */
+.stat-box {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Titoli delle statistiche */
+.stat-title {
+    font-size: 1.5rem;
+    color: #6a5acd;
+    margin-bottom: 10px;
+}
+
+/* Valori delle statistiche */
+.stat-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #4b0082; /* Colore scuro per contrasto */
+}
+
+/* Sidebar */
+.sidebar {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.sidebar h3 {
+    color: #6a5acd;
+    margin-bottom: 10px;
+}
+
+.sidebar p {
+    color: #333;
+}
+
+/* Media Queries per dispositivi mobili */
+@media (max-width: 768px) {
+    .title {
+        font-size: 2rem; /* Dimensione del titolo ridotto */
+    }
+
+    .stat-title {
+        font-size: 1.3rem; /* Dimensione del titolo della statistica ridotto */
+    }
+
+    .stat-value {
+        font-size: 1.5rem; /* Dimensione del valore della statistica ridotto */
+    }
+
+    .main-stats {
+        gap: 15px; /* Riduce lo spazio tra le statistiche */
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        display: none; /* Nascondi la sidebar su schermi molto piccoli */
+    }
+}

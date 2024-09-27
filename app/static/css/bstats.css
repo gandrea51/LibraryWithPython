@@ -1,0 +1,95 @@
+/* Styling per l'intera pagina */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f4f8;
+    color: #2c3e50;
+    margin: 0;
+    padding: 0;
+}
+
+/* Contenitore principale */
+.stats-container {
+    padding: 20px;
+}
+
+/* Titolo principale */
+.title {
+    font-weight: 700;
+    color: #34495e;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.title span {
+    color: #e67e22; /* Colore accattivante per il titolo del libro */
+}
+
+/* Sezione delle statistiche */
+.stat-section {
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Box delle statistiche */
+.stat-box {
+    background: linear-gradient(135deg, #3498db, #8e44ad);
+    color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    margin: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.stat-box:hover {
+    transform: translateY(-5px);
+}
+
+/* Titolo delle sezioni */
+.section-title {
+    font-size: 1.8rem;
+    color: #2980b9;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+/* Distribuzione delle recensioni */
+.rating-distribution, .monthly-loans {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.rating-distribution li, .monthly-loans li {
+    background-color: #fff;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+    margin: 10px 0;
+    padding: 15px;
+    transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rating-distribution li:hover, .monthly-loans li:hover {
+    background-color: #ecf0f1;
+}
+
+/* Stile per le stelle */
+.rating-distribution strong {
+    color: #e67e22; /* Colore per il numero di stelle */
+}
+
+/* Media delle valutazioni */
+.average-rating {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* Totale prestiti */
+.total-loans {
+    font-size: 2rem;
+    font-weight: bold;
+}

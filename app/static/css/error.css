@@ -1,0 +1,66 @@
+/* error.css */
+
+/* Stili globali */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom right, #ff6f61, #de6262);
+    color: #fff;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.error-page-container {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+}
+
+.error-code {
+    font-size: 6rem;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.error-message {
+    font-size: 2rem;
+    margin: 20px 0;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.error-description {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+.error-button {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+}
+
+.error-button:hover {
+    background-color: #2980b9;
+}
+
+/* Animazione */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

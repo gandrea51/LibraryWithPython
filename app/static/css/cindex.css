@@ -1,0 +1,191 @@
+/* Stile Generale */
+body {
+    background-color: #f9f9f9;
+    font-family: Arial, sans-serif;
+}
+
+/* Contenitore principale */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Stile per il titolo della pagina */
+.page-title {
+    text-align: center;
+    font-size: 3rem;
+    color: #1d3557;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Sezione introduzione */
+.intro {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #333;
+    text-align: justify;
+    margin-bottom: 40px;
+}
+
+/* Pulsante principale */
+.btn-action {
+    display: inline-block;
+    background-color: #457b9d;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn-action:hover {
+    background-color: #1d3557;
+}
+
+/* Sezione statistiche */
+.stats-container {
+    background-color: #f1faee;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.stats-title {
+    font-size: 2rem;
+    color: #e63946;
+    margin-bottom: 20px;
+}
+
+.stats-list {
+    list-style-type: none;
+    padding: 0;
+    font-size: 1.1rem;
+}
+
+.stats-list li {
+    margin: 5px 0;
+    color: #333;
+}
+
+/* Lista corsi */
+.courses-list {
+    margin-bottom: 50px;
+}
+
+.course-item {
+    background-color: #a8dadc;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    padding: 25px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.course-item:hover {
+    background-color: #457b9d;
+}
+
+.course-header {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #1d3557;
+}
+
+.course-docente {
+    font-size: 1.2rem;
+    color: #333;
+    margin-top: 5px;
+    font-style: italic;
+}
+
+.course-info {
+    margin-top: 15px;
+    color: white;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.course-details {
+    display: none;
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #f1faee;
+    background-color: #1d3557;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+/* Pulsante per maggiori informazioni */
+.toggle-btn {
+    background-color: #e63946;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-top: 15px;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-btn:hover {
+    background-color: #d62828;
+}
+
+/* Stile per il pulsante PDF */
+.pdf-btn {
+    background-color: #f77f00;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.pdf-btn:hover {
+    background-color: #d62828;
+}
+
+/* Stile per media queries */
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 2.5rem;
+    }
+
+    .intro {
+        font-size: 1rem;
+    }
+
+    .stats-title {
+        font-size: 1.5rem;
+    }
+
+    .course-header {
+        font-size: 1.5rem;
+    }
+
+    .course-docente {
+        font-size: 1rem;
+    }
+
+    .course-info {
+        font-size: 0.9rem;
+    }
+
+    .toggle-btn {
+        font-size: 0.9rem;
+    }
+}

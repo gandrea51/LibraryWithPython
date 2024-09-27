@@ -1,0 +1,52 @@
+/* Stile generale */
+.container {
+    background-color: #f8f9fa; /* Colore di sfondo chiaro */
+    border-radius: 8px; /* Angoli arrotondati */
+    padding: 30px; /* Padding interno */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombra leggera */
+}
+
+/* Divider */
+.divider {
+    border: 1px solid #e0e0e0; /* Linea di separazione */
+    margin: 20px 0; /* Margini verticali */
+}
+
+/* Form personalizzato */
+.custom-form {
+    font-family: 'Arial', sans-serif; /* Font */
+}
+
+/* Input e textarea */
+.form-control, .form-select {
+    border: 1px solid #ced4da; /* Bordo chiaro */
+    border-radius: 5px; /* Angoli arrotondati */
+    transition: border-color 0.3s; /* Transizione al focus */
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #007bff; /* Colore bordo al focus */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Ombra al focus */
+}
+
+/* Stile per i bottoni */
+.btn-submit {
+    background-color: #007bff; /* Colore primario */
+    color: white; /* Colore del testo */
+    padding: 12px 20px; /* Padding interno */
+    font-size: 1.1rem; /* Dimensione del font */
+    border: none; /* Nessun bordo */
+    border-radius: 5px; /* Angoli arrotondati */
+    cursor: pointer; /* Cursore a mano */
+    transition: background-color 0.3s; /* Transizione per hover */
+}
+
+.btn-submit:hover {
+    background-color: #0056b3; /* Colore al passaggio del mouse */
+}
+
+/* Testo secondario */
+.form-text {
+    font-size: 0.9rem; /* Dimensione del font per testo secondario */
+    color: #6c757d; /* Colore del testo secondario */
+}

@@ -1,0 +1,87 @@
+/* CSS Generale */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f4f8; /* Colore di sfondo chiaro */
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px; /* Limitiamo la larghezza massima per la leggibilità */
+    margin: 50px auto; /* Centriamo la pagina */
+    padding: 20px;
+    background-color: #fff; /* Sfondo bianco per il contenuto */
+    border-radius: 10px; /* Angoli arrotondati */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombra leggera */
+}
+
+/* Titolo della pagina */
+.page-title {
+    font-size: 2.5rem;
+    text-align: center;
+    color: #333; /* Colore del testo scuro */
+    margin-bottom: 20px; /* Spazio sotto il titolo */
+}
+
+/* Contenitore del modulo recensione */
+.review-form-container {
+    margin-top: 20px; /* Margine superiore per separare il titolo dal modulo */
+}
+
+/* Stile per i gruppi di input */
+.form-group {
+    margin-bottom: 20px; /* Margine inferiore per separare gli input */
+}
+
+/* Etichetta degli input */
+label {
+    display: block; /* Impostiamo come blocco per occupare l'intera larghezza */
+    margin-bottom: 8px; /* Spazio sotto l'etichetta */
+    font-weight: bold; /* Grassetto per le etichette */
+    color: #555; /* Colore grigio scuro */
+}
+
+/* Input e textarea */
+.form-control {
+    width: 100%; /* Larghezza completa */
+    padding: 10px; /* Padding interno */
+    border: 1px solid #ccc; /* Bordo grigio chiaro */
+    border-radius: 5px; /* Angoli arrotondati */
+    transition: border-color 0.3s; /* Transizione per il bordo */
+}
+
+/* Focus sugli input */
+.form-control:focus {
+    border-color: #3498db; /* Colore blu per il focus */
+    outline: none; /* Rimuoviamo l'outline di default */
+}
+
+/* Bottone di invio */
+.btn-submit {
+    display: block; /* Imposta come blocco */
+    width: 100%; /* Larghezza piena */
+    padding: 12px; /* Padding interno */
+    background-color: #3498db; /* Colore di sfondo blu */
+    color: #fff; /* Colore del testo bianco */
+    border: none; /* Nessun bordo */
+    border-radius: 5px; /* Angoli arrotondati */
+    font-size: 1.2rem; /* Dimensione del font */
+    cursor: pointer; /* Pointer al passaggio del mouse */
+    transition: background-color 0.3s; /* Transizione per il colore di sfondo */
+}
+
+/* Hover sul bottone */
+.btn-submit:hover {
+    background-color: #2980b9; /* Colore blu più scuro al passaggio del mouse */
+}
+
+/* Media Queries per responsività */
+@media (max-width: 600px) {
+    .page-title {
+        font-size: 2rem; /* Dimensione del titolo più piccola su dispositivi mobili */
+    }
+
+    .btn-submit {
+        font-size: 1rem; /* Dimensione del bottone più piccola su dispositivi mobili */
+    }
+}

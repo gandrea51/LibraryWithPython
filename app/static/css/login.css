@@ -1,0 +1,67 @@
+/* Stile generale per il container di login */
+.login-container {
+    background-color: #f8f9fa; /* Colore di sfondo chiaro */
+    border-radius: 10px; /* Angoli arrotondati */
+    padding: 40px; /* Padding interno */
+    max-width: 400px; /* Larghezza massima */
+    margin: 100px auto; /* Centra il contenitore */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Ombra leggera */
+    text-align: center; /* Allineamento del testo */
+}
+
+/* Titolo di login */
+.login-title {
+    font-size: 2rem; /* Dimensione del font */
+    color: #007bff; /* Colore primario */
+    margin-bottom: 20px; /* Margine inferiore */
+}
+
+/* Stile per il modulo */
+.login-form {
+    display: flex;
+    flex-direction: column; /* Layout verticale */
+}
+
+/* Gruppo di input */
+.form-group {
+    margin-bottom: 20px; /* Margine inferiore */
+}
+
+/* Etichette degli input */
+.form-label {
+    font-size: 1rem; /* Dimensione del font */
+    color: #495057; /* Colore del testo */
+    margin-bottom: 5px; /* Margine inferiore */
+}
+
+/* Input */
+.form-input {
+    padding: 10px; /* Padding interno */
+    border: 1px solid #ced4da; /* Bordo grigio */
+    border-radius: 5px; /* Angoli arrotondati */
+    font-size: 1rem; /* Dimensione del font */
+    transition: border-color 0.3s; /* Transizione per il bordo */
+}
+
+/* Colore del bordo al focus */
+.form-input:focus {
+    border-color: #007bff; /* Colore del bordo al focus */
+    outline: none; /* Rimuove il contorno */
+}
+
+/* Pulsante di login */
+.btn-submit {
+    background-color: #007bff; /* Colore primario */
+    color: #fff; /* Colore del testo bianco */
+    padding: 10px 15px; /* Padding interno */
+    border: none; /* Nessun bordo */
+    border-radius: 5px; /* Angoli arrotondati */
+    font-size: 1rem; /* Dimensione del font */
+    cursor: pointer; /* Cursore pointer */
+    transition: background-color 0.3s; /* Transizione per il background */
+}
+
+/* Colore del pulsante al passaggio del mouse */
+.btn-submit:hover {
+    background-color: #0056b3; /* Colore scuro al passaggio del mouse */
+}

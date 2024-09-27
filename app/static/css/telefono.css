@@ -1,0 +1,77 @@
+body {
+    background-color: #f7f9fc; /* Colore di sfondo soft */
+    font-family: 'Arial', sans-serif; /* Font elegante */
+}
+
+.reset-phone-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 100px);
+    padding: 20px;
+    transition: background-color 0.3s ease; /* Transizione fluida */
+}
+
+.reset-phone-form {
+    width: 100%;
+    max-width: 500px;
+    background-color: #ffffff; /* Sfondo bianco */
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Ombra accentuata */
+    padding: 30px;
+    text-align: center; /* Allineamento al centro */
+    position: relative;
+}
+
+.reset-phone-header {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #343a40; /* Colore testo */
+    margin-bottom: 20px;
+    border-bottom: 2px solid #007bff; /* Sottolineatura colorata */
+    display: inline-block;
+    padding-bottom: 10px; /* Spazio sotto il testo */
+}
+
+.form-label {
+    font-weight: bold;
+    color: #495057; /* Colore label */
+    margin-bottom: 5px;
+    display: block; /* Blocco per l'allineamento */
+}
+
+.form-control {
+    border-radius: 10px;
+    border: 1px solid #ced4da;
+    padding: 15px;
+    margin-bottom: 20px; /* Margine inferiore per separazione */
+    font-size: 1rem; /* Dimensione font */
+    transition: border-color 0.2s ease; /* Transizione del colore del bordo */
+}
+
+.form-control:focus {
+    border-color: #007bff; /* Colore del bordo al focus */
+    outline: none; /* Rimuovere il bordo esterno */
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.2rem; /* Dimensione font più grande */
+    border-radius: 10px; /* Angoli arrotondati */
+    border: none;
+    background-color: #007bff;
+    color: #ffffff;
+    cursor: pointer; /* Cambio del cursore */
+    transition: background-color 0.3s ease; /* Transizione del colore di sfondo */
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Colore più scuro al hover */
+}
+
+.form-footer {
+    margin-top: 20px; /* Spazio sopra il footer */
+    color: #6c757d; /* Colore del testo del footer */
+    font-size: 0.9rem; /* Dimensione font più piccola */
+}

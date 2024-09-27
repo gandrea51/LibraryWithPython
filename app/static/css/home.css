@@ -1,0 +1,253 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f9;
+    color: #333;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Top Bar */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #007BFF;
+    padding: 15px;
+    color: white;
+}
+
+.branding h1 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+}
+
+.menu ul li {
+    margin: 0;
+}
+
+.menu ul li a {
+    color: white;
+    font-weight: bold;
+}
+
+.menu ul li a:hover {
+    text-decoration: underline;
+}
+
+.hero-section {
+    background-color: #007bff;
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.hero-text h2 {
+    font-size: 2.5rem;
+    margin: 20px 0;
+}
+
+.welcome-section {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px 30px;
+    margin: 20px 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.welcome-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.welcome-message {
+    margin-bottom: 15px;
+}
+
+.welcome-message h3 {
+    font-size: 1.8rem;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.welcome-message p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #333;
+}
+
+.contact-info {
+    font-size: 1rem;
+    color: #555;
+    margin-top: 10px;
+}
+
+.contact-info a {
+    color: #007bff;
+    text-decoration: underline;
+}
+
+.contact-info a:hover {
+    color: #0056b3;
+    text-decoration: none;
+}
+
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.content-box {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%; /* Larghezza completa */
+    max-width: 400px; /* Larghezza massima */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.content-title {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 5px;
+}
+
+.btn-light {
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.btn-light:hover {
+    background-color: #e2e6ea;
+}
+
+.btn-dark {
+    background-color: #343a40;
+    color: white;
+}
+
+.btn-dark:hover {
+    background-color: #23272b;
+}
+
+.admin-section {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.footer-section {
+    padding: 20px;
+}
+
+.footer-content {
+    background-color: #343a40;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+.social-links a {
+    color: white;
+    margin: 0 10px;
+    font-size: 1.5rem;
+}
+
+/* Offcanvas styles */
+.offcanvas-header {
+    background-color: #34495e;
+    color: #ecf0f1;
+    border-bottom: 1px solid #2c3e50;
+}
+
+.offcanvas-body {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+}
+
+.offcanvas ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.offcanvas ul li a {
+    text-decoration: none;
+    display: block;
+    color: #ecf0f1;
+    padding: 15px;
+    font-size: 18px;
+    border-bottom: 1px solid #34495e;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.offcanvas ul li a:hover {
+    background-color: #34495e;
+    color: #f39c12;
+}
+
+/* Close button customization */
+.btn-close {
+    background: none;
+    border: none;
+    color: #ecf0f1;
+    font-size: 24px;
+    opacity: 0.8;
+}
+
+.btn-close:hover {
+    color: #f39c12;
+    opacity: 1;
+}
+
+/* Responsive typography adjustments */
+@media (max-width: 768px) {
+    .branding h1 {
+        font-size: 20px;
+    }
+
+    .menu ul li a {
+        font-size: 14px;
+    }
+}
+
+/* Additional animations */
+.offcanvas.show {
+    animation: slideIn 0.3s forwards;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}

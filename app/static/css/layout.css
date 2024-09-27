@@ -1,0 +1,263 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Section */
+.header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #0056b3;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.logo h1 {
+    font-size: 2.2rem;
+    margin: 0;
+}
+
+.nav-links {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links li a {
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.nav-links li a:hover {
+    text-decoration: underline;
+}
+
+/* Intro Section */
+.intro-section {
+    background: linear-gradient(135deg, #0056b3 30%, #007bff 100%);
+    color: white;
+    padding: 50px 20px;
+    text-align: center;
+    max-height: min-content;
+}
+
+.intro-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.intro-content p {
+    font-size: 1.2rem;
+}
+
+/* Main Content Section */
+.main-content {
+    padding: 40px 20px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.info-block h3 {
+    font-size: 2rem;
+    color: #0056b3;
+    margin-bottom: 20px;
+}
+
+.info-block p {
+    font-size: 1.1rem;
+    color: #444;
+    margin-bottom: 30px;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.custom-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #0056b3;
+    color: white;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.custom-btn:hover {
+    background-color: #004494;
+}
+
+/* Scroll To Top Button */
+.btn-top {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #333;
+    color: white;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-top:hover {
+    background-color: #555;
+}
+
+/* Footer */
+footer {
+    background-color: #343a40;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+}
+
+.social-icons {
+    margin-top: 10px;
+}
+
+.social-icons a {
+    margin: 0 10px;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.social-icons a:hover {
+    color: #007bff;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .header-section {
+        flex-direction: column;
+    }
+
+    .nav-links {
+        margin-top: 15px;
+        flex-direction: column;
+    }
+
+    .intro-content h2 {
+        font-size: 2rem;
+    }
+
+    .info-block h3 {
+        font-size: 1.6rem;
+    }
+}
+
+/* Offcanvas styles */
+.offcanvas-header {
+    background-color: #34495e;
+    color: #ecf0f1;
+    border-bottom: 1px solid #2c3e50;
+}
+
+.offcanvas-body {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+}
+
+.offcanvas ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.offcanvas ul li a {
+    text-decoration: none;
+    display: block;
+    color: #ecf0f1;
+    padding: 15px;
+    font-size: 18px;
+    border-bottom: 1px solid #34495e;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.offcanvas ul li a:hover {
+    background-color: #34495e;
+    color: #f39c12;
+}
+
+/* Close button customization */
+.btn-close {
+    background: none;
+    border: none;
+    color: #ecf0f1;
+    font-size: 24px;
+    opacity: 0.8;
+}
+
+.btn-close:hover {
+    color: #f39c12;
+    opacity: 1;
+}
+
+/* Responsive typography adjustments */
+@media (max-width: 768px) {
+    .branding h1 {
+        font-size: 20px;
+    }
+
+    .menu ul li a {
+        font-size: 14px;
+    }
+}
+
+/* Additional animations */
+.offcanvas.show {
+    animation: slideIn 0.3s forwards;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+.tour {
+    display: inline-block; /* Per il margine laterale */
+    font-size: 1.5rem; /* Dimensione del font per il sottotitolo */
+    font-weight: 600; /* Grassetto */
+    color: #2c3e50; /* Colore scuro per il testo */
+    margin: 20px 0; /* Margini superiori e inferiori */
+    text-decoration: none; /* Rimuove la sottolineatura */
+    padding: 10px 15px; /* Padding per un aspetto più accogliente */
+    border: 2px solid #3498db; /* Bordo blu */
+    border-radius: 5px; /* Angoli arrotondati */
+    transition: background-color 0.3s, color 0.3s; /* Transizioni per effetti hover */
+}
+
+/* Effetto hover per il link della guida */
+.tour:hover {
+    background-color: #3498db; /* Colore di sfondo blu al passaggio del mouse */
+    color: #ffffff; /* Colore del testo bianco al passaggio del mouse */
+}

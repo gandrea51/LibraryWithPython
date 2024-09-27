@@ -1,0 +1,325 @@
+
+.bh {
+    color: #0056b3;
+}
+
+p {
+    line-height: 1.6;
+    margin: 10px 0;
+}
+
+a {
+    text-decoration: none;
+    color: #0056b3;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+/* Header */
+.page-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.page-header h1 {
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+
+/* Search Section */
+.search-section {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+}
+
+.search-box {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    margin: 10px;
+    max-width: 350px;
+    text-align: center;
+}
+/* Pulsante personalizzato */
+.custom-btn {
+    display: inline-flex;
+    align-items: center;
+    background-color: #0056b3; /* Colore primario */
+    color: white; /* Colore del testo */
+    padding: 10px 20px; /* Padding interno */
+    font-size: 1.1rem; /* Dimensione del font */
+    border: none; /* Nessun bordo */
+    border-radius: 5px; /* Angoli arrotondati */
+    cursor: pointer; /* Cursore a mano */
+    position: relative; /* Per la posizione della badge */
+    transition: background-color 0.3s, transform 0.2s; /* Transizione per l'hover */
+}
+
+.custom-btn:hover {
+    background-color: #0056b3; /* Colore al passaggio del mouse */
+    transform: scale(1.05); /* Effetto di ingrandimento al passaggio del mouse */
+}
+
+/* Badge di notifica */
+.notification-badge {
+    position: absolute;
+    top: -5px; /* Posizione sopra il pulsante */
+    right: -5px; /* Posizione a destra del pulsante */
+    background-color: #dc3545; /* Colore rosso per la notifica */
+    color: white; /* Colore del testo */
+    padding: 5px; /* Padding interno */
+    border-radius: 50%; /* Forma circolare */
+    border: 2px solid white; /* Bordo bianco */
+    font-size: 0.8rem; /* Dimensione del font */
+}
+
+/* Nascondere la badge per gli screen reader */
+.notification-badge .visually-hidden {
+    display: none; /* Nasconde il testo */
+}
+
+
+.search-box h2 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.search-box input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.search-box button {
+    background-color: #0056b3;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.search-box button:hover {
+    background-color: #004494;
+}
+
+/* Stats Section */
+.stats-section {
+    background-color: #fff;
+    padding: 40px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.stats-container p {
+    font-size: 1.2rem;
+}
+
+.most-viewed ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.most-viewed li {
+    margin-bottom: 10px;
+}
+
+.most-viewed a {
+    color: #0056b3;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.most-viewed a:hover {
+    text-decoration: underline;
+}
+
+/* Genres Section */
+.genres-section {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.genres-section h3 {
+    margin-bottom: 20px;
+}
+
+.accordion-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.accordion-item {
+    background-color: #007bff;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 5px;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+}
+
+.accordion-item:hover {
+    background-color: #0056b3;
+}
+
+.accordion-header {
+    text-transform: uppercase;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .search-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .search-box {
+        max-width: 100%;
+    }
+
+    .accordion-item {
+        flex-basis: 100%;
+    }
+}
+
+/* Contenitore principale per il libro del mese */
+.book-of-the-month-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(to right, #f5f7fa, #c3cfe2);
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Effetto di hover sul contenitore */
+.book-of-the-month-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Card del libro */
+.book-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 10%;
+    padding: 20px;
+    text-align: center;
+    max-width: 400px;
+    transition: transform 0.3s;
+}
+
+/* Immagine del libro */
+.book-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Dettagli del libro */
+.book-details {
+    margin-top: 20px;
+}
+
+/* Titolo del libro */
+.card-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+/* Titolo del libro in evidenza */
+.book-title {
+    color: #2980b9;
+    text-decoration: underline;
+    transition: color 0.3s;
+}
+
+.book-title:hover {
+    color: #3498db;
+}
+
+/* Pulsante del gruppo di lettura */
+.btn-primary {
+    background-color: #2980b9;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: #3498db;
+    transform: scale(1.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .book-of-the-month-container {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .book-card {
+        width: 90%;
+    }
+}
+
+
+.modal-content {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.book-info {
+    text-align: left;
+}
+
+.book-title {
+    font-weight: bold;
+}
+
+.book-details {
+    margin-bottom: 15px;
+}
+/* Stile per il bottone */
+.btn-modal {
+    background-color: #ffffff; /* Sfondo bianco per contrastare il blu */
+    color: #007bff; /* Testo blu per rimanere in tema */
+    border: 2px solid #007bff; /* Bordo blu */
+    font-weight: bold; /* Testo più leggibile */
+    padding: 10px 20px; /* Spaziatura interna per rendere il bottone più grande */
+    border-radius: 8px; /* Angoli arrotondati */
+    cursor: pointer; /* Cambia il cursore quando il mouse è sopra */
+    transition: all 0.3s ease; /* Transizione morbida sui cambi di stato */
+}
+
+/* Effetto hover (passaggio del mouse) */
+.btn-modal:hover {
+    background-color: #007bff; /* Cambia il background in blu quando ci si passa sopra */
+    color: #ffffff; /* Testo bianco in hover per leggibilità */
+    border-color: #0056b3; /* Cambia leggermente il bordo in hover */
+}

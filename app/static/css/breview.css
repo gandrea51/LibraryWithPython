@@ -1,0 +1,90 @@
+/* breviews.css */
+
+/* Stile generale per il corpo */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fa; /* Colore di sfondo soft */
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Sezione intestazione */
+.header-section {
+    background-color: #2c3e50; /* Colore di sfondo scuro */
+    color: white;
+    padding: 50px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-section .sub-title {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    font-weight: 300;
+}
+
+/* Sezione recensioni */
+.reviews-section {
+    margin-top: 40px;
+}
+
+/* Lista delle recensioni */
+.reviews-list {
+    list-style: none; /* Rimuovi i punti dalla lista */
+    padding: 0;
+}
+
+/* Elemento della recensione */
+.review-item {
+    background-color: white; /* Colore di sfondo bianco */
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.review-item:hover {
+    transform: scale(1.02); /* Effetto di ingrandimento al passaggio del mouse */
+}
+
+/* Intestazione della recensione */
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.review-author {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #2980b9; /* Colore blu */
+}
+
+.review-rating {
+    font-size: 1.2rem;
+    color: #f39c12; /* Colore giallo per le stelle */
+}
+
+.star {
+    margin: 0 2px;
+}
+
+.star.filled {
+    color: #f39c12; /* Colore per le stelle piene */
+}
+
+/* Commento della recensione */
+.review-comment {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-top: 10px;
+    color: #444; /* Colore del testo del commento */
+}
+
+/* Messaggio per nessuna recensione */
+.no-reviews {
+    color: #7f8c8d; /* Colore grigio per il testo */
+    font-size: 1.1rem;
+}

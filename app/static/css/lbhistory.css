@@ -1,0 +1,100 @@
+/* Stile generale per la pagina */
+body {
+    background-color: #f2f2f2; /* Colore di sfondo chiaro */
+    font-family: Arial, sans-serif; /* Font generico */
+    margin: 0; /* Rimuovere margini predefiniti */
+    padding: 0; /* Rimuovere padding predefiniti */
+}
+
+.history-container {
+    max-width: 800px; /* Larghezza massima del contenitore */
+    margin: 40px auto; /* Centrare il contenitore verticalmente */
+    padding: 20px; /* Padding interno */
+    background-color: #ffffff; /* Colore di sfondo bianco per il contenitore */
+    border-radius: 10px; /* Angoli arrotondati */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Ombra leggera */
+}
+
+.page-title {
+    text-align: center; /* Centrare il titolo */
+    color: #333333; /* Colore del titolo */
+    font-size: 2rem; /* Dimensione del font del titolo */
+    margin-bottom: 30px; /* Spazio sotto il titolo */
+}
+
+.loan-history {
+    border-top: 2px solid #007bff; /* Linea di separazione */
+    padding-top: 20px; /* Padding sopra la lista */
+}
+
+.loan-entry {
+    background-color: #f9f9f9; /* Sfondo grigio chiaro per ogni prestito */
+    border-radius: 8px; /* Angoli arrotondati */
+    padding: 15px; /* Padding interno */
+    margin-bottom: 15px; /* Spazio tra le voci */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Ombra leggera */
+    transition: transform 0.3s; /* Transizione per l'effetto hover */
+}
+
+.loan-entry:hover {
+    transform: translateY(-5px); /* Effetto di sollevamento al passaggio del mouse */
+}
+
+.loan-header h4 {
+    margin: 0; /* Rimuovere margini predefiniti */
+    color: #007bff; /* Colore del titolo del prestito */
+    font-size: 1.25rem; /* Dimensione del font */
+}
+
+.loan-details {
+    margin-top: 10px; /* Spazio sopra i dettagli del prestito */
+    color: #555555; /* Colore del testo */
+    line-height: 1.6; /* Interlinea */
+}
+
+.alert {
+    padding: 15px; /* Padding per l'allerta */
+    background-color: #fff3cd; /* Colore di sfondo per l'allerta */
+    border: 1px solid #ffeeba; /* Bordo dell'allerta */
+    color: #856404; /* Colore del testo dell'allerta */
+    border-radius: 5px; /* Angoli arrotondati per l'allerta */
+    text-align: center; /* Centrare il testo dell'allerta */
+    margin-top: 20px; /* Spazio sopra l'allerta */
+}
+
+/* Responsività */
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 1.5rem; /* Dimensione del font per schermi piccoli */
+    }
+
+    .loan-entry {
+        padding: 10px; /* Ridurre il padding per schermi piccoli */
+    }
+
+    .loan-header h4 {
+        font-size: 1.1rem; /* Ridurre la dimensione del font per il titolo del prestito */
+    }
+}
+/* Books Grid */
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* Book Item */
+.book-item {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.book-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
