@@ -1,23 +1,18 @@
 # Python Application
 
 ## Description
-- Welcome to the repository of the Library and Courses project. This web application allows users to manage books, loans, courses, and reservations to them. It is developed in Python using the Flask framework.
+- Welcome to the repository of the Library and Courses project. This web application allows users to manage books, courses and related bookings. It is developed in Python using the Flask framework.
 
 ## Features
-- General functions: Dual user interface (welcome page and home page), handling 404 errors. 500 and 403 via a dedicated page, and creation of a chat room.
-- User Management: Registration, Login, Logout, Ability to change all credentials entered.
-- Book Management: Crud Features, Searches, Related Books, Statistics and Reviews.
-- Loan Management: Creation with Ajax title suggestion, Extension, Termination, Printing and Deletion. For Managers there is then the ability to see:
-  - Loans that will expire soon;
-  - Loans that have been terminated and not repaid;
-  - Loans broken down by book genre;
-  - Outlier loans; 
-  - Loan statistics;
-  - The history of a book;
-    All with a simple administrative interface.
-- Course Management: CRUD Functionality.
-- Reservation Management: Creation with Ajax name suggestion, Confirmation, Printing and Cancellation.
-- E-Commerce: Each book is associated with a price and a number of copies in stock. A user can add books to his or her cart and place an order, which is then managed by the manager on duty. 
+- General functions: dual user interface (welcome page and home page), handling of 404. 500 and 403 errors via a dedicated page.
+- User management: registration, login, logout, possibility to change all the credentials entered.
+- Book management: Crud Features, searches, related books, statistics and reviews.
+- Loan management: creation with Ajax title suggestion, extension, termination, printing and cancellation. Managers are therefore able to use many other features, just to name a few: 
+  - Loans to be granted in the near future;
+  - Loans that have been cancelled and not repaid;
+  - Loan history by book and user;
+- Course management: CRUD functionality.
+- Booking management: creation with suggestion of name Ajax, confirmation, printing and cancellation.
 
 ## Technologies Used
 - Python: Programming language used to develop the application.
