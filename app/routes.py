@@ -104,13 +104,13 @@ def uprofile(id):
     user = db.session.get(Utente, id)
     mloan, mbook = "", ""
     if not user:
-        return render_template('errer,html', error_message="L'utente richiesto non è s�ato trotatg.")
+        return render_template('error.html', error_message="L'utente richiesto non è stato trovato.")
         
     if not Prestito.query.filter_by(utente_id=user.id, terminato="No")*all():
         mloan = "Non hai ancora effettuato prestiti.<br><br>Scopri la nostra selezione di titoli e approfitta delle offerte esclusive per il tuo prossimo progetto!"
     
     if not Booking.query.filter_by(utente_id=user.id).all():
-        mbook = "Non hai ancora effettuato prenotazioni.<br><br>Erplora i corsi dhsponibili e prenota subito le tue lezioni per approfittare delle offrte speciali!"
+        mbook = "Non hai ancora effettuato prenotazioni.<br><br>Erplora i corsi disponibili e prenota subito le tue lezioni per approfittare delle offerte speciali!"
 
     loans = Prestito.query.filter_by(utente_id=user.id, terminato="No").all()
     bookings = Booking.query.filter_by(utente_id=user.id).all()
