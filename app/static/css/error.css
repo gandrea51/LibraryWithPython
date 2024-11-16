@@ -1,66 +1,63 @@
-/* error.css */
-
-/* Stili globali */
-body {
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(to bottom right, #ff6f61, #de6262);
-    color: #fff;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
+/* Contenitore principale della pagina di errore */
 .error-page-container {
-    text-align: center;
-    padding: 20px;
-    border-radius: 10px;
-    background: rgba(0, 0, 0, 0.6);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-    max-width: 500px;
+    display: flex; /* Flexbox per centrare il contenuto */
+    justify-content: center; /* Centro orizzontale */
+    align-items: center; /* Centro verticale */
+    height: 100vh; /* Altezza completa della viewport */
+    background: linear-gradient(to right, #df979d, #c44e58);
+    color: #721c24; /* Colore del testo */
+    font-family: Arial, sans-serif; /* Font per la pagina */
 }
 
+/* Contenitore del contenuto dell'errore */
+.error-content {
+    text-align: center; /* Allineamento del testo al centro */
+    background: linear-gradient(to left, #dd8189, #df7a83);
+    border-radius: 12px; /* Angoli arrotondati */
+    padding: 40px; /* Padding interno */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Ombra per dare profondità */
+    max-width: 400px; /* Larghezza massima per il contenitore */
+    width: 90%; /* Larghezza responsiva */
+}
+
+/* Icona di errore */
+.error-icon {
+    font-size: 60px; /* Dimensione dell'icona */
+    margin-bottom: 20px; /* Margine inferiore */
+}
+
+/* Dimensione del codice errore */
 .error-code {
-    font-size: 6rem;
-    margin: 0;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    font-size: 48px; /* Dimensione del font del codice errore */
+    margin: 0; /* Rimuove margini predefiniti */
 }
 
+/* Dimensione del messaggio di errore */
 .error-message {
-    font-size: 2rem;
-    margin: 20px 0;
-    animation: fadeIn 1s ease-in-out;
+    font-size: 24px; /* Dimensione del messaggio di errore */
+    margin: 10px 0; /* Margini superiori e inferiori */
 }
 
+/* Descrizione dell'errore */
 .error-description {
-    font-size: 1.2rem;
-    margin: 10px 0;
+    font-size: 16px; /* Dimensione del font della descrizione */
+    color: #6c757d; /* Colore del testo per la descrizione */
+    margin-bottom: 20px; /* Margine inferiore */
 }
 
+/* Pulsante per tornare alla home */
 .error-button {
-    display: inline-block;
-    padding: 12px 24px;
-    font-size: 1.1rem;
-    background-color: #3498db;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin-top: 20px;
+    display: inline-block; /* Inline-block per il pulsante */
+    background-color: #007bff; /* Colore di sfondo blu */
+    color: #ffffff; /* Colore del testo bianco */
+    padding: 10px 20px; /* Padding interno del pulsante */
+    border: none; /* Rimuove il bordo */
+    border-radius: 5px; /* Angoli arrotondati */
+    text-decoration: none; /* Rimuove la sottolineatura */
+    transition: background-color 0.3s; /* Transizione per il colore di sfondo */
 }
 
+/* Stile al passaggio del mouse sul pulsante */
 .error-button:hover {
-    background-color: #2980b9;
-}
-
-/* Animazione */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+    background-color: #0056b3; /* Colore blu scuro al passaggio del mouse */
 }

@@ -1,212 +1,267 @@
-/* CSS generale per la pagina utenti */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-    color: #2c3e50;
+.dashboard-intro {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+.dashboard-intro p {
+    font-size: 1.1rem;
+    color: #6c757d;
+}
+.btn-warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+.btn-warning:hover {
+    background-color: #e0a800;
+    border-color: #d39e00;
+}
+.download-btn {
+    margin-bottom: 15px;
+}
+
+.delete-form {
+    display: inline;
+}
+
+/* Stile generale per i pulsanti */
+.btn-action {
+    display: inline-flex; /* Permette di allineare il contenuto */
+    align-items: center; /* Allinea verticalmente il contenuto */
+    padding: 10px 20px; /* Spaziatura interna */
+    border: none; /* Rimuove il bordo */
+    border-radius: 5px; /* Angoli arrotondati */
+    font-size: 16px; /* Dimensione del testo */
+    text-decoration: none; /* Rimuove la sottolineatura */
+    transition: background-color 0.3s, transform 0.2s; /* Transizioni per il background e la trasformazione */
+    cursor: pointer; /* Cambia il cursore al passaggio del mouse */
+}
+
+/* Pulsante "Modifica" */
+.btn-edit {
+    background-color: #4CAF50; /* Verde */
+    color: white; /* Colore del testo */
+}
+
+.btn-edit i {
+    margin-right: 8px; /* Spazio tra l'icona e il testo */
+}
+
+.btn-edit:hover {
+    background-color: #45a049; /* Verde scuro al passaggio del mouse */
+    transform: scale(1.05); /* Effetto di ingrandimento al passaggio del mouse */
+}
+
+/* Pulsante "Elimina" */
+.btn-drop {
+    display: inline-flex; /* Permette di allineare il contenuto */
+    align-items: center; /* Allinea verticalmente il contenuto */
+    padding: 10px 20px; /* Spaziatura interna */
+    border: none; /* Rimuove il bordo */
+    border-radius: 5px; /* Angoli arrotondati */
+    font-size: 16px; /* Dimensione del testo */
+    color: white; /* Colore del testo */
+    background-color: #f44336; /* Rosso */
+    cursor: pointer; /* Cambia il cursore al passaggio del mouse */
+    transition: background-color 0.3s, transform 0.2s; /* Transizioni per il background e la trasformazione */
+}
+
+.btn-drop i {
+    margin-right: 8px; /* Spazio tra l'icona e il testo */
+}
+
+.btn-drop:hover {
+    background-color: #d32f2f; /* Rosso scuro al passaggio del mouse */
+    transform: scale(1.05); /* Effetto di ingrandimento al passaggio del mouse */
+}
+
+/* Stile per il modulo di eliminazione */
+.delete-form {
+    display: inline; /* Mostra il modulo sulla stessa linea */
+    margin-left: 10px; /* Spazio a sinistra tra i pulsanti */
+}
+
+/* Stile per il modal */
+.modal {
+    display: none; /* Nasconde il modal di default */
+    position: fixed; /* Fisso rispetto alla finestra */
+    z-index: 1000; /* Mantiene il modal sopra altri contenuti */
+    left: 0;
+    top: 0;
+    width: 100%; /* Larghezza intera della finestra */
+    height: 100%; /* Altezza intera della finestra */
+    overflow: auto; /* Consente lo scrolling se necessario */
+    background-color: rgba(0, 0, 0, 0.5); /* Sfondo semi-trasparente */
+}
+
+/* Contenuto del modal */
+.modal-content {
+    background-color: #fff; /* Sfondo bianco */
+    margin: 15% auto; /* Margini per centrare verticalmente */
+    padding: 20px; /* Padding interno */
+    border: 1px solid #888; /* Bordo grigio chiaro */
+    border-radius: 10px; /* Angoli arrotondati */
+    width: 80%; /* Larghezza del modal */
+    max-width: 500px; /* Larghezza massima */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombra per effetto 3D */
+    animation: fadeIn 0.3s; /* Animazione di comparsa */
+}
+
+/* Pulsante di chiusura */
+.close-btn {
+    color: #aaa; /* Colore grigio chiaro */
+    float: right; /* Posiziona a destra */
+    font-size: 28px; /* Dimensione del font */
+    font-weight: bold; /* Grassetto */
+    cursor: pointer; /* Cambia il cursore */
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black; /* Cambia colore al passaggio del mouse */
+    text-decoration: none; /* Rimuove sottolineatura */
+    cursor: pointer; /* Cambia il cursore */
+}
+
+/* Stile per i campi del modulo */
+input[type="email"],
+input[type="text"],
+select {
+    width: 100%; /* Larghezza completa */
+    padding: 10px; /* Padding interno */
+    margin: 10px 0; /* Margine sopra e sotto */
+    border: 1px solid #ccc; /* Bordo grigio chiaro */
+    border-radius: 5px; /* Angoli arrotondati */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Ombra interna */
+    transition: border-color 0.3s; /* Transizione per il bordo */
+}
+
+input[type="email"]:focus,
+input[type="text"]:focus,
+select:focus {
+    border-color: #4CAF50; /* Colore verde al focus */
+    outline: none; /* Rimuove l'outline */
+}
+
+/* Pulsante Salva */
+.btn-action.btn-save {
+    background-color: #4CAF50; /* Verde */
+    color: white; /* Testo bianco */
+    border: none; /* Nessun bordo */
+    padding: 10px 20px; /* Padding */
+    border-radius: 5px; /* Angoli arrotondati */
+    cursor: pointer; /* Cambia il cursore */
+    transition: background-color 0.3s; /* Transizione per il background */
+}
+
+.btn-action.btn-save:hover {
+    background-color: #45a049; /* Verde scuro al passaggio del mouse */
+}
+
+/* Animazione di comparsa */
+@keyframes fadeIn {
+    from {
+        opacity: 0; /* Inizia invisibile */
+    }
+    to {
+        opacity: 1; /* Finisce visibile */
+    }
+}
+
+.download-title {
+    text-decoration: none;
+    color: #333;
+    display: inline-block;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.download-title h1 {
+    font-size: 2.5em;          /* Dimensione titolo */
+    font-weight: bold;         /* Spessore del font */
+    color: inherit;            /* Colore ereditato da .download-title */
     margin: 0;
     padding: 0;
 }
 
-.user-dashboard {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
-    border-radius: 8px;
+.download-title:hover {
+    color: #007bff;            /* Colore blu scuro in hover */
+    transform: scale(1.02);    /* Leggero ingrandimento su hover */
+    text-decoration: none;     /* Rimuove eventuale underline */
 }
 
-/* Titolo della dashboard */
-.dashboard-title {
-    font-size: 3rem;
-    color: #2980b9;
-    text-align: center;
-    margin-bottom: 20px;
+.download-title:active {
+    color: #0056b3;            /* Colore in stato attivo */
+    transform: scale(0.98);    /* Leggero ridimensionamento in click */
 }
 
-/* Intro della dashboard */
-.dashboard-intro {
-    text-align: center;
-    font-size: 1.25rem;
-    color: #7f8c8d;
-    margin-bottom: 30px;
+.user-card {
+    border: 1px solid #ddd; /* Bordo chiaro per separare il card dal resto */
+    border-radius: 8px; /* Angoli arrotondati */
+    padding: 20px; /* Spazio interno per il contenuto */
+    background-color: #ffffff; /* Sfondo bianco per chiarezza */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombra leggera per profondità */
+    transition: transform 0.2s, box-shadow 0.2s; /* Animazione al passaggio del mouse */
+    margin-bottom: 20px; /* Spazio tra i vari card */
 }
 
-/* Bottone per scaricare il PDF */
-.download-btn {
-    text-align: right;
-    margin-bottom: 30px;
+.user-card:hover {
+    transform: scale(1.02); /* Leggero ingrandimento al passaggio del mouse */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Ombra più intensa al passaggio del mouse */
 }
 
-.btn-download {
-    display: inline-block;
-    padding: 12px 20px;
-    background-color: #27ae60;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    font-weight: bold;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
+.card-body {
+    display: flex; /* Flexbox per allineare elementi */
+    flex-direction: column; /* Direzione verticale */
+    align-items: flex-start; /* Allinea a sinistra */
 }
 
-.btn-download:hover {
-    background-color: #2ecc71;
+.profile-picture {
+    width: 70px; /* Larghezza fissa */
+    height: 70px; /* Altezza fissa */
+    overflow: hidden; /* Nasconde eventuali parti in eccesso */
+    margin-bottom: 15px; /* Spazio sotto l'immagine */
+    border-radius: 50%; /* Rende l'immagine rotonda */
+    border: 2px solid #007bff; /* Bordo blu attorno all'immagine */
+    display: flex; /* Flexbox per centrare l'immagine */
+    justify-content: center; /* Allinea orizzontalmente al centro */
+    align-items: center; /* Allinea verticalmente al centro */
 }
 
-/* Griglia utenti */
-.user-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
+.profile-picture img {
+    width: 100%; /* Adatta l'immagine alla larghezza del contenitore */
+    height: auto; /* Mantiene il rapporto di aspetto */
 }
 
-/* Singola riga utente */
-.user-row {
-    background-color: #ecf0f1;
-    border-radius: 8px;
-    padding: 15px;
-    transition: box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column; /* Forza la disposizione in colonna */
+.card-title {
+    font-size: 1.2em; /* Dimensione del titolo */
+    font-weight: bold; /* Grassetto */
+    margin-bottom: 10px; /* Spazio sotto il titolo */
+    color: #333; /* Colore del testo */
 }
 
-.user-row:hover {
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Informazioni utente */
-.user-info {
-    display: flex;
-    flex-direction: column;
-}
-
-.user-name {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #2c3e50;
-}
-
-.user-role {
-    font-size: 1.1rem;
-    color: #16a085;
-    margin-bottom: 5px;
-}
-
-.user-email,
-.user-phone {
-    font-size: 1rem;
-    color: #7f8c8d;
-    margin-bottom: 10px;
-}
-
-/* Azioni utente (pulsanti) */
-.user-actions {
-    display: flex;
-    justify-content: flex-start;
-    margin-top: 15px; /* Spazio sopra i pulsanti */
+.card-text {
+    font-size: 0.9em; /* Dimensione del testo */
+    color: #555; /* Colore del testo secondario */
+    margin: 5px 0; /* Spazio verticale tra i paragrafi */
 }
 
 .btn-action {
-    background-color: #3498db;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    margin-right: 10px;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-}
-
-.btn-action i {
-    margin-right: 5px;
+    display: inline-block; /* Display inline per il pulsante */
+    padding: 8px 15px; /* Spaziatura interna */
+    border-radius: 5px; /* Angoli arrotondati */
+    text-decoration: none; /* Rimuove la sottolineatura */
+    color: #ffffff; /* Colore del testo */
 }
 
 .btn-edit {
-    background-color: #f39c12;
+    background-color: #28a745; /* Colore verde per il pulsante di modifica */
 }
 
-.btn-delete {
-    background-color: #e74c3c;
+.btn-drop {
+    background-color: #dc3545; /* Colore rosso per il pulsante di eliminazione */
+    color: #ffffff; /* Colore del testo bianco */
 }
 
-.btn-action:hover {
-    opacity: 0.9;
-}
-
-/* Responsività */
-@media screen and (max-width: 768px) {
-    .user-row {
-        flex-direction: column;
-    }
-
-    .user-actions {
-        margin-top: 10px;
-    }
-
-    .btn-action {
-        width: 100%;
-        justify-content: center;
-        margin-bottom: 10px;
-    }
-}
-
-/* Modal */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    overflow: auto;
-    transition: all 0.3s ease-in-out;
-}
-
-.modal-content {
-    background-color: #fff;
-    margin: 10% auto;
-    padding: 20px;
-    border-radius: 10px;
-    width: 80%;
-    max-width: 600px;
-    position: relative;
-    animation: fadeIn 0.3s ease-in-out;
-}
-input{
-    margin-bottom: 25px;
-}
-
-.close-btn {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close-btn:hover, .close-btn:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* Bottoni nel modal */
-.btn-save {
-    background-color: #3498db;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.btn-save:hover {
-    background-color: #2980b9;
+.btn-drop:hover,
+.btn-edit:hover {
+    opacity: 0.8; /* Effetto di opacità al passaggio del mouse */
 }

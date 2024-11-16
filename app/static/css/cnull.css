@@ -1,0 +1,79 @@
+/* Hero Section */
+.hero-section {
+    background-color: rgba(0, 0, 0, 0.5); /* Slight overlay */
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+}
+
+.hero-section h1 {
+    font-size: 4rem;
+}
+
+.hero-section .form-control-lg {
+    border-radius: 50px;
+    padding: 10px 20px;
+}
+
+.hero-section .btn-lg {
+    padding: 10px 30px;
+    border-radius: 50px;
+}
+
+/* Featured Course */
+.featured-course img {
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.featured-course h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.featured-course .lead {
+    font-size: 1.25rem;
+}
+
+.featured-course .btn-lg {
+    padding: 10px 25px;
+    border-radius: 50px;
+}
+
+/* Courses Section */
+.courses-section .course-card {
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.courses-section .course-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.courses-section .course-card img {
+    height: 200px;
+    object-fit: cover;
+}
+
+.courses-section .course-card .card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.courses-section .course-card .card-text {
+    font-size: 1rem;
+}
+
+.courses-section .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    border-radius: 30px;
+    padding: 10px 20px;
+}
+
+.courses-section .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}

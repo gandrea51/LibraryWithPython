@@ -1,191 +1,229 @@
-/* Stile Generale */
-body {
-    background-color: #f9f9f9;
-    font-family: Arial, sans-serif;
+/* Titolo principale */
+/* Contenitore per il titolo */
+.title-container {
+    position: relative; /* Posizionamento relativo per sovrapporre il testo */
+    margin-bottom: -100px; /* Margine negativo per sovrapporre al centro dell'immagine */
+    z-index: 1; /* Assicurati che il testo sia sopra l'immagine */
 }
 
-/* Contenitore principale */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+/* Titolo principale */
+.main-title {
+    font-size: 3rem; /* Grandezza del titolo */
+    font-weight: bold; /* Grassetto */
+    color: #ffffff; /* Colore bianco per contrastare con lo sfondo */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Ombra per migliorare la leggibilità */
+    margin-bottom: 0.5rem; /* Margine sotto il titolo */
 }
 
-/* Stile per il titolo della pagina */
-.page-title {
-    text-align: center;
-    font-size: 3rem;
-    color: #1d3557;
-    margin-bottom: 30px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+/* Sottotitolo */
+.sub-title {
+    font-size: 1.75rem; /* Grandezza del sottotitolo */
+    color: #ffffff; /* Colore bianco */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Ombra per migliorare la leggibilità */
+    margin-bottom: 1.5rem; /* Margine sotto il sottotitolo */
 }
 
-/* Sezione introduzione */
-.intro {
-    font-size: 1.2rem;
-    line-height: 1.8;
-    color: #333;
-    text-align: justify;
-    margin-bottom: 40px;
+/* Spazio per la foto */
+.photo-placeholder {
+    margin-top: 1.5rem; /* Margine sopra la foto */
 }
 
-/* Pulsante principale */
-.btn-action {
-    display: inline-block;
-    background-color: #457b9d;
-    color: white;
-    padding: 12px 25px;
-    border-radius: 5px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-    text-align: center;
-    margin-top: 20px;
+/* Stile dell'immagine */
+.header-photo {
+    width: 70%; /* Larghezza dell'immagine */
+    height: auto; /* Altezza automatica per mantenere le proporzioni */
+    border-radius: 10px; /* Angoli arrotondati */
 }
 
-.btn-action:hover {
-    background-color: #1d3557;
-}
-
-/* Sezione statistiche */
-.stats-container {
-    background-color: #f1faee;
-    padding: 30px;
-    border-radius: 10px;
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.stats-title {
-    font-size: 2rem;
-    color: #e63946;
-    margin-bottom: 20px;
-}
-
-.stats-list {
-    list-style-type: none;
-    padding: 0;
-    font-size: 1.1rem;
-}
-
-.stats-list li {
-    margin: 5px 0;
-    color: #333;
-}
-
-/* Lista corsi */
-.courses-list {
-    margin-bottom: 50px;
-}
-
-.course-item {
-    background-color: #a8dadc;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    padding: 25px;
-    transition: background-color 0.3s ease;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-}
-
-.course-item:hover {
-    background-color: #457b9d;
-}
-
-.course-header {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #1d3557;
-}
-
-.course-docente {
-    font-size: 1.2rem;
-    color: #333;
-    margin-top: 5px;
-    font-style: italic;
-}
-
-.course-info {
-    margin-top: 15px;
-    color: white;
-    font-size: 1rem;
-    line-height: 1.6;
-}
-
-.course-details {
-    display: none;
-    margin-top: 20px;
-    font-size: 0.9rem;
-    color: #f1faee;
-    background-color: #1d3557;
-    padding: 15px;
-    border-radius: 5px;
-}
-
-/* Pulsante per maggiori informazioni */
-.toggle-btn {
-    background-color: #e63946;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    margin-top: 15px;
-    border-radius: 5px;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-}
-
-.toggle-btn:hover {
-    background-color: #d62828;
-}
-
-/* Stile per il pulsante PDF */
-.pdf-btn {
-    background-color: #f77f00;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.pdf-btn:hover {
-    background-color: #d62828;
-}
-
-/* Stile per media queries */
+/* Media query per adattare l'immagine su dispositivi più piccoli */
 @media (max-width: 768px) {
-    .page-title {
-        font-size: 2.5rem;
+    .header-photo {
+        width: 100%; /* Larghezza completa su schermi piccoli */
     }
+}
 
-    .intro {
-        font-size: 1rem;
-    }
 
-    .stats-title {
-        font-size: 1.5rem;
-    }
+/* Stile per il contenitore dell'introduzione */
+.intro-container {
+    background-color: #F9F9F9; /* Sfondo chiaro */
+    border-radius: 10px; /* Angoli arrotondati */
+    padding: 2rem; /* Padding interno */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Ombra */
+}
 
-    .course-header {
-        font-size: 1.5rem;
-    }
+/* Stile per il testo dell'introduzione */
+.intro-text {
+    font-size: 1.25rem; /* Grandezza del testo */
+    line-height: 1.6; /* Altezza della linea */
+    color: #333; /* Colore scuro */
+    margin: 0; /* Rimuovere margini */
+    text-align: justify; /* Giustificato */
+}
+/* Card per le statistiche */
+.statistics-card {
+    border-radius: 15px; /* Angoli arrotondati */
+    background-color: #ffffff; /* Sfondo bianco */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Ombra */
+    position: relative; /* Posizione relativa per il posizionamento dell'immagine */
+}
 
-    .course-docente {
-        font-size: 1rem;
-    }
+/* Spazio per la foto */
+.photo-placeholder {
+    margin-bottom: 1rem; /* Margine sotto la foto */
+}
 
-    .course-info {
-        font-size: 0.9rem;
-    }
+.photo {
+    width: 50%; /* Larghezza completa */
+    height: auto; /* Altezza automatica per mantenere le proporzioni */
+    border-radius: 15px; /* Angoli arrotondati per l'immagine */
+}
 
-    .toggle-btn {
-        font-size: 0.9rem;
-    }
+/* Stile per il titolo delle statistiche */
+.stats-title {
+    font-size: 2.5rem; /* Grandezza del titolo */
+    font-weight: bold; /* Grassetto */
+    color: #4A90E2; /* Colore blu */
+    margin-bottom: 1rem; /* Margine sotto il titolo */
+}
+
+/* Stile per le visualizzazioni totali */
+.total-views {
+    font-size: 1.25rem; /* Grandezza del testo */
+    color: #333; /* Colore scuro */
+}
+
+/* Stile per il titolo dei corsi più visti */
+.top-courses-title {
+    font-size: 2rem; /* Grandezza del titolo */
+    font-weight: 500; /* Peso medio */
+    color: #7B7B7B; /* Colore grigio */
+    margin-top: 1.5rem; /* Margine sopra il titolo */
+}
+
+/* Stile per gli elementi della lista dei corsi */
+.list-group-item {
+    font-size: 1.1rem; /* Grandezza del testo */
+    color: #555; /* Colore leggermente più chiaro */
+}
+
+/* Stile per il numero di visualizzazioni */
+.views {
+    font-weight: bold; /* Grassetto per evidenziare */
+    color: #4A90E2; /* Colore blu */
+}
+
+/* Stile per l'Area Manager Corsi */
+.area-manager-corsi {
+    background: linear-gradient(to right, #a1c4fd, #c2e9fb); /* Colore di sfondo chiaro */
+    padding: 40px 0; /* Padding verticale */
+    border-radius: 10px; /* Angoli arrotondati */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombra leggera */
+    margin-top: 30px; /* Margine superiore */
+}
+
+/* Titolo principale */
+.area-manager-corsi h2 {
+    font-size: 2.5rem; /* Grandezza del titolo */
+    font-weight: bold; /* Grassetto */
+    color: #343a40; /* Colore scuro */
+    margin-bottom: 1rem; /* Margine inferiore */
+}
+
+/* Testo del paragrafo */
+.area-manager-corsi p {
+    font-size: 1.2rem; /* Grandezza del testo */
+    color: #6c757d; /* Colore grigio */
+    margin-bottom: 1.5rem; /* Margine inferiore */
+}
+
+/* Pulsante */
+.area-manager-corsi .btn {
+    border-radius: 5px; /* Angoli arrotondati per il pulsante */
+    padding: 10px 20px; /* Padding del pulsante */
+    font-size: 1.1rem; /* Dimensione del testo del pulsante */
+    transition: background-color 0.3s ease; /* Transizione del colore */
+}
+
+.area-manager-corsi .btn:hover {
+    background-color: #0056b3; /* Colore del pulsante al passaggio del mouse */
+}
+
+
+/* Stile per le schede dei corsi */
+.corso-card {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.corso-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Stile per il contenuto del modal */
+.modal-content {
+    border-radius: 15px; /* Angoli arrotondati */
+}
+
+.modal-header {
+    background-color: #343a40; /* Colore di sfondo scuro */
+    color: white; /* Testo bianco */
+    border-top-left-radius: 15px; /* Angoli arrotondati superiori sinistri */
+    border-top-right-radius: 15px; /* Angoli arrotondati superiori destri */
+}
+
+.modal-body {
+    font-size: 1rem; /* Dimensione del testo */
+}
+
+/* Pulsante chiusura del modal */
+.btn-close {
+    filter: invert(1); /* Colore bianco */
+}
+
+/* Pulsante prenota ora */
+.btn-light {
+    background-color: #f8f9fa; /* Colore di sfondo chiaro */
+    border: none; /* Rimuove il bordo */
+    color: #343a40; /* Colore scuro per il testo */
+}
+
+.btn-light:hover {
+    background-color: #e2e6ea; /* Colore di sfondo più scuro al passaggio del mouse */
+}
+.prenotati {
+    font-size: 1.5em; /* Dimensione del font */
+    font-weight: bold; /* Grassetto */
+    text-align: center; /* Testo centrato */
+    color: #ffffff; /* Colore del testo */
+    background: linear-gradient(45deg, #2ecc71, #27ae60); /* Gradiente verde */
+    padding: 15px 25px; /* Spaziatura interna */
+    border-radius: 8px; /* Angoli arrotondati */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Ombra */
+    margin: 10px 0; /* Margine sopra e sotto */
+    transition: transform 0.2s ease-in-out; /* Transizione per l'effetto hover */
+}
+
+.prenotati:hover {
+    transform: scale(1.03); /* Leggera ingrandimento al passaggio del mouse */
+}
+
+/* Stile per il pulsante di prenotazione */
+.btn-prenota {
+    display: inline-block; /* Rende il link un blocco in linea */
+    color: #ffffff; /* Colore del testo bianco */
+    font-weight: bold; /* Grassetto */
+    font-size: 1.2em; /* Dimensione del font */
+    text-decoration: none; /* Rimuove la sottolineatura */
+    padding: 12px 20px; /* Spaziatura interna */
+    border-radius: 8px; /* Angoli arrotondati */
+    background: linear-gradient(45deg, #e74c3c, #c0392b); /* Gradiente rosso */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Ombra */
+    transition: background 0.3s, transform 0.2s; /* Transizione per l'effetto hover */
+    text-align: center; /* Centra il testo */
+    margin-top: 10px; /* Margine sopra */
+}
+
+.btn-prenota:hover {
+    background: linear-gradient(45deg, #c0392b, #e74c3c); /* Cambia gradiente al passaggio del mouse */
+    transform: scale(1.05); /* Leggera ingrandimento al passaggio del mouse */
 }

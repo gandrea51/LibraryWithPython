@@ -1,263 +1,151 @@
-/* General Styles */
+/* Base styles */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
 body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f7f7f7;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f9;
     color: #333;
 }
 
 a {
     text-decoration: none;
-    color: inherit;
 }
 
-ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-/* Header Section */
-.header-section {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background-color: #0056b3;
-    color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.logo h1 {
-    font-size: 2.2rem;
-    margin: 0;
-}
-
-.nav-links {
-    display: flex;
-    gap: 15px;
-}
-
-.nav-links li a {
-    color: white;
-    font-size: 1rem;
-    font-weight: bold;
-}
-
-.nav-links li a:hover {
+a:hover {
     text-decoration: underline;
 }
 
-/* Intro Section */
-.intro-section {
-    background: linear-gradient(135deg, #0056b3 30%, #007bff 100%);
+/* Navbar styles */
+.navbar {
+    background: linear-gradient(to right, #333, #4b4a4a);
+    transition: background-color 0.3s ease-in-out;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+}
+
+.navbar-nav .nav-link {
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ff9800;
+}
+
+.offcanvas-header {
+    background: linear-gradient(to right, #333, #4b4a4a);
     color: white;
-    padding: 50px 20px;
-    text-align: center;
-    max-height: min-content;
 }
 
-.intro-content h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-}
-
-.intro-content p {
-    font-size: 1.2rem;
-}
-
-/* Main Content Section */
-.main-content {
-    padding: 40px 20px;
-    background-color: #fff;
-    text-align: center;
-}
-
-.info-block h3 {
-    font-size: 2rem;
-    color: #0056b3;
-    margin-bottom: 20px;
-}
-
-.info-block p {
-    font-size: 1.1rem;
-    color: #444;
-    margin-bottom: 30px;
-}
-
-.btn-group {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-.custom-btn {
-    display: inline-block;
-    padding: 12px 30px;
-    background-color: #0056b3;
-    color: white;
-    border-radius: 5px;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-}
-
-.custom-btn:hover {
-    background-color: #004494;
-}
-
-/* Scroll To Top Button */
-.btn-top {
-    display: none;
+/* Contenitore principale per il pulsante flottante */
+.floating-icon {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: #333;
-    color: white;
-    padding: 10px 15px;
-    font-size: 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Pulsante principale (quello visibile) */
+#main-button {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    transition: transform 0.3s;
+}
+
+#main-button:hover {
+    transform: scale(1.1);
+}
+
+/* Contenitore dei pulsanti delle opzioni */
+.options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px; /* Distanza dai pulsanti principali */
+}
+
+/* Pulsanti delle opzioni */
+.options .btn {
+    width: 60px; /* Più grandi dei pulsanti normali */
+    height: 60px;
+    font-size: 1.5rem;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s;
+}
+
+.options .btn-facebook {
+    background-color: #3b5998;
+}
+
+.options .btn-insta {
+    background-color: #C13584;
+}
+
+.options .btn-message {
+    background-color: #17a2b8;
+}
+
+/* Effetto hover per i pulsanti */
+.options .btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Rimuove la linea dei link */
+.options .btn, #main-button {
+    text-decoration: none;
+    outline: none;
+}
+
+
+/* Footer styles */
+.footer {
+    background: linear-gradient(to right, #333, #4b4a4a);
+    color: #ffffff;
+}
+
+.footer a {
+    color: #ffffff;
+}
+
+.footer a:hover {
+    color: #ffc107;
+}
+
+/* Stile per il pulsante "Torna su" */
+.btn-top {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background-color: #343a40;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
 }
 
 .btn-top:hover {
-    background-color: #555;
+    background-color: #495057;
+    transform: scale(1.5);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Footer */
-footer {
-    background-color: #343a40;
-    color: white;
-    padding: 20px 0;
-    text-align: center;
-}
-
-footer p {
-    margin: 0;
-}
-
-.social-icons {
-    margin-top: 10px;
-}
-
-.social-icons a {
-    margin: 0 10px;
-    font-size: 1.5rem;
-    color: white;
-}
-
-.social-icons a:hover {
-    color: #007bff;
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-    .header-section {
-        flex-direction: column;
-    }
-
-    .nav-links {
-        margin-top: 15px;
-        flex-direction: column;
-    }
-
-    .intro-content h2 {
-        font-size: 2rem;
-    }
-
-    .info-block h3 {
-        font-size: 1.6rem;
-    }
-}
-
-/* Offcanvas styles */
-.offcanvas-header {
-    background-color: #34495e;
-    color: #ecf0f1;
-    border-bottom: 1px solid #2c3e50;
-}
-
-.offcanvas-body {
-    background-color: #2c3e50;
-    color: #ecf0f1;
-}
-
-.offcanvas ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.offcanvas ul li a {
-    text-decoration: none;
-    display: block;
-    color: #ecf0f1;
-    padding: 15px;
-    font-size: 18px;
-    border-bottom: 1px solid #34495e;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.offcanvas ul li a:hover {
-    background-color: #34495e;
-    color: #f39c12;
-}
-
-/* Close button customization */
-.btn-close {
-    background: none;
-    border: none;
-    color: #ecf0f1;
-    font-size: 24px;
-    opacity: 0.8;
-}
-
-.btn-close:hover {
-    color: #f39c12;
-    opacity: 1;
-}
-
-/* Responsive typography adjustments */
-@media (max-width: 768px) {
-    .branding h1 {
-        font-size: 20px;
-    }
-
-    .menu ul li a {
-        font-size: 14px;
-    }
-}
-
-/* Additional animations */
-.offcanvas.show {
-    animation: slideIn 0.3s forwards;
-}
-
-@keyframes slideIn {
-    from {
-        transform: translateX(-100%);
-    }
-    to {
-        transform: translateX(0);
-    }
-}
-
-.tour {
-    display: inline-block; /* Per il margine laterale */
-    font-size: 1.5rem; /* Dimensione del font per il sottotitolo */
-    font-weight: 600; /* Grassetto */
-    color: #2c3e50; /* Colore scuro per il testo */
-    margin: 20px 0; /* Margini superiori e inferiori */
-    text-decoration: none; /* Rimuove la sottolineatura */
-    padding: 10px 15px; /* Padding per un aspetto più accogliente */
-    border: 2px solid #3498db; /* Bordo blu */
-    border-radius: 5px; /* Angoli arrotondati */
-    transition: background-color 0.3s, color 0.3s; /* Transizioni per effetti hover */
-}
-
-/* Effetto hover per il link della guida */
-.tour:hover {
-    background-color: #3498db; /* Colore di sfondo blu al passaggio del mouse */
-    color: #ffffff; /* Colore del testo bianco al passaggio del mouse */
+.btn-whatsapp {
+    background-color: #25d366;
 }

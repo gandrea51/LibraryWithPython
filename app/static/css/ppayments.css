@@ -1,0 +1,71 @@
+/* Stile generale per il contenitore dei pagamenti */
+.payment-container {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+/* Intestazione della pagina */
+.header {
+    margin-bottom: 30px;
+}
+
+/* Griglia dei pagamenti */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+/* Card di ogni pagamento */
+.payment-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    transition: transform 0.3s;
+}
+
+/* Effetto al passaggio del mouse sulla card */
+.payment-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Intestazione della card */
+.payment-header {
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+/* Dettagli del pagamento */
+.payment-details {
+    margin-bottom: 10px;
+}
+
+/* Stato di pagamento */
+.payment-status {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.status {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.paid {
+    background-color: #28a745;
+    color: white;
+}
+
+.pending {
+    background-color: #ffc107;
+    color: white;
+}
+
+/* Messaggio di avviso */
+.alert {
+    margin-top: 20px;
+}

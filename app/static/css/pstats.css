@@ -1,0 +1,61 @@
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.statistic-summary {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.highlight {
+    color: #007bff;
+    font-weight: bold;
+    font-size: 1.5rem; /* Dimensione del testo evidenziato */
+}
+
+.statistic-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px; /* Spaziatura tra i card */
+}
+
+.statistic-card {
+    background: linear-gradient(135deg, #6a82fb 0%, #fc5c7d 100%); /* Gradiente di sfondo */
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Maggiore ombra per un effetto di profondità */
+    padding: 20px;
+    transition: transform 0.3s;
+    color: #ffffff; /* Colore del testo bianco per contrasto */
+}
+
+.statistic-card:hover {
+    transform: translateY(-5px);
+}
+
+.statistic-icon {
+    font-size: 40px; /* Dimensione dell'icona */
+    color: #ffffff; /* Colore dell'icona in bianco per contrasto */
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.statistic-info {
+    text-align: center; /* Allineamento centrale per le informazioni */
+}
+
+.statistic-details {
+    margin-top: 15px;
+}
+
+.statistic-detail {
+    margin: 5px 0; /* Spaziatura verticale tra i dettagli */
+}
+
+.course-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}

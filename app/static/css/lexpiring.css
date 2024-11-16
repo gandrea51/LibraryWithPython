@@ -1,110 +1,66 @@
-body {
-    background-color: #f4f7fa; /* Colore di sfondo chiaro per la pagina */
-    font-family: 'Arial', sans-serif; /* Font generico */
-    margin: 0;
-    padding: 0;
-}
-
+/* Stile generale per il contenitore principale */
 .container {
-    max-width: 1200px; /* Larghezza massima per il contenitore */
-    margin: 50px auto; /* Centrare il contenitore */
-    padding: 20px; /* Padding interno */
-    background-color: #ffffff; /* Sfondo bianco per il contenitore principale */
-    border-radius: 10px; /* Angoli arrotondati */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Ombra leggera */
+    padding: 30px; /* Padding per il contenitore */
+    border-radius: 12px; /* Angoli arrotondati */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Ombra per il contenitore */
 }
 
-h1 {
-    font-size: 2.5rem; /* Dimensione del titolo principale */
-    color: #333; /* Colore del titolo */
-    text-align: center; /* Centrare il titolo */
-    margin-bottom: 30px; /* Spazio sotto il titolo */
+/* Titolo principale */
+.display-4 {
+    color: #2c3e50; /* Colore del titolo */
+    font-weight: bold; /* Grassetto */
+    margin-bottom: 20px; /* Margine inferiore */
 }
 
-.tab-container {
-    margin-top: 30px; /* Margine sopra la tabella */
+/* Stile per il contenitore a griglia */
+.grid-container {
+    display: grid; /* Abilita il layout a griglia */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Colonne responsive */
+    gap: 20px; /* Spaziatura tra le card */
 }
 
-.nav-tabs {
-    display: flex; /* Flexbox per la navigazione */
-    justify-content: center; /* Centrare le tab */
-    border-bottom: 2px solid #007bff; /* Bordo sotto le tab */
-}
-
-.nav-item {
-    margin: 0 10px; /* Spaziatura tra le tab */
-}
-
-.nav-link {
-    padding: 10px 20px; /* Padding interno delle tab */
-    border: none; /* Rimuovere il bordo */
-    color: #007bff; /* Colore del testo delle tab */
-    font-weight: bold; /* Grassetto per il testo */
-    border-radius: 5px; /* Angoli arrotondati */
-    transition: background-color 0.3s; /* Transizione per il hover */
-}
-
-.nav-link:hover {
-    background-color: #e9ecef; /* Colore di sfondo al passaggio del mouse */
-}
-
-.nav-link.active {
-    background-color: #007bff; /* Colore di sfondo attivo */
-    color: #ffffff; /* Colore del testo attivo */
-}
-
-.tab-content {
-    margin-top: 20px; /* Margine sopra il contenuto delle tab */
-    text-align: center; /* Centrare il contenuto delle tab */
-}
-
-.tab-image {
-    max-width: 100%; /* Adatta l'immagine al contenitore */
-    height: auto; /* Mantieni le proporzioni */
-    margin-bottom: 20px; /* Spazio sotto l'immagine */
-    border-radius: 10px; /* Angoli arrotondati per l'immagine */
-}
-
-.loan-details {
-    background-color: #f8f9fa; /* Sfondo chiaro per i dettagli del prestito */
+/* Stile per la scheda del prestito */
+.loan-card {
+    display: flex; /* Flexbox per layout orizzontale */
+    flex-direction: column; /* Layout verticale */
+    padding: 15px; /* Padding interno */
     border-radius: 8px; /* Angoli arrotondati */
-    padding: 20px; /* Padding interno */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombra leggera */
-    transition: transform 0.3s; /* Transizione per l'interazione */
+    background-color: #ffffff; /* Sfondo bianco */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombra per la scheda */
+    transition: transform 0.3s; /* Transizione per l'effetto hover */
 }
 
-.loan-details:hover {
-    transform: scale(1.02); /* Leggero ingrandimento al passaggio del mouse */
+.loan-card:hover {
+    transform: translateY(-5px); /* Solleva la scheda al passaggio del mouse */
+}
+
+/* Stile per il contenitore dell'immagine */
+.loan-image-container {
+    text-align: center; /* Allineamento centrale per l'immagine */
+}
+
+.loan-image {
+    max-width: 100%; /* Larghezza massima per l'immagine */
+    border-radius: 8px; /* Angoli arrotondati per l'immagine */
+}
+
+/* Stile per i dettagli del prestito */
+.loan-details {
+    margin-top: 10px; /* Margine superiore */
 }
 
 .loan-details h5 {
-    font-size: 1.5rem; /* Dimensione del titolo dei dettagli */
-    margin-bottom: 10px; /* Spazio sotto il titolo */
-    color: #343a40; /* Colore del titolo dei dettagli */
+    color: #2c3e50; /* Colore del titolo del libro */
+    margin-bottom: 10px; /* Margine inferiore */
 }
 
 .loan-details p {
-    margin: 5px 0; /* Margine sopra e sotto i paragrafi */
-    color: #495057; /* Colore del testo dei dettagli */
+    color: #34495e; /* Colore del testo */
+    margin: 5px 0; /* Margini verticali per il paragrafo */
 }
 
+/* Stile per gli avvisi */
 .alert {
-    margin-top: 20px; /* Margine sopra l'alert */
-    padding: 15px; /* Padding interno per l'alert */
-    border-radius: 8px; /* Angoli arrotondati per l'alert */
-}
-
-/* Responsività */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 2rem; /* Dimensione del titolo principale per schermi piccoli */
-    }
-
-    .nav-link {
-        padding: 8px 15px; /* Ridurre il padding per le tab su schermi piccoli */
-    }
-
-    .loan-details {
-        padding: 15px; /* Ridurre il padding per i dettagli su schermi piccoli */
-    }
+    margin-top: 20px; /* Margine superiore */
+    border-radius: 8px; /* Angoli arrotondati */
 }

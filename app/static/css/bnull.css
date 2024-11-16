@@ -1,0 +1,165 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4; /* Sfondo chiaro per migliorare la leggibilità */
+}
+
+/* Hero Section */
+.hero-section {
+    background: url('/static/images/library-hero.jpg') no-repeat center center;
+    background-size: cover;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #ffffff; /* Testo bianco per contrasto */
+    padding: 20px;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5); /* Ombra interna per migliorare la leggibilità */
+}
+
+.hero-section h1 {
+    font-size: 4rem;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7); /* Ombra per il testo */
+}
+
+.hero-section p {
+    font-size: 1.5rem;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+}
+
+/* Libro del Mese Section */
+.featured-book {
+    padding: 50px 0;
+    background-color: #ffffff; /* Sfondo bianco per contrasto */
+}
+
+.featured-book img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.featured-book h2 {
+    margin-top: 20px;
+    font-size: 2.5rem;
+    color: #333; /* Colore scuro per il titolo */
+}
+
+.featured-book .btn {
+    background-color: #007bff;
+    border-color: #007bff;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    color: white; /* Testo bianco sui pulsanti */
+}
+
+/* Genre Section */
+.genres-section {
+    padding: 50px 0;
+    background-color: #f8f9fa; /* Sfondo leggermente grigio */
+}
+
+.genres-section h2 {
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    color: #333; /* Colore scuro per il titolo */
+}
+
+.genres-section .genre-card {
+    border: none;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.genres-section .genre-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2); /* Ombra più marcata al passaggio del mouse */
+}
+
+.genres-section .genre-card img {
+    height: 200px; /* Altezza fissa per le immagini */
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.genres-section .card-body {
+    padding: 20px;
+}
+
+.genres-section .card-title {
+    font-size: 1.5rem; /* Dimensione del titolo del genere */
+    color: #007bff; /* Colore blu per i titoli dei generi */
+}
+
+.genres-section .card-text {
+    font-size: 1rem; /* Dimensione del testo */
+    color: #555; /* Colore grigio scuro per il testo */
+}
+
+.genres-section .btn {
+    background-color: #007bff;
+    color: white; /* Colore testo bianco per i pulsanti */
+}
+
+body {
+    background-color: #f8f9fa; /* Colore di sfondo */
+}
+
+.genre-card {
+    transition: transform 0.2s; /* Aggiunge un effetto di transizione */
+}
+
+.genre-card:hover {
+    transform: scale(1.05); /* Ingrossa la scheda al passaggio del mouse */
+}
+
+.genre-card {
+    flex: 1 1 0; /* Consente alla card di occupare lo spazio disponibile */
+    display: flex;
+    flex-direction: column; /* Allinea gli elementi verticalmente */
+    height: 100%; /* Fissa l'altezza della card */
+}
+
+.genre-card img {
+    max-height: 150px; /* Imposta l'altezza massima desiderata */
+    object-fit: cover; /* Mantiene le proporzioni dell'immagine */
+}
+
+.card-body {
+    flex-grow: 1; /* Permette al contenuto della card di occupare tutto lo spazio disponibile */
+}
+
+.card {
+    margin: 0; /* Rimuovi margini extra per occupare il minimo spazio */
+}
+
+
+/* Stile generale per il modale */
+.modal {
+    display: none; /* Nasconde i modali di default */
+    position: fixed; /* Fisso rispetto alla finestra */
+    z-index: 1050; /* Mantiene i modali sopra altri contenuti */
+    left: 0;
+    top: 0;
+    width: 100%; /* Larghezza intera della finestra */
+    height: 100%; /* Altezza intera della finestra */
+    overflow: auto; /* Consente lo scrolling se necessario */
+    background-color: rgba(0, 0, 0, 0.5); /* Sfondo semi-trasparente */
+}
+
+/* Contenuto del modale */
+.modal-content {
+    background-color: #fff; /* Sfondo bianco */
+    margin: 15% auto; /* Margini per centrare verticalmente */
+    padding: 20px; /* Padding interno */
+    border: 1px solid #ccc; /* Bordo grigio chiaro */
+    border-radius: 10px; /* Angoli arrotondati */
+    width: 80%; /* Larghezza del modale */
+    max-width: 600px; /* Larghezza massima */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Ombra per effetto 3D */
+    animation: fadeIn 0.3s; /* Animazione di comparsa */
+}
+
+/* Altri stili rimangono come precedentemente definiti */

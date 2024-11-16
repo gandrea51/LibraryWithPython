@@ -1,122 +1,192 @@
-/* Container principale */
-.info-container {
-    max-width: 1200px;
-    margin: 0 auto;
+body {
+    background-color: #e8f0fe; /* Sfondo leggero per contrasto */
+    font-family: 'Arial', sans-serif;
+    margin: 0;
     padding: 20px;
-    font-family: 'Montserrat', sans-serif;
 }
 
-/* Titoli principali */
-.main-title {
-    font-size: 3rem;
-    font-weight: bold;
-    color: #eee;
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-}
-
-.section-title {
-    font-size: 2.5rem;
-    color: #333;
-    margin-bottom: 1.5rem;
-    font-weight: bold;
-    text-transform: capitalize;
-    position: relative;
-    padding-bottom: 10px;
-}
-
-.section-title::after {
-    content: '';
-    width: 50px;
-    height: 3px;
-    background-color: #1e88e5;
-    display: block;
-    margin: 0 auto;
-    margin-top: 10px;
-}
-
-/* Descrizioni */
-.description-text {
-    font-size: 1.2rem;
-    color: #eee;
-    margin-bottom: 2rem;
-    line-height: 1.6;
-}
-
-.info-text {
-    font-size: large;
-    color: #444;
-    line-height: 1.8;
-    transition: all 0.3s ease;
-}
-
-/* Pulsanti */
-.btn-custom {
-    background-color: #1e88e5;
-    color: #fff;
-    padding: 10px 20px;
-    font-size: 1rem;
-    border-radius: 30px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-top: 10px;
-    transition: background-color 0.3s ease;
-    border: none;
-}
-
-.btn-custom:hover {
-    background-color: #1565c0;
-}
-
-/* Link */
-.contact-link {
-    color: #1e88e5;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.contact-link:hover {
-    color: #1565c0;
-}
-
-/* Sezioni */
-.info-section {
-    padding: 30px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    margin-bottom: 40px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+header img {
+    border-radius: 12px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
 }
 
-.info-section:hover {
-    transform: translateY(-10px);
+header img:hover {
+    transform: scale(1.02);
 }
 
-/* Animazioni */
-.d-none {
-    display: none;
+
+/* Titolo principale */
+.title {
+    color: #3a3f9e; /* Colore blu scuro */
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
 }
 
-.animated {
-    animation-duration: 1s;
+/* Testo introduttivo */
+.intro-text {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    color: #555;
+    font-weight: 300;
 }
 
-.slower {
-    animation-duration: 2s;
+/* Sezione griglia */
+.grid-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
-.fadeInUp {
-    animation-name: fadeInUp;
+/* Card */
+.card {
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(135deg, #f7b733, #fc4a1a); /* Gradient vivace */
+    color: white; /* Testo bianco per contrasto */
 }
 
-@keyframes fadeInUp {
+/* Effetto hover sulle card */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.3);
+}
+
+/* Corpo della card */
+.card-body {
+    padding: 20px;
+}
+
+/* Titolo della card */
+.card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Testo della card */
+.card-text {
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+/* Titolo di contatto */
+.contact-title {
+    color: #3e4c65;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Stile generale per i modali */
+.modal {
+    display: none; /* Nasconde i modali di default */
+    position: fixed; /* Fisso rispetto alla finestra */
+    z-index: 3000; /* Mantiene i modali sopra altri contenuti */
+    left: 0;
+    top: 0;
+    width: 100%; /* Larghezza intera della finestra */
+    height: 100%; /* Altezza intera della finestra */
+    overflow: auto; /* Consente lo scrolling se necessario */
+    background-color: rgba(0, 0, 0, 0.5); /* Sfondo semi-trasparente */
+}
+
+/* Contenuto del modale */
+.modal-content {
+    background-color: #fff; /* Sfondo bianco */
+    margin: 15% auto; /* Margini per centrare verticalmente */
+    padding: 20px; /* Padding interno */
+    border: 1px solid #ccc; /* Bordo grigio chiaro */
+    border-radius: 10px; /* Angoli arrotondati */
+    width: 80%; /* Larghezza del modale */
+    max-width: 600px; /* Larghezza massima */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Ombra per effetto 3D */
+    animation: fadeIn 0.3s; /* Animazione di comparsa */
+}
+
+/* Header del modale */
+.modal-header {
+    border-bottom: none; /* Rimuove il bordo inferiore */
+    display: flex; /* Flexbox per allineare il contenuto */
+    justify-content: space-between; /* Spazio tra il titolo e il pulsante di chiusura */
+    align-items: center; /* Centra verticalmente il contenuto */
+}
+
+/* Titolo del modale */
+.modal-title {
+    font-size: 1.5rem; /* Dimensione del font */
+    color: #333; /* Colore del testo */
+    display: flex; /* Usa flexbox per il contenuto */
+    align-items: center; /* Centra verticalmente l'icona e il testo */
+}
+
+.modal-title i {
+    margin-right: 8px; /* Margine a destra per l'icona */
+    color: #4CAF50; /* Colore verde per le icone */
+}
+
+/* Pulsante di chiusura */
+.close {
+    color: #aaa; /* Colore grigio chiaro */
+    font-size: 1.5rem; /* Dimensione del font */
+    font-weight: bold; /* Grassetto */
+    cursor: pointer; /* Cambia il cursore */
+}
+
+.close:hover,
+.close:focus {
+    color: black; /* Cambia colore al passaggio del mouse */
+}
+
+/* Corpo del modale */
+.modal-body {
+    padding: 15px; /* Padding per il corpo del modale */
+    color: #555; /* Colore del testo */
+    line-height: 1.5; /* Interlinea */
+}
+
+/* Animazione di comparsa */
+@keyframes fadeIn {
     from {
-        opacity: 0;
-        transform: translateY(20px);
+        opacity: 0; /* Inizia invisibile */
     }
     to {
-        opacity: 1;
-        transform: translateY(0);
+        opacity: 1; /* Finisce visibile */
+    }
+}
+
+/* Stile per il pulsante di contatto */
+.btn-contact {
+    background-color: #3a3f9e; /* Colore blu scuro */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    transition: background-color 0.3s;
+}
+
+.btn-contact:hover {
+    background-color: #292c6e; /* Colore più scuro al passaggio del mouse */
+}
+
+/* Animazione per i titoli */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Applicazione dell'animazione */
+h1, h2 {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .grid-section {
+        flex-direction: column; /* Colonna su schermi piccoli */
     }
 }

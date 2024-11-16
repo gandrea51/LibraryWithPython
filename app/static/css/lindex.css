@@ -1,71 +1,68 @@
-body {
-    background-color: #f0f4f8; /* Colore di sfondo soft */
-    font-family: 'Arial', sans-serif; /* Font generico */
-    color: #333; /* Colore del testo */
-}
-
+/* Container principale */
 .container {
-    max-width: 1200px; /* Larghezza massima del contenitore */
-    margin: auto; /* Centrare il contenitore */
-    padding: 20px; /* Padding interno */
+    padding: 30px; /* Padding interno */
+    border-radius: 10px; /* Angoli arrotondati */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Ombra leggera */
 }
 
-h1, h3 {
-    color: #007bff; /* Colore blu per i titoli */
+/* Stile per il titolo e l'introduzione */
+.display-4 {
+    font-weight: bold; /* Grassetto */
+    color: #2c3e50; /* Colore del titolo */
 }
 
 .intro-text {
-    font-size: 1.1rem; /* Dimensione del testo introduttivo */
-    line-height: 1.6; /* Spaziatura tra le righe */
-    margin: 20px 0; /* Margine verticale */
+    font-size: 1.1em; /* Dimensione del font */
+    color: #34495e; /* Colore del testo dell'introduzione */
+    margin-top: 10px; /* Margine sopra */
 }
 
+/* Stile per le feature boxes */
+.feature-boxes {
+    margin-top: 30px; /* Margine superiore per le righe */
+}
+
+/* Stile per ogni feature box */
 .feature-box {
-    background-color: #ffffff; /* Sfondo bianco per le sezioni */
-    border-radius: 8px; /* Angoli arrotondati */
+    background: white; /* Sfondo bianco */
+    border-radius: 10px; /* Angoli arrotondati */
+    padding: 20px; /* Padding interno */
+    text-align: center; /* Testo centrato */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombra leggera */
-    padding: 15px; /* Padding interno */
-    margin-bottom: 30px; /* Margine sotto ogni box */
-    transition: transform 0.3s; /* Transizione al passaggio del mouse */
+    transition: transform 0.3s, box-shadow 0.3s; /* Transizione per hover */
 }
 
 .feature-box:hover {
-    transform: translateY(-5px); /* Effetto di sollevamento al passaggio del mouse */
+    transform: translateY(-5px); /* Effetto di sollevamento */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Ombra più pronunciata */
 }
 
-.feature-box a {
-    text-decoration: none; /* Rimuovere la sottolineatura */
-    color: inherit; /* Eredita il colore del testo */
+/* Icone delle feature */
+.feature-box h3 {
+    color: #2980b9; /* Colore del titolo */
+    margin: 15px 0; /* Margine verticale */
 }
 
 .feature-box p {
-    margin: 10px 0 0; /* Margini sopra e sotto il paragrafo */
-    color: #666; /* Colore del testo del paragrafo */
+    color: #7f8c8d; /* Colore del testo descrittivo */
 }
 
+/* Stile per il grande box finale */
 .feature-large {
-    font-size: 1.5rem; /* Dimensione del testo più grande */
-    text-align: center; /* Centrare il testo */
-    padding: 20px; /* Padding interno più ampio */
-    background-color: #e7f0ff; /* Sfondo leggermente blu */
-    border: 1px solid #007bff; /* Bordo blu */
-    border-radius: 8px; /* Angoli arrotondati */
+    background: linear-gradient(135deg, #6dd5ed 0%, #2193b0 100%); /* Gradiente di sfondo */
+    color: white; /* Colore del testo bianco */
 }
 
-@media (max-width: 768px) {
-    .feature-box {
-        padding: 10px; /* Ridurre il padding per schermi più piccoli */
-    }
+.feature-large h3 {
+    color: #ffffff; /* Colore del titolo in bianco */
+}
 
-    .intro-text {
-        font-size: 1rem; /* Ridurre la dimensione del testo per schermi più piccoli */
-    }
+.feature-large p {
+    color: #ecf0f1; /* Colore del testo descrittivo in chiaro */
+}
 
-    h1 {
-        font-size: 1.5rem; /* Ridurre la dimensione del titolo per schermi più piccoli */
-    }
-
-    .feature-large {
-        font-size: 1.2rem; /* Ridurre la dimensione del testo per il box grande */
-    }
+/* Stile per gli alert */
+.alert {
+    margin-bottom: 20px; /* Margine inferiore */
+    border-radius: 8px; /* Angoli arrotondati */
 }

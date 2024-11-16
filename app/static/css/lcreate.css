@@ -1,42 +1,104 @@
-.custom-form {
-    background-color: #f9f9f9;
+/* Stile Generale */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f7f7; /* Colore di sfondo chiaro */
+    margin: 0;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-.custom-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: none;
-}
-.btn-success {
-    background-color: #28a745;
-    border-color: #28a745;
-}
-.btn-success:hover {
-    background-color: #218838;
-    border-color: #1e7e34;
-}
-.suggestions {
-    border: 1px solid #ccc;
-    max-height: 150px;
-    overflow-y: auto;
 }
 
+/* Stile del Container */
+.container {
+    border-radius: 10px; /* Angoli arrotondati */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombra leggera */
+    padding: 30px; /* Spaziatura interna */
+    margin: auto; /* Centra il container */
+}
+
+/* Stile per i Titoli */
+h1.display-4 {
+    color: #333333; /* Colore scuro per il titolo */
+    font-size: 2.5em; /* Dimensione del titolo */
+    margin-bottom: 20px; /* Margine inferiore */
+}
+
+.lead {
+    color: #666666; /* Colore grigio per il sottotitolo */
+    font-size: 1.2em; /* Dimensione del sottotitolo */
+    margin-bottom: 30px; /* Margine inferiore */
+}
+
+/* Stile per le Etichette */
+.form-label {
+    font-weight: bold; /* Grassetto per le etichette */
+    color: #333; /* Colore scuro */
+}
+
+/* Stile per i Campi di Input */
+.form-control {
+    border: 2px solid #3498db; /* Bordo blu */
+    border-radius: 5px; /* Angoli arrotondati */
+    padding: 12px; /* Spaziatura interna */
+    transition: border-color 0.3s; /* Transizione per il colore del bordo */
+}
+
+.form-control:focus {
+    border-color: #2980b9; /* Colore del bordo al focus */
+    box-shadow: 0 0 5px rgba(41, 128, 185, 0.5); /* Ombra al focus */
+}
+
+/* Suggerimenti */
+.suggestions {
+    border: 2px solid #3498db; /* Bordo blu per i suggerimenti */
+    border-radius: 5px; /* Angoli arrotondati */
+    background: #ffffff; /* Sfondo bianco */
+    max-height: 150px; /* Altezza massima */
+    overflow-y: auto; /* Scorrimento verticale se necessario */
+    z-index: 1000; /* Porta i suggerimenti in primo piano */
+    position: relative; /* Posizione relativa per allineamento */
+    width: 100%; /* Larghezza al 100% per occupare lo stesso spazio del campo di input */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombra leggera */
+    margin-top: -1px; /* Elimina il gap con l'input */
+}
+
+/* Stile per i Suggerimenti */
 .suggestion {
-    padding: 10px;
-    cursor: pointer;
+    padding: 10px; /* Spaziatura interna */
+    cursor: pointer; /* Puntatore a mano */
+    transition: background-color 0.3s; /* Transizione per l'effetto hover */
 }
 
 .suggestion:hover {
-    background-color: #f0f0f0;
-}
-.form-group label {
-    font-weight: bold;
+    background-color: #f1f1f1; /* Colore di sfondo al passaggio del mouse */
 }
 
-.form-text {
-    font-size: 0.875rem;
-    color: #6c757d;
+/* Stile per i Pulsanti */
+.btn-success {
+    background-color: #28a745; /* Colore verde */
+    border: none; /* Nessun bordo */
+    color: white; /* Testo bianco */
+    padding: 12px 30px; /* Spaziatura interna */
+    border-radius: 5px; /* Angoli arrotondati */
+    font-size: 1.1em; /* Dimensione del font */
+    transition: background-color 0.3s, transform 0.2s; /* Transizioni per l'effetto hover */
+    cursor: pointer; /* Puntatore a mano */
+}
+
+.btn-success:hover {
+    background-color: #218838; /* Colore verde più scuro al passaggio del mouse */
+    transform: scale(1.05); /* Leggero ingrandimento */
+}
+
+/* Media Queries per Responsività */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px; /* Riduci la spaziatura interna su schermi piccoli */
+    }
+
+    h1.display-4 {
+        font-size: 2em; /* Riduci la dimensione del titolo su schermi piccoli */
+    }
+
+    .lead {
+        font-size: 1em; /* Riduci la dimensione del sottotitolo su schermi piccoli */
+    }
 }

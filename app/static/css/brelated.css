@@ -1,94 +1,73 @@
-body {
-    font-family: 'Helvetica', sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
-}
-
 .related-container {
-    max-width: 1200px;
     margin: 50px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
+    padding: 20px; /* Aggiunge un padding per dare spazio attorno */
+    background-color: #f7f7f7; /* Colore di sfondo chiaro per contrasto */
+    border-radius: 10px; /* Arrotonda gli angoli del contenitore */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombra per effetto di profondità */
 }
 
 .related-title {
-    font-size: 2.5rem;
-    color: #333;
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #ff6b6b; /* Colore vivace per il titolo */
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Ombra del testo per renderlo più leggibile */
+}
+
+.related-description {
+    font-size: 1.2em;
+    color: #555; /* Colore grigio scuro per la descrizione */
     margin-bottom: 30px;
-    position: relative;
+    line-height: 1.5; /* Maggiore interlinea per migliorare la leggibilità */
 }
 
-.related-title span {
-    color: #007bff;
-}
-
-/* Layout per i libri correlati */
 .related-books {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centra le card */
+    gap: 20px; /* Spazio tra le card */
 }
 
-.related-book {
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    padding: 15px;
+.related-book-card {
+    background: linear-gradient(135deg, #84fab0, #8fd3f4); /* Gradiente colorato */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombra per un effetto 3D */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    overflow: hidden; /* Nasconde eventuali eccessi */
+    width: 220px; /* Larghezza fissa per le card */
+    display: flex;
+    flex-direction: column; /* Organizza contenuto in colonna */
+    align-items: center; /* Centro il contenuto orizzontalmente */
 }
 
-.related-book:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.related-book-cover {
-    margin-bottom: 10px;
+.related-book-card:hover {
+    transform: translateY(-5px); /* Effetto sollevato al passaggio del mouse */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Ombra più forte al passaggio del mouse */
 }
 
 .related-book-cover img {
-    border-radius: 5px;
+    width: 100%; /* Occupa l'intera larghezza della card */
+    height: auto; /* Mantiene le proporzioni dell'immagine */
 }
 
 .related-book-info {
-    font-size: 1.1rem;
-    color: #444;
+    padding: 15px;
+    text-align: center; /* Centro il testo */
 }
 
 .related-book-info h5 {
-    font-size: 1.2rem;
-    color: #007bff;
-    margin-bottom: 5px;
+    margin: 10px 0; /* Margine sopra e sotto il titolo */
+    font-size: 1.25em; /* Dimensione del titolo */
+    color: #333; /* Colore del titolo */
 }
 
 .related-book-info p {
-    font-size: 0.9rem;
-    color: #666;
+    margin: 5px 0; /* Margine sopra e sotto l'autore */
+    color: #777; /* Colore più chiaro per l'autore */
 }
 
 .no-books {
-    font-size: 1.3rem;
-    color: #777;
-    margin-top: 30px;
-}
-
-/* Effetto hover */
-.related-book:hover .related-book-info h5 {
-    color: #0056b3;
-}
-
-/* Responsività */
-@media (max-width: 768px) {
-    .related-title {
-        font-size: 2rem;
-    }
-
-    .related-books {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
+    font-size: 1.2em; /* Dimensione del font per il messaggio */
+    color: #888; /* Colore grigio per il messaggio */
 }

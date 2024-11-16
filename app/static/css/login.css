@@ -1,67 +1,104 @@
-/* Stile generale per il container di login */
-.login-container {
-    background-color: #f8f9fa; /* Colore di sfondo chiaro */
-    border-radius: 10px; /* Angoli arrotondati */
-    padding: 40px; /* Padding interno */
-    max-width: 400px; /* Larghezza massima */
-    margin: 100px auto; /* Centra il contenitore */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Ombra leggera */
-    text-align: center; /* Allineamento del testo */
-}
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
 
-/* Titolo di login */
-.login-title {
-    font-size: 2rem; /* Dimensione del font */
-    color: #007bff; /* Colore primario */
-    margin-bottom: 20px; /* Margine inferiore */
-}
-
-/* Stile per il modulo */
-.login-form {
+/* Base styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f9;
     display: flex;
-    flex-direction: column; /* Layout verticale */
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
 }
 
-/* Gruppo di input */
+/* Container styling */
+.login-wrapper {
+    background-color: #f4f4f9;
+}
+
+.login-card {
+    background-color: #fff;
+    border-radius: 15px;
+    max-width: 400px;
+    width: 100%;
+    padding: 2rem;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.login-header h2 {
+    font-weight: 700;
+    font-size: 1.75rem;
+    color: #333;
+}
+
+.login-header p {
+    font-weight: 300;
+    color: #666;
+}
+
+.card-body {
+    padding-top: 0;
+}
+
+/* Form input styling */
 .form-group {
-    margin-bottom: 20px; /* Margine inferiore */
+    margin-bottom: 1.5rem;
 }
 
-/* Etichette degli input */
+.form-control {
+    border-radius: 50px;
+    border: 1px solid #ddd;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #ff9800;
+    box-shadow: 0 0 5px rgba(255, 152, 0, 0.5);
+}
+
 .form-label {
-    font-size: 1rem; /* Dimensione del font */
-    color: #495057; /* Colore del testo */
-    margin-bottom: 5px; /* Margine inferiore */
+    font-weight: 500;
+    color: #333;
 }
 
-/* Input */
-.form-input {
-    padding: 10px; /* Padding interno */
-    border: 1px solid #ced4da; /* Bordo grigio */
-    border-radius: 5px; /* Angoli arrotondati */
-    font-size: 1rem; /* Dimensione del font */
-    transition: border-color 0.3s; /* Transizione per il bordo */
+.btn-primary {
+    background-color: #ff5722;
+    border: none;
+    border-radius: 50px;
+    padding: 0.75rem 2rem;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
 }
 
-/* Colore del bordo al focus */
-.form-input:focus {
-    border-color: #007bff; /* Colore del bordo al focus */
-    outline: none; /* Rimuove il contorno */
+.btn-primary:hover {
+    background-color: #e64a19;
 }
 
-/* Pulsante di login */
-.btn-submit {
-    background-color: #007bff; /* Colore primario */
-    color: #fff; /* Colore del testo bianco */
-    padding: 10px 15px; /* Padding interno */
-    border: none; /* Nessun bordo */
-    border-radius: 5px; /* Angoli arrotondati */
-    font-size: 1rem; /* Dimensione del font */
-    cursor: pointer; /* Cursore pointer */
-    transition: background-color 0.3s; /* Transizione per il background */
+/* Additional styles */
+.text-muted {
+    font-size: 0.875rem;
 }
 
-/* Colore del pulsante al passaggio del mouse */
-.btn-submit:hover {
-    background-color: #0056b3; /* Colore scuro al passaggio del mouse */
+a {
+    color: #ff5722;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #e64a19;
+    text-decoration: underline;
+}
+
+/* Mobile styling */
+@media (max-width: 768px) {
+    .login-card {
+        padding: 1.5rem;
+    }
+
+    .btn-primary {
+        font-size: 1rem;
+    }
 }

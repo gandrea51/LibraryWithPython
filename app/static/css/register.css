@@ -1,88 +1,65 @@
-/* Stile generale per il container di registrazione */
-.register-container {
-    background-color: #f0f0f0; /* Colore di sfondo chiaro */
-    border-radius: 10px; /* Angoli arrotondati */
-    padding: 40px; /* Padding interno */
-    max-width: 500px; /* Larghezza massima */
-    margin: 50px auto; /* Centra il contenitore */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Ombra leggera */
-    text-align: center; /* Allineamento del testo */
+/* Sfondo con gradiente */
+body {
+    background: linear-gradient(to right, #ec532d, #feb47b); /* Gradiente arancione e rosa */
 }
 
-/* Titolo di registrazione */
-.register-title {
-    font-size: 2rem; /* Dimensione del font */
-    color: #007bff; /* Colore primario */
-    margin-bottom: 20px; /* Margine inferiore */
+/* Wrapper per la registrazione */
+.register-wrapper {
+    background: rgba(255, 255, 255, 0.9); /* Sfondo bianco semi-trasparente per il modulo */
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-/* Stile per i messaggi di avviso */
-.alert-container {
-    margin-bottom: 20px; /* Margine inferiore */
+/* Stile per la scheda di registrazione */
+.register-card {
+    padding: 2rem;
 }
 
+/* Intestazione del modulo di registrazione */
+.register-header h2 {
+    color: #ff6f61; /* Colore per il titolo */
+    font-weight: bold;
+}
+
+.register-header p {
+    color: #6c757d; /* Colore per il testo di supporto */
+}
+
+/* Stili per i messaggi di errore */
 .alert {
-    padding: 10px 15px; /* Padding interno */
-    border-radius: 5px; /* Angoli arrotondati */
-    margin-bottom: 10px; /* Margine inferiore tra gli avvisi */
+    margin-bottom: 20px;
+    font-weight: bold;
 }
 
-.alert-success {
-    background-color: #d4edda; /* Verde chiaro */
-    color: #155724; /* Testo verde scuro */
+/* Stile per i campi del modulo */
+.form-control {
+    border: 1px solid #ff6f61; /* Colore del bordo dei campi di input */
+    border-radius: 8px;
+    transition: border-color 0.3s ease; /* Transizione per il bordo */
 }
 
-.alert-danger {
-    background-color: #f8d7da; /* Rosso chiaro */
-    color: #721c24; /* Testo rosso scuro */
+.form-control:focus {
+    border-color: #feb47b; /* Colore del bordo quando il campo è in focus */
+    box-shadow: 0 0 5px rgba(255, 229, 180, 0.5); /* Ombra per il focus */
 }
 
-/* Stile per il modulo */
-.register-form {
-    display: flex;
-    flex-direction: column; /* Layout verticale */
+/* Stile per il pulsante di registrazione */
+.btn-primary {
+    background-color: #ff6f61; /* Colore di sfondo del pulsante */
+    border: none; /* Rimuove il bordo */
+    border-radius: 8px; /* Raggio degli angoli del pulsante */
+    transition: background-color 0.3s ease; /* Transizione per il colore di sfondo */
 }
 
-/* Gruppo di input */
-.form-group {
-    margin-bottom: 20px; /* Margine inferiore */
+.btn-primary:hover {
+    background-color: #feb47b; /* Colore di sfondo quando il mouse passa sopra */
 }
 
-/* Etichette degli input */
-.form-label {
-    font-size: 1rem; /* Dimensione del font */
-    color: #495057; /* Colore del testo */
-    margin-bottom: 5px; /* Margine inferiore */
+/* Stile per il link di accesso */
+.text-primary {
+    color: #ff6f61; /* Colore del link */
 }
 
-/* Input e selezione */
-.form-input, .form-select {
-    padding: 10px; /* Padding interno */
-    border: 1px solid #ced4da; /* Bordo grigio */
-    border-radius: 5px; /* Angoli arrotondati */
-    font-size: 1rem; /* Dimensione del font */
-    transition: border-color 0.3s; /* Transizione per il bordo */
-}
-
-/* Colore del bordo al focus */
-.form-input:focus, .form-select:focus {
-    border-color: #007bff; /* Colore del bordo al focus */
-    outline: none; /* Rimuove il contorno */
-}
-
-/* Pulsante di registrazione */
-.btn-submit {
-    background-color: #007bff; /* Colore primario */
-    color: #fff; /* Colore del testo bianco */
-    padding: 10px 15px; /* Padding interno */
-    border: none; /* Nessun bordo */
-    border-radius: 5px; /* Angoli arrotondati */
-    font-size: 1rem; /* Dimensione del font */
-    cursor: pointer; /* Cursore pointer */
-    transition: background-color 0.3s; /* Transizione per il background */
-}
-
-/* Colore del pulsante al passaggio del mouse */
-.btn-submit:hover {
-    background-color: #0056b3; /* Colore scuro al passaggio del mouse */
+.text-primary:hover {
+    text-decoration: underline; /* Sottolinea il link al passaggio del mouse */
 }

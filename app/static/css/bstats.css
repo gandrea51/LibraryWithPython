@@ -1,95 +1,173 @@
-/* Styling per l'intera pagina */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f0f4f8;
-    color: #2c3e50;
-    margin: 0;
-    padding: 0;
-}
-
-/* Contenitore principale */
-.stats-container {
-    padding: 20px;
+/* Stile generale per il contenitore */
+.container-fluid {
+    background: linear-gradient(135deg, #f8cdda, #1d2b64);
+    padding: 40px 20px;
+    border-radius: 10px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 /* Titolo principale */
 .title {
-    font-weight: 700;
-    color: #34495e;
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+    font-size: 2.5em;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
 }
 
-.title span {
-    color: #e67e22; /* Colore accattivante per il titolo del libro */
+.title:hover {
+    transform: scale(1.05);
+}
+
+/* Descrizione principale */
+.lead {
+    font-size: 1.25em;
+    color: #f0f0f0;
+    margin-bottom: 30px;
+    font-weight: 300;
 }
 
 /* Sezione delle statistiche */
 .stat-section {
-    display: flex;
-    justify-content: space-around;
+    margin-top: 30px;
 }
 
-/* Box delle statistiche */
+/* Stile per le schede delle statistiche */
 .stat-box {
-    background: linear-gradient(135deg, #3498db, #8e44ad);
-    color: #fff;
-    border-radius: 10px;
-    padding: 20px;
-    text-align: center;
-    transition: transform 0.3s ease;
-    margin: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .stat-box:hover {
-    transform: translateY(-5px);
+    transform: scale(1.03);
+    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.3);
 }
 
-/* Titolo delle sezioni */
-.section-title {
-    font-size: 1.8rem;
-    color: #2980b9;
-    text-align: center;
-    margin-top: 30px;
-    margin-bottom: 20px;
-}
-
-/* Distribuzione delle recensioni */
-.rating-distribution, .monthly-loans {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-.rating-distribution li, .monthly-loans li {
-    background-color: #fff;
-    border: 1px solid #bdc3c7;
-    border-radius: 5px;
-    margin: 10px 0;
-    padding: 15px;
-    transition: background-color 0.3s ease;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.rating-distribution li:hover, .monthly-loans li:hover {
-    background-color: #ecf0f1;
-}
-
-/* Stile per le stelle */
-.rating-distribution strong {
-    color: #e67e22; /* Colore per il numero di stelle */
-}
-
-/* Media delle valutazioni */
-.average-rating {
-    font-size: 2rem;
-    font-weight: bold;
+/* Icone nelle statistiche */
+.stat-box .fas {
+    color: #ffffff;
 }
 
 /* Totale prestiti */
 .total-loans {
-    font-size: 2rem;
+    background: linear-gradient(135deg, #3498db, #8e44ad);
+}
+
+/* Media delle valutazioni */
+.average-rating {
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
+}
+
+/* Sezione di distribuzione delle recensioni */
+.section-title {
+    font-size: 2em;
+    color: #34495e;
+    margin: 40px 0 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Card per la distribuzione delle recensioni */
+.card {
+    border-radius: 12px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Card di stelle */
+.bg-warning {
+    background: linear-gradient(135deg, #f39c12, #f1c40f);
+    color: #ffffff;
+}
+
+/* Popolarità nel tempo */
+.bg-info {
+    background: linear-gradient(135deg, #2980b9, #6dd5ed);
+}
+
+/* Regole per la colonna delle statistiche */
+.col-md-3 {
+    display: flex;
+    justify-content: center;
+}
+
+/* Spaziatura */
+.mb-4 {
+    margin-bottom: 20px;
+}
+
+/* Stile per i testi all'interno delle card */
+.card-body h3, .card-body h5, .card-body p {
+    margin: 10px 0;
+}
+
+/* Stile per le intestazioni di paragrafo */
+h4 {
     font-weight: bold;
+    color: #2c3e50;
+}
+
+/* Stile per il contatore di prestiti */
+.display-4 {
+    font-size: 3em;
+    color: #ffffff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Effetti di transizione su tutti gli elementi */
+h3, h5, p {
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+h3:hover, h5:hover {
+    color: #f39c12;
+    transform: translateY(-3px);
+}
+
+/* Regole per il layout su dispositivi mobili */
+@media (max-width: 768px) {
+    .title {
+        font-size: 2em;
+    }
+    
+    .lead {
+        font-size: 1em;
+    }
+    
+    .stat-box {
+        padding: 20px;
+    }
+}
+
+/* Aggiunta di un footer decorativo */
+footer {
+    margin-top: 40px;
+    padding: 20px 0;
+    background: #34495e;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 10px;
+}
+
+/* Stile per i link nel footer */
+footer a {
+    color: #f1c40f;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Aggiunta di un effetto su colonne diverse */
+.row > div:nth-child(odd) .stat-box {
+    border: 2px solid #f1c40f;
+}
+
+.row > div:nth-child(even) .stat-box {
+    border: 2px solid #2980b9;
 }

@@ -1,0 +1,55 @@
+.book-management {
+    margin: 20px;
+}
+
+h1 {
+    color: #5e2f8f; /* Colore del titolo */
+    margin-bottom: 20px;
+}
+
+.btn-success {
+    background: #28a745; /* Colore verde */
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    transition: background 0.3s;
+}
+
+.btn-success:hover {
+    background: #218838; /* Colore verde scuro al passaggio del mouse */
+}
+
+.search-container {
+    margin: 20px 0;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.book-list {
+    margin-top: 20px;
+}
+
+.list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    transition: background 0.3s;
+}
+
+.list-group-item:hover {
+    background: #f8f9fa; /* Colore di sfondo chiaro al passaggio del mouse */
+}
+
+.book-actions {
+    display: flex;
+    gap: 10px; /* Spaziatura tra i pulsanti */
+}

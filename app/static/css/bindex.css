@@ -1,325 +1,560 @@
-
-.bh {
-    color: #0056b3;
+/* General Styles */
+body {
+    background-color: #f0f2f5;
+    font-family: Arial, sans-serif;
 }
 
-p {
-    line-height: 1.6;
-    margin: 10px 0;
-}
-
-a {
-    text-decoration: none;
-    color: #0056b3;
-}
-
-ul {
-    padding-left: 20px;
-}
-
-/* Header */
-.page-header {
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-.page-header h1 {
-    font-size: 3rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-
-/* Search Section */
-.search-section {
+/* Header Section con sovrapposizione immagine */
+.header-section {
+    position: relative;
+    height: 500px;
     display: flex;
-    justify-content: space-around;
-    margin-bottom: 50px;
-    flex-wrap: wrap;
-}
-
-.search-box {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    flex: 1;
-    margin: 10px;
-    max-width: 350px;
-    text-align: center;
-}
-/* Pulsante personalizzato */
-.custom-btn {
-    display: inline-flex;
+    justify-content: center;
     align-items: center;
-    background-color: #0056b3; /* Colore primario */
-    color: white; /* Colore del testo */
-    padding: 10px 20px; /* Padding interno */
-    font-size: 1.1rem; /* Dimensione del font */
-    border: none; /* Nessun bordo */
-    border-radius: 5px; /* Angoli arrotondati */
-    cursor: pointer; /* Cursore a mano */
-    position: relative; /* Per la posizione della badge */
-    transition: background-color 0.3s, transform 0.2s; /* Transizione per l'hover */
 }
 
-.custom-btn:hover {
-    background-color: #0056b3; /* Colore al passaggio del mouse */
-    transform: scale(1.05); /* Effetto di ingrandimento al passaggio del mouse */
-}
-
-/* Badge di notifica */
-.notification-badge {
-    position: absolute;
-    top: -5px; /* Posizione sopra il pulsante */
-    right: -5px; /* Posizione a destra del pulsante */
-    background-color: #dc3545; /* Colore rosso per la notifica */
-    color: white; /* Colore del testo */
-    padding: 5px; /* Padding interno */
-    border-radius: 50%; /* Forma circolare */
-    border: 2px solid white; /* Bordo bianco */
-    font-size: 0.8rem; /* Dimensione del font */
-}
-
-/* Nascondere la badge per gli screen reader */
-.notification-badge .visually-hidden {
-    display: none; /* Nasconde il testo */
-}
-
-
-.search-box h2 {
-    margin-bottom: 20px;
-    font-size: 1.5rem;
-}
-
-.search-box input[type="text"] {
+.header-image {
     width: 100%;
-    padding: 10px;
-    border: 2px solid #ddd;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
-
-.search-box button {
-    background-color: #0056b3;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-}
-
-.search-box button:hover {
-    background-color: #004494;
-}
-
-/* Stats Section */
-.stats-section {
-    background-color: #fff;
-    padding: 40px 20px;
+    height: 100%;
+    object-fit: cover;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 50px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Overlay per sovrapporre il testo */
+.overlay {
+    background-color: rgba(0, 0, 0, 0.5); /* Sfondo scuro trasparente */
+    padding: 20px;
+    border-radius: 10px;
     text-align: center;
 }
 
-.stats-container p {
-    font-size: 1.2rem;
-}
-
-.most-viewed ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.most-viewed li {
-    margin-bottom: 10px;
-}
-
-.most-viewed a {
-    color: #0056b3;
-    font-size: 1rem;
+.header-title {
+    font-size: 3rem;
     font-weight: bold;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
-.most-viewed a:hover {
-    text-decoration: underline;
+.header-subtitle {
+    font-size: 1.5rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
-/* Genres Section */
-.genres-section {
+/* Rende la sezione responsive */
+@media (max-width: 768px) {
+    .header-title {
+        font-size: 2rem;
+    }
+
+    .header-subtitle {
+        font-size: 1.2rem;
+    }
+}
+
+.search-section {
+    padding: 30px;
+    background: linear-gradient(to right, #f9f9f9, #f2f6fc);
+    border-radius: 8px;
+}
+
+.search-tabs {
     text-align: center;
-    margin-bottom: 50px;
-}
-
-.genres-section h3 {
     margin-bottom: 20px;
 }
 
-.accordion-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.accordion-item {
-    background-color: #007bff;
+.tab-button {
+    background: linear-gradient(45deg, #ff6b6b, #f06595);
     color: white;
-    padding: 15px 30px;
-    border-radius: 5px;
-    margin: 10px;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
     cursor: pointer;
-    font-size: 1.2rem;
-    transition: background-color 0.3s ease;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background 0.3s;
 }
 
-.accordion-item:hover {
-    background-color: #0056b3;
+.tab-button.active {
+    background: linear-gradient(45deg, #4facfe, #00f2fe);
 }
 
-.accordion-header {
-    text-transform: uppercase;
+.tab-button:hover {
+    background: linear-gradient(45deg, #ff8c8c, #ff70a6);
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .search-section {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .search-box {
-        max-width: 100%;
-    }
-
-    .accordion-item {
-        flex-basis: 100%;
-    }
+.search-form {
+    display: none;
+    text-align: center;
+    margin-top: 20px;
+    padding: 30px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #fdfcfb, #e2d1c3);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Contenitore principale per il libro del mese */
-.book-of-the-month-container {
+.search-form.active {
+    display: block;
+}
+
+.search-form h3 {
+    margin-bottom: 15px;
+    color: #343a40;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.search-form input {
+    padding: 12px;
+    width: 70%;
+    margin-right: 10px;
+    border-radius: 8px;
+    border: 2px solid #ccc;
+    transition: border-color 0.3s;
+}
+
+.search-form input:focus {
+    border-color: #4facfe;
+    outline: none;
+}
+
+.search-form button {
+    padding: 12px 20px;
+    border: none;
+    background: linear-gradient(45deg, #4facfe, #00f2fe);
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 16px;
+}
+
+.search-form button:hover {
+    background: linear-gradient(45deg, #1cb5e0, #000851);
+}
+
+.featured-book {
+    background: linear-gradient(to right, #f9f9f9, #e0e0e0);
+    border-radius: 8px;
+    padding: 40px 20px;
+}
+
+.book-type-tabs {
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding: 20px;
-    background: linear-gradient(to right, #f5f7fa, #c3cfe2);
-    border-radius: 15px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
+    gap: 10px;
 }
 
-/* Effetto di hover sul contenitore */
-.book-of-the-month-container:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-}
-
-/* Card del libro */
-.book-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #ffffff;
-    border-radius: 10%;
-    padding: 20px;
-    text-align: center;
-    max-width: 400px;
-    transition: transform 0.3s;
-}
-
-/* Immagine del libro */
-.book-image img {
-    width: 100%;
-    height: auto;
-    border-radius: 10%;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-}
-
-/* Dettagli del libro */
-.book-details {
-    margin-top: 20px;
-}
-
-/* Titolo del libro */
-.card-title {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
-    color: #2c3e50;
-}
-
-/* Titolo del libro in evidenza */
-.book-title {
-    color: #2980b9;
-    text-decoration: underline;
-    transition: color 0.3s;
-}
-
-.book-title:hover {
-    color: #3498db;
-}
-
-/* Pulsante del gruppo di lettura */
-.btn-primary {
-    background-color: #2980b9;
+.tab-button {
+    background: linear-gradient(45deg, #4facfe, #00f2fe);
+    color: white;
     border: none;
-    padding: 10px 15px;
+    padding: 10px 20px;
+    cursor: pointer;
     border-radius: 5px;
-    transition: background-color 0.3s, transform 0.2s;
+    font-size: 16px;
+    transition: background 0.3s;
 }
 
-.btn-primary:hover {
-    background-color: #3498db;
+.tab-button.active {
+    background: linear-gradient(45deg, #1cb5e0, #000851);
+}
+
+.tab-button:hover {
+    background: linear-gradient(45deg, #1cb5e0, #0077b6);
+}
+
+.book-card {
+    display: none;
+    margin-top: 20px;
+    padding: 30px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.book-card.active {
+    display: block;
+}
+
+.book-card h3 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.book-card p {
+    font-size: 1.1rem;
+    color: #666;
+}
+
+/* Stile Generale delle Cards delle Statistiche */
+.stat-card {
+    background: linear-gradient(135deg, #e0eafc, #cfdef3);
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    color: #333;
+    transition: all 0.3s ease-in-out;
+}
+
+.stat-card i {
+    color: #007bff;
+}
+
+.stat-card:hover {
+    background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card h4 {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    color: #007bff;
+}
+
+.stat-card .stat-value {
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #333;
+}
+
+/* Stile per i Libri più Visti */
+.book-card {
+    background-color: #ffffff;
+    border: 1px solid #e47a7a;
+    border-radius: 10px;
+    padding: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+.book-card:hover {
+    background-color: #f8f9fa;
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.book-card h5 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+.book-card p {
+    font-size: 1rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .stat-card, .book-card {
+        margin-bottom: 20px;
+    }
+}
+/* Nascondere il form e rendere la card interattiva */
+.genre-card-form {
+    display: block;
+}
+
+.genre-card-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    width: 100%;
+    padding: 0;
+    text-align: inherit;
+}
+
+/* Stile per la card con gradienti e ombre */
+.genre-card {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+}
+
+/* Effetto di ingrandimento al passaggio del mouse */
+.genre-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* Overlay semi-trasparente */
+.genre-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.genre-card:hover .genre-overlay {
+    opacity: 1;
+}
+
+/* Stile per l'icona del genere */
+.genre-icon i {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Stile dell'immagine del genere */
+.genre-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid white;
+    margin-bottom: 15px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Stile dei titoli e del conteggio */
+.genre-card h4 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+.genre-card p {
+    font-size: 1rem;
+    color: #fff;
+    margin-bottom: 0;
+}
+
+
+/* Stile per il paragrafo di testo */
+.group {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    color: #ffffff;
+    background: linear-gradient(45deg, #f093fb, #f5576c);
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 10px 0;
+    transition: transform 0.2s ease-in-out;
+}
+
+.group:hover {
+    transform: scale(1.03);
+}
+
+/* Stile per il link */
+.reading-grup {
+    display: inline-block;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1.2em;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    background: linear-gradient(45deg, #42e695, #3bb2b8);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s, transform 0.2s;
+    text-align: center;
+}
+
+.reading-grup:hover {
+    background: linear-gradient(45deg, #3bb2b8, #42e695);
     transform: scale(1.05);
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .book-of-the-month-container {
-        flex-direction: column;
-        padding: 10px;
-    }
-
-    .book-card {
-        width: 90%;
-    }
-}
-
-
-.modal-content {
-    background-color: #f8f9fa;
-    padding: 20px;
-    border-radius: 8px;
-}
-
-.book-info {
-    text-align: left;
-}
-
-.book-title {
-    font-weight: bold;
-}
-
-.book-details {
-    margin-bottom: 15px;
-}
-/* Stile per il bottone */
-.btn-modal {
-    background-color: #ffffff; /* Sfondo bianco per contrastare il blu */
-    color: #007bff; /* Testo blu per rimanere in tema */
-    border: 2px solid #007bff; /* Bordo blu */
-    font-weight: bold; /* Testo più leggibile */
-    padding: 10px 20px; /* Spaziatura interna per rendere il bottone più grande */
+.scheda {
+    font-size: 1.5em; /* Dimensione del font */
+    font-weight: bold; /* Grassetto */
+    text-align: center; /* Testo centrato */
+    color: #ffffff; /* Colore del testo */
+    background: linear-gradient(45deg, #ff6a6a, #ff9a6a); /* Gradiente di colori vivaci */
+    padding: 15px 25px; /* Spaziatura interna */
     border-radius: 8px; /* Angoli arrotondati */
-    cursor: pointer; /* Cambia il cursore quando il mouse è sopra */
-    transition: all 0.3s ease; /* Transizione morbida sui cambi di stato */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Ombra */
+    margin: 10px 0; /* Margine sopra e sotto */
+    transition: transform 0.2s ease-in-out; /* Transizione per l'effetto hover */
 }
 
-/* Effetto hover (passaggio del mouse) */
-.btn-modal:hover {
-    background-color: #007bff; /* Cambia il background in blu quando ci si passa sopra */
-    color: #ffffff; /* Testo bianco in hover per leggibilità */
-    border-color: #0056b3; /* Cambia leggermente il bordo in hover */
+.scheda:hover {
+    transform: scale(1.03); /* Leggera ingrandimento al passaggio del mouse */
+}
+
+/* Stile per il link */
+.dscheda {
+    display: inline-block; /* Rende il link un blocco in linea */
+    color: #ffffff; /* Colore del testo bianco */
+    font-weight: bold; /* Grassetto */
+    font-size: 1.2em; /* Dimensione del font */
+    text-decoration: none; /* Rimuove la sottolineatura */
+    padding: 12px 20px; /* Spaziatura interna */
+    border-radius: 8px; /* Angoli arrotondati */
+    background: linear-gradient(45deg, #5cb85c, #2e9c2e); /* Gradiente verde brillante */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Ombra */
+    transition: background 0.3s, transform 0.2s; /* Transizione per l'effetto hover */
+    text-align: center; /* Centra il testo */
+}
+
+.dscheda:hover {
+    background: linear-gradient(45deg, #2e9c2e, #5cb85c); /* Cambia gradiente al passaggio del mouse */
+    transform: scale(1.05); /* Leggera ingrandimento al passaggio del mouse */
+}
+.related {
+    font-size: 1.5em; /* Dimensione del font */
+    font-weight: bold; /* Grassetto */
+    text-align: center; /* Testo centrato */
+    color: #ffffff; /* Colore del testo */
+    background: linear-gradient(45deg, #6a5acd, #8a2be2); /* Gradiente blu e viola */
+    padding: 15px 25px; /* Spaziatura interna */
+    border-radius: 8px; /* Angoli arrotondati */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Ombra */
+    margin: 10px 0; /* Margine sopra e sotto */
+    transition: transform 0.2s ease-in-out; /* Transizione per l'effetto hover */
+}
+
+.related:hover {
+    transform: scale(1.03); /* Leggera ingrandimento al passaggio del mouse */
+}
+
+/* Stile per il link */
+.brelated {
+    display: inline-block; /* Rende il link un blocco in linea */
+    color: #ffffff; /* Colore del testo bianco */
+    font-weight: bold; /* Grassetto */
+    font-size: 1.2em; /* Dimensione del font */
+    text-decoration: none; /* Rimuove la sottolineatura */
+    padding: 12px 20px; /* Spaziatura interna */
+    border-radius: 8px; /* Angoli arrotondati */
+    background: linear-gradient(45deg, #ff6347, #ff4500); /* Gradiente rosso-arancio */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Ombra */
+    transition: background 0.3s, transform 0.2s; /* Transizione per l'effetto hover */
+    text-align: center; /* Centra il testo */
+    margin-top: 10px; /* Margine sopra */
+}
+
+.brelated:hover {
+    background: linear-gradient(45deg, #ff4500, #ff6347); /* Cambia gradiente al passaggio del mouse */
+    transform: scale(1.05); /* Leggera ingrandimento al passaggio del mouse */
+}
+
+.stats {
+    font-size: 1.5em; /* Dimensione del font */
+    font-weight: bold; /* Grassetto */
+    text-align: center; /* Testo centrato */
+    color: #ffffff; /* Colore del testo */
+    background: linear-gradient(45deg, #f39c12, #f1c40f); /* Gradiente arancione e giallo */
+    padding: 15px 25px; /* Spaziatura interna */
+    border-radius: 8px; /* Angoli arrotondati */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Ombra */
+    margin: 10px 0; /* Margine sopra e sotto */
+    transition: transform 0.2s ease-in-out; /* Transizione per l'effetto hover */
+}
+
+.stats:hover {
+    transform: scale(1.03); /* Leggera ingrandimento al passaggio del mouse */
+}
+
+/* Stile per il link */
+.bstats {
+    display: inline-block; /* Rende il link un blocco in linea */
+    color: #ffffff; /* Colore del testo bianco */
+    font-weight: bold; /* Grassetto */
+    font-size: 1.2em; /* Dimensione del font */
+    text-decoration: none; /* Rimuove la sottolineatura */
+    padding: 12px 20px; /* Spaziatura interna */
+    border-radius: 8px; /* Angoli arrotondati */
+    background: linear-gradient(45deg, #3498db, #2980b9); /* Gradiente blu */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Ombra */
+    transition: background 0.3s, transform 0.2s; /* Transizione per l'effetto hover */
+    text-align: center; /* Centra il testo */
+    margin-top: 10px; /* Margine sopra */
+}
+
+.bstats:hover {
+    background: linear-gradient(45deg, #2980b9, #3498db); /* Cambia gradiente al passaggio del mouse */
+    transform: scale(1.05); /* Leggera ingrandimento al passaggio del mouse */
+}
+
+.area-manager {
+    background: linear-gradient(45deg, #6a5acd, #8a2be2);
+    color: white;
+    padding: 40px;
+    border-radius: 10px;
+    margin: 20px 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.area-manager h2 {
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.area-manager p {
+    font-size: 1.2em;
+}
+
+.area-manager .btn {
+    margin-top: 20px;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+
+.area-manager .btn:hover {
+    background: #5e2f8f;
+}
+
+.loan-status {
+    font-size: 1.5em; /* Dimensione del font */
+    font-weight: bold; /* Grassetto */
+    text-align: center; /* Testo centrato */
+    color: #ffffff; /* Colore del testo */
+    padding: 15px 25px; /* Spaziatura interna */
+    border-radius: 8px; /* Angoli arrotondati */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Ombra */
+    margin: 10px 0; /* Margine sopra e sotto */
+    transition: transform 0.2s ease-in-out; /* Transizione per l'effetto hover */
+}
+
+.available {
+    background: linear-gradient(45deg, #27ae60, #2ecc71); /* Gradiente verde per disponibilità */
+}
+
+.limited {
+    background: linear-gradient(45deg, #f39c12, #f1c40f); /* Gradiente arancione per disponibilità limitata */
+}
+
+.unavailable {
+    background: linear-gradient(45deg, #e74c3c, #c0392b); /* Gradiente rosso per indisponibilità */
+}
+
+.loan-status:hover {
+    transform: scale(1.03); /* Leggera ingrandimento al passaggio del mouse */
+}
+
+/* Pulsante personalizzato */
+.loan-button {
+    display: inline-block; /* Rende il link un blocco in linea */
+    color: #ffffff; /* Colore del testo bianco */
+    font-weight: bold; /* Grassetto */
+    font-size: 1.2em; /* Dimensione del font */
+    text-decoration: none; /* Rimuove la sottolineatura */
+    padding: 12px 20px; /* Spaziatura interna */
+    border-radius: 8px; /* Angoli arrotondati */
+    background: linear-gradient(45deg, #3498db, #2980b9); /* Gradiente blu */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Ombra */
+    transition: background 0.3s, transform 0.2s; /* Transizione per l'effetto hover */
+    text-align: center; /* Centra il testo */
+    margin-top: 10px; /* Margine sopra */
+}
+
+.loan-button:hover {
+    background: linear-gradient(45deg, #2980b9, #3498db); /* Cambia gradiente al passaggio del mouse */
+    transform: scale(1.05); /* Leggera ingrandimento al passaggio del mouse */
 }

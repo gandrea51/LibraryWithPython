@@ -1,226 +1,185 @@
-/* Generale */
+/* Sfondo della pagina con gradiente */
+body {
+    background: linear-gradient(to right, #a1c4fd, #c2e9fb); /* Gradiente blu chiaro */
+}
+
+/* Container principale */
 .container {
-    max-width: 1000px;
-    margin: 0 auto;
-    font-family: 'Arial', sans-serif;
+    margin: auto; /* Centra il contenitore */
 }
 
-.profile-title {
-    font-size: 3rem;
-    color: #1e88e5;
-    margin-bottom: 1rem;
+/* Intestazione */
+h1.display-4 {
+    color: #4a4a4a; /* Colore del titolo */
+    margin-bottom: 20px; /* Spazio sotto il titolo */
 }
 
-.section-title {
-    text-align: center; /* Centra il titolo */
-    margin-bottom: 20px; /* Margine inferiore */
+/* Card del profilo */
+.card {
+    border-radius: 10px; /* Angoli arrotondati */
+    overflow: hidden; /* Rimuove il bordo del contenuto in eccesso */
 }
 
-.section-title h2 {
-    font-size: 2.5rem; /* Dimensione del font grande */
-    font-weight: bold; /* Grassetto */
-    color: #2c3e50; /* Colore scuro per il testo */
-    margin: 0; /* Rimuove margini di default */
+/* Titolo della card */
+.card-title {
+    color: #ff6f61; /* Colore del titolo della card */
 }
 
-.aprestiti {
-    text-decoration: none; /* Rimuove la sottolineatura */
-    color: #3498db; /* Colore blu per il link */
-    transition: color 0.3s, transform 0.2s; /* Transizioni per effetti hover */
+/* Elenco dei dettagli dell'account */
+.list-group-item {
+    background: rgba(255, 255, 255, 0.8); /* Sfondo semi-trasparente */
+    border: none; /* Rimuove il bordo */
+    transition: background 0.3s; /* Transizione per il background */
 }
 
-/* Effetto hover per il link */
-.aprestiti:hover {
-    color: #2980b9; /* Colore blu scuro al passaggio del mouse */
-    transform: scale(1.05); /* Leggero ingrandimento al passaggio del mouse */
+.list-group-item:hover {
+    background: rgba(255, 255, 255, 1); /* Cambia sfondo al passaggio del mouse */
 }
 
-.aprestiti:active {
-    color: #1c5986; /* Colore blu ancora più scuro quando viene cliccato */
+/* Pulsanti per cambiare email e telefono */
+.btn-outline-dark {
+    border-color: #ff6f61; /* Colore del bordo */
+    color: #2b2322; /* Colore del testo */
 }
 
-
-.account-details, .prestiti-list, .prenotazioni-list {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.btn-outline-dark:hover {
+    background-color: #ff6f61; /* Sfondo quando si passa sopra */
+    color: white; /* Colore del testo quando si passa sopra */
 }
 
-.account-details h2 {
-    color: #495057;
-    margin-bottom: 15px;
-    font-size: 1.8rem;
+/* Sezione Prestiti e Prenotazioni */
+h5.display-6 {
+    color: #4a4a4a; /* Colore del titolo delle sezioni */
+    margin-bottom: 15px; /* Spazio sotto il titolo */
 }
 
-.account-info p {
-    font-size: 1.1rem;
-    color: #495057;
-    margin-bottom: 10px;
+/* Alert personalizzati */
+.alert-custom {
+    background: rgba(0, 123, 255, 0.1); /* Sfondo blu chiaro */
+    border-color: rgba(0, 123, 255, 0.2); /* Colore del bordo */
 }
 
+/* Pulsanti all'interno degli alert */
+.btn-info-custom {
+    background-color: #007bff; /* Colore di sfondo blu */
+    color: white; /* Colore del testo */
+}
+
+.btn-info-custom:hover {
+    background-color: #0056b3; /* Colore di sfondo blu scuro */
+}
+
+/* Elementi della lista dei prestiti e prenotazioni */
 .prestito-item, .prenotazione-item {
-    background-color: #fff;
-    border-left: 5px solid #007bff;
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 6px;
-    transition: background-color 0.3s;
+    background: rgba(255, 255, 255, 0.8); /* Sfondo semi-trasparente */
+    border-radius: 8px; /* Angoli arrotondati */
+    margin-bottom: 15px; /* Spazio tra gli elementi */
+    padding: 10px; /* Spaziatura interna */
+    transition: background 0.3s; /* Transizione per il background */
 }
 
 .prestito-item:hover, .prenotazione-item:hover {
-    background-color: #f0f0f0;
-}
-
-.prestito-item h4, .prenotazione-item h4 {
-    font-size: 1.5rem;
-    color: #007bff;
-    margin-bottom: 10px;
-}
-
-.prestito-item p, .prenotazione-item p {
-    font-size: 1.1rem;
-    color: #495057;
-}
-
-.alert-message {
-    background-color: #e0f7fa;
-    border-left: 5px solid #00acc1;
-    padding: 20px;
-    border-radius: 6px;
-    margin-bottom: 20px;
-}
-
-.alert-message p {
-    font-size: 1.1rem;
-    color: #007bff;
-}
-
-/* Pulsanti */
-.btn-custom {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s;
-}
-
-.btn-custom:hover {
-    background-color: #0056b3;
-}
-
-.btn-action {
-    background-color: #343a40;
-    color: #fff;
-    padding: 8px 15px;
-    border-radius: 5px;
-    margin-left: 10px;
-    font-size: 0.9rem;
-    text-decoration: none;
-    transition: background-color 0.3s;
-}
-
-.btn-action:hover {
-    background-color: #495057;
+    background: rgba(255, 255, 255, 1); /* Cambia sfondo al passaggio del mouse */
 }
 
 /* Animazioni */
 .animated-fade {
-    animation: fadeIn 0.5s ease-in-out;
+    opacity: 0;
+    animation: fadeIn 0.5s forwards; /* Animazione di apparizione */
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
     to {
         opacity: 1;
-        transform: translateY(0);
     }
 }
 
-.account-details {
-    background-color: #ffffff; /* Sfondo bianco per contrasto */
-    border-radius: 10px; /* Angoli arrotondati */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Ombra leggera */
-    padding: 20px; /* Padding interno */
-    margin: 20px; /* Margine esterno */
+/* Stile per il titolo "Prestiti" */
+.title-prestiti {
+    font-size: 2rem; /* Dimensione del font */
+    color: #007bff; /* Colore del testo */
+    font-weight: bold; /* Testo in grassetto */
+    text-decoration: underline; /* Sottolineatura */
+    transition: color 0.3s, transform 0.2s; /* Transizione per effetti al passaggio del mouse */
+    cursor: pointer; /* Cursore a mano */
 }
 
-
-.account-info p {
-    font-size: 1rem; /* Dimensione del testo */
-    color: #495057; /* Colore del testo */
-    margin: 10px 0; /* Margine tra i paragrafi */
+/* Effetto hover per il titolo */
+.title-prestiti:hover {
+    color: #0056b3; /* Colore blu scuro al passaggio del mouse */
+    transform: translateY(-2px); /* Leggera elevazione */
 }
 
-.btn-action {
-    display: inline-block; /* Display inline-block per margini e padding */
-    margin-left: 10px; /* Spazio tra testo e bottone */
-    padding: 5px 10px; /* Padding interno del bottone */
-    border-radius: 5px; /* Angoli arrotondati del bottone */
-    background-color: #007bff; /* Colore di sfondo del bottone */
-    color: #ffffff; /* Colore del testo del bottone */
-    text-decoration: none; /* Rimuovere sottolineatura */
-    transition: background-color 0.3s; /* Transizione del colore di sfondo */
-}
-
-.btn-action:hover {
-    background-color: #0056b3; /* Colore di sfondo al hover */
-}
-
-/* Responsività */
-@media (max-width: 576px) {
-    .account-details {
-        padding: 15px; /* Ridurre il padding per dispositivi piccoli */
-        margin: 10px; /* Ridurre il margine */
-    }
-
-    h2 {
-        font-size: 1.25rem; /* Ridurre la dimensione del titolo */
-    }
-
-    .account-info p {
-        font-size: 0.9rem; /* Ridurre la dimensione del testo */
-    }
-
-    .btn-action {
-        font-size: 0.9rem; /* Dimensione del testo del bottone */
-        padding: 4px 8px; /* Ridurre il padding del bottone */
-    }
-}
-
-/* Stile per il paragrafo */
-.pw {
-    font-size: 1.1rem; /* Dimensione del font */
-    color: #555; /* Colore del testo */
-    margin: 20px 0; /* Margini superiori e inferiori */
-    line-height: 1.6; /* Altezza della linea per una migliore leggibilità */
-}
-
-/* Stile per il pulsante di scrittura recensione */
-.btn-write {
-    display: inline-block; /* Pulsante come blocco in linea */
-    padding: 10px 15px; /* Padding interno */
-    background-color: #3498db; /* Colore di sfondo blu */
-    color: #fff; /* Colore del testo bianco */
+/* Pulsante per estendere il prestito */
+.btn-extend {
+    background-color: #ffc107; /* Colore giallo per il pulsante di estensione */
+    color: white; /* Testo bianco */
+    padding: 10px 20px; /* Padding per dimensioni migliori */
+    border: none; /* Nessun bordo */
     border-radius: 5px; /* Angoli arrotondati */
-    text-decoration: none; /* Rimuove la sottolineatura */
-    transition: background-color 0.3s, transform 0.3s; /* Transizione per il colore e la trasformazione */
-    font-weight: bold; /* Grassetto per il testo */
-    margin-left: 10px; /* Margine a sinistra per distanziare dal testo */
+    font-size: 16px; /* Dimensione del testo */
+    font-weight: bold; /* Testo in grassetto */
+    cursor: pointer; /* Cursore a mano */
+    transition: background-color 0.3s, transform 0.2s; /* Transizione per effetti al passaggio del mouse */
 }
 
-/* Hover sul pulsante */
-.btn-write:hover {
-    background-color: #2980b9; /* Colore blu più scuro al passaggio del mouse */
-    transform: scale(1.05); /* Effetto di ingrandimento al passaggio del mouse */
+/* Effetto hover per il pulsante di estensione */
+.btn-extend:hover {
+    background-color: #e0a800; /* Colore giallo scuro al passaggio del mouse */
+    transform: translateY(-2px); /* Leggera elevazione */
 }
 
-/* Icona nel pulsante */
-.btn-write i {
-    margin-right: 5px; /* Spazio tra l'icona e il testo */
+.profile-picture {
+    margin-bottom: 20px; /* Spazio sotto la foto */
+}
+
+.profile-picture img {
+    width: 250px; /* Larghezza della foto */
+    height: 250px; /* Altezza della foto */
+    object-fit: cover; /* Ritaglia l'immagine mantenendo le proporzioni */
+    border-radius: 50%; /* Rende l'immagine circolare */
+    border: 2px solid #007bff; /* Bordo blu */
+    transition: transform 0.2s; /* Transizione per l'effetto hover */
+}
+
+.profile-picture img:hover {
+    transform: scale(1.05); /* Effetto zoom al passaggio del mouse */
+}
+
+/* Pulsante "Richiedi Coordinate Bancarie" - Stato Pending */
+.btn-banca {
+    background-color: #4caf50; /* Verde per evidenziare l'azione positiva */
+    color: white;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-banca:hover {
+    background-color: #45a049;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Pulsante "Torna alla pagina delle prenotazioni" - Stato Rejected */
+.btn-reset {
+    background-color: #ff4c4c; /* Rosso per evidenziare l'azione negativa o di ritorno */
+    color: white;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-reset:hover {
+    background-color: #e04343;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
 }

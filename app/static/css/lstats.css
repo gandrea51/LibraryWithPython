@@ -1,108 +1,62 @@
-/* Reset CSS */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #eaeaea;
-}
-
-/* Contenitore principale */
+/* Stile generale per la pagina */
 .stats-container {
-    background: linear-gradient(135deg, #6a5acd, #a2a2e1);
-    border-radius: 15px;
-    padding: 40px;
-    max-width: 1200px;
-    width: 90%; /* Mantiene la larghezza del contenitore */
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    margin: 0 auto; /* Centra il contenitore */
+    padding: 40px; /* Padding interno */
+    border-radius: 10px; /* Angoli arrotondati */
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1); /* Ombra leggera */
 }
 
-/* Titolo */
-.title {
-    font-size: 2.5rem;
-    color: #fff;
-    margin-bottom: 20px;
+/* Griglia delle statistiche */
+.stats-grid {
+    display: grid; /* Griglia */
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Colonne automatiche */
+    gap: 20px; /* Spazio tra gli elementi */
 }
 
-/* Griglia principale delle statistiche */
-.main-stats {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-/* Box delle statistiche */
+/* Stile per ogni box statistico */
 .stat-box {
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 30px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #ffffff; /* Sfondo bianco */
+    border-radius: 10px; /* Angoli arrotondati */
+    padding: 20px; /* Padding interno */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Ombra */
+    transition: transform 0.3s, box-shadow 0.3s; /* Transizione */
+    text-align: center; /* Allineamento del testo al centro */
 }
 
+/* Effetto hover per i box statistici */
 .stat-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px); /* Leggera elevazione al passaggio del mouse */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Ombra più intensa */
 }
 
-/* Titoli delle statistiche */
+/* Titolo delle statistiche */
 .stat-title {
-    font-size: 1.5rem;
-    color: #6a5acd;
-    margin-bottom: 10px;
+    font-weight: bold; /* Testo in grassetto */
+    color: #343a40; /* Colore del testo */
+    margin-bottom: 10px; /* Margine inferiore */
 }
 
-/* Valori delle statistiche */
+/* Valore delle statistiche */
 .stat-value {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #4b0082; /* Colore scuro per contrasto */
+    font-size: 1.8rem; /* Dimensione del font */
+    color: #007bff; /* Colore blu per i valori */
+    font-weight: bold; /* Testo in grassetto */
 }
 
-/* Sidebar */
+/* Stile per la sidebar */
 .sidebar {
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
+    background-color: #e9ecef; /* Colore di sfondo grigio chiaro */
+    padding: 20px; /* Padding interno */
+    border-radius: 10px; /* Angoli arrotondati */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Ombra */
+    margin-top: 20px; /* Margine superiore */
 }
 
+/* Stile per i dettagli aggiuntivi */
 .sidebar h3 {
-    color: #6a5acd;
-    margin-bottom: 10px;
+    margin-bottom: 15px; /* Margine inferiore */
 }
 
+/* Stile per i paragrafi nella sidebar */
 .sidebar p {
-    color: #333;
-}
-
-/* Media Queries per dispositivi mobili */
-@media (max-width: 768px) {
-    .title {
-        font-size: 2rem; /* Dimensione del titolo ridotto */
-    }
-
-    .stat-title {
-        font-size: 1.3rem; /* Dimensione del titolo della statistica ridotto */
-    }
-
-    .stat-value {
-        font-size: 1.5rem; /* Dimensione del valore della statistica ridotto */
-    }
-
-    .main-stats {
-        gap: 15px; /* Riduce lo spazio tra le statistiche */
-    }
-}
-
-@media (max-width: 480px) {
-    .sidebar {
-        display: none; /* Nascondi la sidebar su schermi molto piccoli */
-    }
+    margin: 5px 0; /* Margine superiore e inferiore */
 }

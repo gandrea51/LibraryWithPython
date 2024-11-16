@@ -1,551 +1,244 @@
-/* Base Styles */
-body {
-    font-family: 'Helvetica', sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-    margin: 0;
-    padding: 0;
+.libro-card {
+    border: none; /* Rimuove il bordo di default della card */
+    border-radius: 10px; /* Angoli arrotondati */
+    background: linear-gradient(135deg, #ffcc00, #ff6699); /* Sfondo sfumato */
+    color: #fff; /* Colore del testo bianco */
+    transition: transform 0.3s, box-shadow 0.3s; /* Transizione per effetto hover */
+    cursor: pointer; /* Cambia il cursore al passaggio del mouse */
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px;
+.libro-card:hover {
+    transform: translateY(-5px); /* Leggero sollevamento al passaggio del mouse */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Ombra più forte */
 }
 
-/* Stile per il contenitore del titolo */
-.title-section {
-    text-align: center;
-    margin-top: 50px;
-    margin-bottom: 30px;
+.card-body {
+    padding: 20px; /* Padding aumentato per maggiore spazio */
 }
 
-/* Stile per il titolo */
-.genre-title {
-    font-size: 3rem;
-    font-weight: bold;
-    color: #333;
-    position: relative;
-    display: inline-block;
+.card-title {
+    font-size: 1.5rem; /* Dimensione del font del titolo */
+    font-weight: bold; /* Grassetto per il titolo */
+    text-transform: uppercase; /* Testo maiuscolo */
 }
 
-/* Stile per il link nel titolo */
-.genre-title a {
-    text-decoration: none;
-    color: #007bff;
-    transition: color 0.3s ease, text-shadow 0.3s ease;
-    font-family: 'Arial', sans-serif;
-    border-bottom: 2px solid transparent; /* Aggiunge una sottolineatura che appare al passaggio del mouse */
+.card-text {
+    font-size: 1rem; /* Dimensione del font del testo */
 }
 
-/* Effetti hover per il titolo */
-.genre-title a:hover {
-    color: #0056b3;
-    text-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-bottom: 2px solid #0056b3; /* La sottolineatura diventa visibile */
+.modal-content {
+    border-radius: 10px; /* Angoli arrotondati per il modal */
+    background-color: #f8f9fa; /* Sfondo chiaro per il modal */
+    transition: transform 0.3s; /* Transizione per il modal */
 }
 
-/* Effetto "cliccabile" con animazioni */
-.genre-title a:active {
-    color: #003f7f;
-    transform: scale(0.98); /* Leggero ridimensionamento al clic */
-    transition: transform 0.1s ease;
+.modal-header {
+    border-bottom: none; /* Rimuove il bordo inferiore del modal */
+    background: linear-gradient(135deg, #ffcc00, #ff6699); /* Sfondo sfumato per l'intestazione del modal */
+    color: #fff; /* Colore del testo bianco */
 }
 
-/* Responsività per il titolo su dispositivi mobili */
-@media (max-width: 768px) {
-    .genre-title {
-        font-size: 2.2rem;
-    }
+.modal-title {
+    font-size: 1.5rem; /* Dimensione del font del titolo del modal */
+    font-weight: bold; /* Grassetto per il titolo */
+}
+
+.modal-body {
+    font-size: 1rem; /* Dimensione del font del corpo del modal */
+    color: #333; /* Colore del testo grigio scuro */
+}
+
+.modal-footer {
+    border-top: none; /* Rimuove il bordo superiore del footer */
 }
 
 
-/* Intro Section */
-.intro-sections {
-    text-align: center;
-    margin-bottom: 40px;
-    padding: 20px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+.title-main {
+    color: #007BFF; /* Colore blu */
+    text-decoration: none; /* Rimuove la sottolineatura */
+    transition: color 0.3s; /* Transizione per effetto hover */
 }
 
-.intro-texts {
-    font-size: 1.2rem;
-    color: #555;
+.title-main:hover {
+    color: #0056b3; /* Colore blu scuro al passaggio del mouse */
 }
 
-/* Accordion Section */
-.accordion-section {
-    margin-bottom: 50px;
+.genre-highlight {
+    color: #FF5733; /* Colore per evidenziare il genere */
+    font-weight: bold; /* Rende il testo in grassetto */
 }
 
-.accordion-container {
-    max-width: 800px;
-    margin: 0 auto;
+.intro-text {
+    font-size: 1.25rem; /* Aumenta la dimensione del font */
+    color: #333; /* Colore del testo grigio scuro */
+    background-color: rgba(255, 255, 255, 0.9); /* Sfondo bianco con trasparenza */
+    border-left: 5px solid #007BFF; /* Bordo sinistro colorato per evidenziare */
+    padding: 15px 20px; /* Padding per rendere il testo più arioso */
+    border-radius: 8px; /* Angoli arrotondati */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombra leggera per profondità */
+    transition: transform 0.3s; /* Transizione per effetto hover */
 }
 
-.accordion-item {
-    margin-bottom: 10px;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+.intro-text:hover {
+    transform: translateY(-2px); /* Leggero sollevamento al passaggio del mouse */
 }
 
-.accordion-header {
-    background-color: #007bff;
-    color: white;
-    padding: 15px 20px;
-    cursor: pointer;
-    font-size: 1.2rem;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-    position: relative;
+.scheda {
+    font-size: 1.5em; /* Dimensione del font */
+    font-weight: bold; /* Grassetto */
+    text-align: center; /* Testo centrato */
+    color: #ffffff; /* Colore del testo */
+    background: linear-gradient(45deg, #ff6a6a, #ff9a6a); /* Gradiente di colori vivaci */
+    padding: 15px 25px; /* Spaziatura interna */
+    border-radius: 8px; /* Angoli arrotondati */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Ombra */
+    margin: 10px 0; /* Margine sopra e sotto */
+    transition: transform 0.2s ease-in-out; /* Transizione per l'effetto hover */
 }
 
-.accordion-header:hover {
-    background-color: #0056b3;
+.scheda:hover {
+    transform: scale(1.03); /* Leggera ingrandimento al passaggio del mouse */
 }
 
-.accordion-header.open::after {
-    content: '\f077'; /* FontAwesome arrow down */
-    font-family: 'FontAwesome';
-    position: absolute;
-    right: 20px;
-    transform: rotate(180deg);
-    transition: transform 0.3s ease;
+/* Stile per il link */
+.dscheda {
+    display: inline-block; /* Rende il link un blocco in linea */
+    color: #ffffff; /* Colore del testo bianco */
+    font-weight: bold; /* Grassetto */
+    font-size: 1.2em; /* Dimensione del font */
+    text-decoration: none; /* Rimuove la sottolineatura */
+    padding: 12px 20px; /* Spaziatura interna */
+    border-radius: 8px; /* Angoli arrotondati */
+    background: linear-gradient(45deg, #5cb85c, #2e9c2e); /* Gradiente verde brillante */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Ombra */
+    transition: background 0.3s, transform 0.2s; /* Transizione per l'effetto hover */
+    text-align: center; /* Centra il testo */
 }
 
-.accordion-header::after {
-    content: '\f078'; /* FontAwesome arrow up */
-    font-family: 'FontAwesome';
-    position: absolute;
-    right: 20px;
-    transition: transform 0.3s ease;
+.dscheda:hover {
+    background: linear-gradient(45deg, #2e9c2e, #5cb85c); /* Cambia gradiente al passaggio del mouse */
+    transform: scale(1.05); /* Leggera ingrandimento al passaggio del mouse */
+}
+.related {
+    font-size: 1.5em; /* Dimensione del font */
+    font-weight: bold; /* Grassetto */
+    text-align: center; /* Testo centrato */
+    color: #ffffff; /* Colore del testo */
+    background: linear-gradient(45deg, #6a5acd, #8a2be2); /* Gradiente blu e viola */
+    padding: 15px 25px; /* Spaziatura interna */
+    border-radius: 8px; /* Angoli arrotondati */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Ombra */
+    margin: 10px 0; /* Margine sopra e sotto */
+    transition: transform 0.2s ease-in-out; /* Transizione per l'effetto hover */
 }
 
-.accordion-body {
-    background-color: white;
-    padding: 15px 20px;
-    display: none;
-    border-top: 2px solid #007bff;
+.related:hover {
+    transform: scale(1.03); /* Leggera ingrandimento al passaggio del mouse */
 }
 
-.accordion-body.active {
-    display: block;
+/* Stile per il link */
+.brelated {
+    display: inline-block; /* Rende il link un blocco in linea */
+    color: #ffffff; /* Colore del testo bianco */
+    font-weight: bold; /* Grassetto */
+    font-size: 1.2em; /* Dimensione del font */
+    text-decoration: none; /* Rimuove la sottolineatura */
+    padding: 12px 20px; /* Spaziatura interna */
+    border-radius: 8px; /* Angoli arrotondati */
+    background: linear-gradient(45deg, #ff6347, #ff4500); /* Gradiente rosso-arancio */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Ombra */
+    transition: background 0.3s, transform 0.2s; /* Transizione per l'effetto hover */
+    text-align: center; /* Centra il testo */
+    margin-top: 10px; /* Margine sopra */
 }
 
-.book-details {
-    margin: 0;
-    font-size: 1rem;
-    line-height: 1.8;
-    color: #333;
+.brelated:hover {
+    background: linear-gradient(45deg, #ff4500, #ff6347); /* Cambia gradiente al passaggio del mouse */
+    transform: scale(1.05); /* Leggera ingrandimento al passaggio del mouse */
+}
+.stats {
+    font-size: 1.5em; /* Dimensione del font */
+    font-weight: bold; /* Grassetto */
+    text-align: center; /* Testo centrato */
+    color: #ffffff; /* Colore del testo */
+    background: linear-gradient(45deg, #f39c12, #f1c40f); /* Gradiente arancione e giallo */
+    padding: 15px 25px; /* Spaziatura interna */
+    border-radius: 8px; /* Angoli arrotondati */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Ombra */
+    margin: 10px 0; /* Margine sopra e sotto */
+    transition: transform 0.2s ease-in-out; /* Transizione per l'effetto hover */
 }
 
-.book-details .label {
-    font-weight: bold;
-    color: #007bff;
+.stats:hover {
+    transform: scale(1.03); /* Leggera ingrandimento al passaggio del mouse */
 }
 
-/* Base Styles */
-body {
-    font-family: 'Helvetica', sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 20px;
+/* Stile per il link */
+.bstats {
+    display: inline-block; /* Rende il link un blocco in linea */
+    color: #ffffff; /* Colore del testo bianco */
+    font-weight: bold; /* Grassetto */
+    font-size: 1.2em; /* Dimensione del font */
+    text-decoration: none; /* Rimuove la sottolineatura */
+    padding: 12px 20px; /* Spaziatura interna */
+    border-radius: 8px; /* Angoli arrotondati */
+    background: linear-gradient(45deg, #3498db, #2980b9); /* Gradiente blu */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Ombra */
+    transition: background 0.3s, transform 0.2s; /* Transizione per l'effetto hover */
+    text-align: center; /* Centra il testo */
+    margin-top: 10px; /* Margine sopra */
 }
 
-.edit-genre-section {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.toggle-button {
-    background-color: #007bff;
-    color: white;
-    font-size: 1.2rem;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-}
-
-.toggle-button:hover {
-    background-color: #0056b3;
-    transform: translateY(-2px);
-}
-
-.hidden-section {
-    display: none;
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #ffffff;
-    border: 1px solid #e0e0e0;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    animation: fadeIn 0.3s ease;
-}
-
-.genre-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.form-label {
-    font-size: 1rem;
-    margin-bottom: 10px;
-    color: #555;
-}
-
-.form-input {
-    width: 100%;
-    max-width: 400px;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #007bff;
-    border-radius: 5px;
-    font-size: 1rem;
-    transition: border-color 0.3s;
-}
-
-.form-input:focus {
-    border-color: #0056b3;
-    outline: none;
-}
-
-.submit-button {
-    background-color: #28a745;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-}
-
-.submit-button:hover {
-    background-color: #218838;
-    transform: translateY(-2px);
-}
-
-/* Animation */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .genre-title {
-        font-size: 2rem;
-    }
-
-    .intro-text {
-        font-size: 1rem;
-    }
-
-    .accordion-header {
-        font-size: 1rem;
-    }
-
-    .book-details {
-        font-size: 0.9rem;
-    }
-}
-
-
-/* Accordion Body - Styling */
-.accordion-body {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-}
-
-.book-details {
-    font-size: 1rem;
-    color: #333;
-}
-
-.book-label {
-    font-weight: bold;
-    color: #1e88e5;
+.bstats:hover {
+    background: linear-gradient(45deg, #2980b9, #3498db); /* Cambia gradiente al passaggio del mouse */
+    transform: scale(1.05); /* Leggera ingrandimento al passaggio del mouse */
 }
 
 .loan-status {
-    font-size: 1.1rem;
-    margin-bottom: 15px;
-}
-
-.loan-status.available {
-    color: #4caf50;
-    font-weight: bold;
-}
-
-.loan-status.limited {
-    color: #ff9800;
-    font-weight: bold;
-}
-
-.loan-status.unavailable {
-    color: #f44336;
-    font-weight: bold;
-}
-
-.copies {
-    font-weight: bold;
-    color: #1976d2;
-}
-
-/* Custom Buttons */
-.btn-custom {
-    background-color: #1e88e5;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 50px;
-    font-size: 1rem;
-    text-transform: uppercase;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.btn-custom:hover {
-    background-color: #1565c0;
-    transform: scale(1.05);
-}
-
-.loan-button {
-    display: inline-block;
-    position: relative;
-}
-
-.loan-alert {
-    position: absolute;
-    top: -10px;
-    right: -15px;
-    padding: 5px;
-    font-size: 0.8rem;
-}
-
-/* Admin Buttons */
-.admin-buttons {
-    margin-top: 20px;
-}
-
-.admin-buttons a {
-    margin-right: 10px;
-}
-
-/* Accordion Animation */
-.accordion-body:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-}
-
-/* Media Queries */
-@media (max-width: 768px) {
-    .btn-custom {
-        padding: 8px 15px;
-        font-size: 0.9rem;
-    }
-
-    .loan-status {
-        font-size: 1rem;
-    }
-}
- /* Stile base per il pulsante */
- .btn-related {
-    display: inline-block;
-    background-color: #007bff; /* Colore di sfondo */
-    color: #fff; /* Colore del testo */
-    padding: 10px 20px; /* Spaziatura interna */
-    font-size: 1rem;
-    font-weight: bold;
-    border-radius: 30px; /* Angoli arrotondati */
-    text-decoration: none; /* Rimuove la sottolineatura */
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Transizioni */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Aggiunge un'ombra leggera */
-}
-
-/* Effetto hover per il pulsante */
-.btn-related:hover {
-    background-color: #0056b3; /* Colore di sfondo al passaggio del mouse */
-    transform: translateY(-3px); /* Leggero sollevamento */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Ombra più pronunciata */
-}
-
-/* Icona all'interno del pulsante */
-.btn-related i {
-    margin-right: 8px; /* Spaziatura tra icona e testo */
-}
-
-/* Responsività per schermi piccoli (smartphone) */
-@media (max-width: 768px) {
-    .btn-related {
-        padding: 8px 16px; /* Riduce la spaziatura interna */
-        font-size: 0.9rem; /* Riduce la dimensione del testo */
-    }
-    .book-label {
-        font-size: 1rem; /* Riduce leggermente la dimensione del label */
-    }
-}
-/* Stile di base per il pulsante */
-.btn-print {
-    display: inline-block;
-    background-color: #007bff;
-    color: #fff;
-    font-size: 1.1rem;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 50px;
-    text-transform: uppercase;
-    font-weight: bold;
-    text-decoration: none;
-    text-align: center;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    position: relative;
-    overflow: hidden;
-}
-
-/* Effetto al passaggio del mouse */
-.btn-print:hover {
-    background-color: #0056b3;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-    transform: translateY(-3px);
-    color: #fff;
-}
-
-/* Animazione al clic */
-.btn-print:active {
-    transform: scale(0.98);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-/* Stile per l'icona */
-.btn-print i {
-    margin-right: 10px;
-}
-
-/* Effetto "onde" animato all'interno del pulsante */
-.btn-print::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 300%;
-    height: 300%;
-    background: rgba(255, 255, 255, 0.2);
-    transform: translate(-50%, -50%) scale(0);
-    border-radius: 50%;
-    transition: transform 0.5s ease;
-}
-
-.btn-print:hover::before {
-    transform: translate(-50%, -50%) scale(1);
-}
-
-/* Responsività: adatta il pulsante per schermi piccoli */
-@media (max-width: 768px) {
-    .btn-print {
-        font-size: 1rem;
-        padding: 10px 15px;
-    }
-}
-
-/* Stile per la sezione recensioni */
-.review-section {
-    background-color: #f9f9f9; /* Colore di sfondo soft */
+    font-size: 1.5em; /* Dimensione del font */
+    font-weight: bold; /* Grassetto */
+    text-align: center; /* Testo centrato */
+    color: #ffffff; /* Colore del testo */
+    padding: 15px 25px; /* Spaziatura interna */
     border-radius: 8px; /* Angoli arrotondati */
-    padding: 20px; /* Padding interno */
-    margin-top: 20px; /* Margine superiore */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Ombra per il box */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Ombra */
+    margin: 10px 0; /* Margine sopra e sotto */
+    transition: transform 0.2s ease-in-out; /* Transizione per l'effetto hover */
 }
 
-/* Lista delle recensioni */
-.reviews-list {
-    list-style-type: none; /* Rimuovi punti dalla lista */
-    padding: 0; /* Rimuovi padding di default */
+.available {
+    background: linear-gradient(45deg, #27ae60, #2ecc71); /* Gradiente verde per disponibilità */
 }
 
-/* Elemento di recensione */
-.review-item {
-    background-color: #ffffff; /* Colore bianco per la recensione */
-    border-radius: 5px; /* Angoli arrotondati */
-    padding: 15px; /* Padding interno */
-    margin-bottom: 10px; /* Margine inferiore */
-    transition: transform 0.2s; /* Transizione per effetto hover */
+.limited {
+    background: linear-gradient(45deg, #f39c12, #f1c40f); /* Gradiente arancione per disponibilità limitata */
 }
 
-.review-item:hover {
-    transform: scale(1.02); /* Leggero ingrandimento al passaggio del mouse */
+.unavailable {
+    background: linear-gradient(45deg, #e74c3c, #c0392b); /* Gradiente rosso per indisponibilità */
 }
 
-/* Stile per il nome dell'autore della recensione */
-.review-author {
-    font-weight: bold; /* Testo in grassetto */
-    color: #2980b9; /* Colore blu */
+.loan-status:hover {
+    transform: scale(1.03); /* Leggera ingrandimento al passaggio del mouse */
 }
 
-/* Commento della recensione */
-.review-comment {
-    margin-top: 5px; /* Margine superiore */
-    color: #333; /* Colore del testo */
-}
-
-/* Pulsante per visualizzare tutte le recensioni */
-.btn-rev {
-    display: inline-block; /* Renderizza il bottone come inline-block */
-    padding: 10px 20px; /* Padding interno */
-    margin-top: 15px; /* Margine superiore */
-    background-color: #27ae60; /* Colore verde */
-    color: white; /* Testo bianco */
-    border: none; /* Rimuovi bordo */
-    border-radius: 5px; /* Angoli arrotondati */
-    text-decoration: none; /* Rimuovi sottolineatura */
-    transition: background-color 0.3s, transform 0.2s; /* Transizioni */
-    font-size: 1rem; /* Dimensione del font */
-}
-
-.btn-rev:hover {
-    background-color: #219150; /* Colore verde più scuro al passaggio del mouse */
-    transform: scale(1.05); /* Ingrandimento al passaggio del mouse */
-}
-
-/* Messaggio per nessuna recensione */
-.no-reviews {
-    text-align: center; /* Allinea al centro */
-    color: #7f8c8d; /* Colore grigio */
-    font-size: 1.1rem; /* Dimensione del font */
-}
-
-/* Stile per il pulsante delle statistiche */
-.btn-stats {
-    background-color: #28a745; /* Colore di sfondo verde */
-    color: white; /* Colore del testo bianco */
-    padding: 10px 15px; /* Padding interno per il pulsante */
-    border-radius: 5px; /* Bordo arrotondato */
+/* Pulsante personalizzato */
+.loan-button {
+    display: inline-block; /* Rende il link un blocco in linea */
+    color: #ffffff; /* Colore del testo bianco */
+    font-weight: bold; /* Grassetto */
+    font-size: 1.2em; /* Dimensione del font */
     text-decoration: none; /* Rimuove la sottolineatura */
-    display: inline-flex; /* Usa inline-flex per centrare l'icona e il testo */
-    align-items: center; /* Allinea verticalmente l'icona e il testo */
-    transition: background-color 0.3s ease; /* Transizione per effetto hover */
+    padding: 12px 20px; /* Spaziatura interna */
+    border-radius: 8px; /* Angoli arrotondati */
+    background: linear-gradient(45deg, #3498db, #2980b9); /* Gradiente blu */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Ombra */
+    transition: background 0.3s, transform 0.2s; /* Transizione per l'effetto hover */
+    text-align: center; /* Centra il testo */
+    margin-top: 10px; /* Margine sopra */
 }
 
-/* Stile per l'icona all'interno del pulsante */
-.btn-stats i {
-    margin-right: 5px; /* Margine a destra per separare l'icona dal testo */
-}
-
-/* Effetto hover per il pulsante */
-.btn-stats:hover {
-    background-color: #218838; /* Colore di sfondo verde scuro al passaggio del mouse */
+.loan-button:hover {
+    background: linear-gradient(45deg, #2980b9, #3498db); /* Cambia gradiente al passaggio del mouse */
+    transform: scale(1.05); /* Leggera ingrandimento al passaggio del mouse */
 }

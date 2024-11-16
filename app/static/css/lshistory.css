@@ -1,79 +1,77 @@
- /* Stile per il corpo */
- body {
-    background-color: #f4f7fa; /* Sfondo chiaro per migliorare la leggibilità */
-    font-family: Arial, sans-serif; /* Font generico */
-    margin: 0;
-    padding: 0;
+/* Stile generale per il contenitore principale */
+.container {
+    border-radius: 12px; /* Angoli arrotondati */
+    padding: 40px; /* Padding per il contenitore */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Ombra per il contenitore */
 }
 
-.header {
-    margin-bottom: 30px; /* Spazio sotto l'intestazione */
-}
-
+/* Titolo principale */
 .title {
-    font-size: 2.5rem; /* Dimensione grande per il titolo */
-    color: #343a40; /* Colore del titolo */
-    text-align: center; /* Centrare il titolo */
+    font-size: 2.5rem; /* Dimensione del font del titolo */
+    color: #2c3e50; /* Colore del titolo */
+    margin-bottom: 20px; /* Margine inferiore */
 }
 
+/* Stile per il contenitore del modulo */
 .form-container {
-    max-width: 400px; /* Larghezza massima per il modulo */
-    margin: 0 auto; /* Centrato orizzontalmente */
-    background-color: #ffffff; /* Sfondo bianco per il modulo */
+    background: linear-gradient(45deg, #e1f14e, #d4c27a);
     border-radius: 8px; /* Angoli arrotondati */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Ombra leggera */
-    padding: 20px; /* Padding interno */
+    padding: 30px; /* Padding per il modulo */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombra per il modulo */
 }
 
-.form-group {
-    margin-bottom: 20px; /* Spazio sotto ogni gruppo di input */
-}
-
+/* Stile per le etichette del modulo */
 .form-label {
     font-weight: bold; /* Grassetto per le etichette */
+    color: #34495e; /* Colore delle etichette */
+    margin-bottom: 10px; /* Margine inferiore */
 }
 
+/* Stile per gli input del modulo */
 .form-input {
-    border-radius: 5px; /* Angoli arrotondati per gli input */
-    border: 1px solid #ced4da; /* Bordo grigio */
-    padding: 10px; /* Padding interno degli input */
-    width: 100%; /* Occupare tutto lo spazio disponibile */
-    box-sizing: border-box; /* Includere padding e bordo nelle dimensioni */
-    font-size: 1rem; /* Dimensione del testo */
+    width: 100%; /* Larghezza completa */
+    padding: 10px; /* Padding interno */
+    border: 1px solid #ccc; /* Bordo grigio chiaro */
+    border-radius: 5px; /* Angoli arrotondati */
+    transition: border 0.3s; /* Transizione per il bordo */
+    background: linear-gradient(45deg, #e1f14e, #d4c27a);
 }
 
+/* Stile per gli input in focus */
+.form-input:focus {
+    border: 1px solid #007bff; /* Bordo blu quando in focus */
+    outline: none; /* Rimuove l'outline predefinito */
+}
+
+/* Stile per il gruppo radio */
 .radio-group {
-    display: flex; /* Flexbox per disporre le radio buttons in orizzontale */
-    flex-direction: column; /* Disposizione verticale */
+    display: flex; /* Flexbox per il layout */
+    justify-content: space-around; /* Spaziatura uniforme tra i gruppi */
+    margin: 15px 0; /* Margine verticale */
 }
 
+/* Stile per i pulsanti */
+.btn {
+    background-color: #007bff; /* Colore blu */
+    color: #ffffff; /* Testo bianco */
+    padding: 10px 20px; /* Padding interno */
+    border: none; /* Rimuove il bordo */
+    border-radius: 5px; /* Angoli arrotondati */
+    transition: background-color 0.3s; /* Transizione per il colore di sfondo */
+}
+
+/* Stile per il pulsante hover */
+.btn:hover {
+    background-color: #0056b3; /* Colore blu scuro al passaggio del mouse */
+}
+
+/* Stile per le opzioni radio */
 .form-check {
-    margin-bottom: 10px; /* Spazio sotto ogni radio button */
+    margin-bottom: 15px; /* Margine inferiore per separare le opzioni */
 }
 
-.btn-submit {
-    width: 100%; /* Pulsante a larghezza piena */
-    padding: 10px; /* Padding interno del pulsante */
-    font-size: 1rem; /* Dimensione del testo del pulsante */
-    border-radius: 5px; /* Angoli arrotondati per il pulsante */
-    border: none; /* Rimuovere il bordo */
-    background-color: #0578f3; /* Colore di sfondo del pulsante */
-    color: #ffffff; /* Colore del testo del pulsante */
-    cursor: pointer; /* Cambiare il cursore su hover */
-    transition: background-color 0.3s; /* Transizione del colore di sfondo */
-}
-
-.btn-submit:hover {
-    background-color: #0056b3; /* Colore di sfondo al hover */
-}
-
-/* Responsività */
-@media (max-width: 576px) {
-    .form-container {
-        padding: 15px; /* Ridurre il padding per schermi piccoli */
-    }
-
-    .title {
-        font-size: 2rem; /* Ridurre la dimensione del titolo per schermi piccoli */
-    }
+/* Stile per gli avvisi */
+.alert {
+    margin-top: 20px; /* Margine superiore */
+    border-radius: 8px; /* Angoli arrotondati */
 }

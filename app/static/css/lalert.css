@@ -1,82 +1,61 @@
-/* Stile Generale */
-body {
-    background-color: #f4f7fa;
-    color: #333;
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
+/* Stile generale per il contenitore del report */
 .report-container {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 40px; /* Padding interno */
+    border-radius: 10px; /* Angoli arrotondati */
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1); /* Ombra leggera */
 }
 
-/* Titolo principale */
+/* Contenitore delle sezioni */
+.sections-container {
+    display: flex; /* Disposizione flessibile */
+    flex-direction: column; /* Colonne */
+    gap: 30px; /* Spazio tra le sezioni */
+}
+
+/* Stile per il titolo principale */
 .main-title {
-    text-align: center;
-    font-size: 2.5rem;
-    color: #2c3e50;
-    margin-bottom: 30px;
+    text-align: center; /* Allineamento al centro */
+    font-size: 2rem; /* Dimensione del font */
+    color: #343a40; /* Colore del testo */
 }
 
-/* Sezioni */
-.section {
-    margin-bottom: 40px;
-}
-
+/* Titolo della sezione */
 .section-title {
-    font-size: 1.75rem;
-    color: #3498db;
-    border-bottom: 2px solid #3498db;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
+    font-size: 1.5rem; /* Dimensione del font */
+    margin-bottom: 15px; /* Margine inferiore */
+    color: #007bff; /* Colore blu */
 }
 
-/* Contenuto della sezione */
-.section-content {
-    display: flex;
-    flex-direction: column;
+/* Contenitore delle schede */
+.cards-container {
+    display: grid; /* Griglia */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Colonne automatiche */
+    gap: 20px; /* Spazio tra le schede */
 }
 
-/* Elementi di prestito */
-.loan-item {
-    background-color: #ecf6fc;
-    border-left: 5px solid #3498db;
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    transition: transform 0.3s;
+/* Stile per ogni scheda di prestito */
+.loan-card {
+    background-color: #ffffff; /* Sfondo bianco */
+    border-radius: 10px; /* Angoli arrotondati */
+    padding: 20px; /* Padding interno */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Ombra */
+    transition: transform 0.3s, box-shadow 0.3s; /* Transizione */
 }
 
-.loan-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+/* Effetto hover per le schede di prestito */
+.loan-card:hover {
+    transform: translateY(-5px); /* Leggera elevazione al passaggio del mouse */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Ombra più intensa */
 }
 
-.loan-id {
-    font-weight: bold;
-    font-size: 1.2rem;
+/* Stile per i prestiti non restituiti */
+.loan-card.overdue {
+    border-left: 5px solid #dc3545; /* Bordo rosso a sinistra per prestiti scaduti */
 }
 
-/* Nessun dato */
+/* Stile per il testo senza dati */
 .no-data {
-    text-align: center;
-    font-size: 1.1rem;
-    color: #7f8c8d;
-    margin-top: 20px;
-}
-
-/* Prestiti scaduti */
-.overdue {
-    background-color: #ffeef0;
-    border-left: 5px solid #e74c3c;
-}
-
-.overdue:hover {
-    background-color: #ffdede;
+    text-align: center; /* Allineamento al centro */
+    color: #6c757d; /* Colore grigio */
+    font-style: italic; /* Corsivo */
 }
