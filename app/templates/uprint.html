@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Utenti</title>
+        <style>
+            @page {
+                size: landscape;
+            }
+            body {
+                font-family: Arial, sans-serif;
+                color: #333;
+                padding: 20px;
+            }
+
+            h1 {
+                text-align: center;
+                color: #444;
+            }
+
+            .user-list {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .user-card {
+                padding: 15px;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                background-color: #f9f9f9;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
+
+            .user-card p {
+                margin: 5px 0;
+                font-size: 1em;
+            }
+
+            .user-card p strong {
+                color: #00796b;
+            }
+
+        </style>  
+    </head>
+    <body>
+        <h1>Tutti gli utenti registrati</h1>
+        <hr><br>
+    
+        <section class="user-list">
+            {% for user in users %}
+            <div class="user-card">
+                <p><strong>Nome:</strong> {{ user.nome }}</p>
+                <p><strong>Email:</strong> {{ user.email }}</p>
+                <p><strong>Telefono:</strong> {{ user.telefono }}</p>
+                <p><strong>Ruolo:</strong> {{ user.ruolo }}</p>
+                <p><strong>Prestiti:</strong> {{ user.lcount }}</p>
+                <p><strong>Prenotazioni:</strong> {{ user.bcount }}</p>
+            </div>
+            {% endfor %}
+        </section>
+    </body>
+    
+</html>

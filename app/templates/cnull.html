@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+    {% block title %}Corsi{% endblock %}
+
+    {% block css %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/cnull.css') }}">
+    {% endblock %}
+
+    {% block content %}
+    <div class="container-fluid px-0">
+        
+        <!-- Hero Section with Background Image -->
+        <section class="hero-section text-white text-center d-flex align-items-center" style="background: url('/static/images/cnull.jpg') no-repeat center center; background-size: cover; height: 70vh;">
+            <div class="container">
+                <h1 class="display-3 fw-bold">Esplora i Nostri Corsi</h1>
+                <p class="lead">Migliora le tue competenze e scopri corsi in vari ambiti, dall'informatica alla fotografia.</p>
+                <form class="d-flex justify-content-center mt-4">
+                    <input class="form-control form-control-lg me-2" type="search" placeholder="Cerca un corso..." aria-label="Search" id="courseSearchInput">
+                </form>
+            </div>
+        </section>
+
+        <!-- Categorie di Corsi -->
+        <section class="courses-section py-5 bg-light">
+            <div class="container">
+                <h2 class="text-center display-4 mb-5">Corsi Disponibili</h2>
+                <div class="row" id="courseList">
+                    {% for corso in courses %}
+                        <div class="col-md-4 mb-4 course-item" data-corso="{{ corso.nome | lower }}" data-docente="{{ corso.docente | lower }}">
+                            <div class="card text-center corso-card" style="border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);" data-bs-toggle="modal" data-bs-target="#corsoModal{{ corso.id }}">
+                                <div class="card-body">
+                                    <h4 class="card-title display-6">{{ corso.nome }}</h4>
+                                    <p class="card-text lead">Docente: {{ corso.docente }}</p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Modal -->
+                        <div class="modal fade" id="corsoModal{{ corso.id }}" tabindex="-1" aria-labelledby="corsoModalLabel{{ corso.id }}" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="corsoModalLabel{{ corso.id }}">{{ corso.nome }}</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Inizio: {{ corso.inizio.strftime('%d %B %Y') }}<br>
+                                        {{ corso.programma|replace('\n', '<br>')|safe }}<br><br>
+                                        <span class="corso_desc">Si tiene {{ corso.giorno }} per {{ corso.lezioni }} lezioni<br>
+                                        Contributo per l'iscrizione: {{ corso.prezzo }}€ + {{ corso.tessera }}€ per la tessera</span><br><br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        // Funzione di filtro dinamico per i corsi
+        document.getElementById("courseSearchInput").addEventListener("input", function() {
+            let filter = this.value.toLowerCase();
+            let courses = document.querySelectorAll(".course-item");
+    
+            courses.forEach(course => {
+                let courseName = course.getAttribute("data-corso");
+                let courseDocente = course.getAttribute("data-docente");
+    
+                // Mostra o nasconde i corsi in base alla corrispondenza del filtro
+                if (courseName.includes(filter) || courseDocente.includes(filter)) {
+                    course.style.display = "";
+                } else {
+                    course.style.display = "none";
+                }
+            });
+        });
+    </script>
+    {% endblock %}

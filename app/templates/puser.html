@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+    {% block title %}Prenotazioni{% endblock %}
+
+    {% block css %}
+        <link rel="stylesheet" href="/static/css/puser.css">
+    {% endblock %}
+
+    {% block content %}
+        <div class="container my-5">
+            <div class="text-center mb-4">
+                <h1 class="display-4">Panoramica Prenotazioni di {{ user.nome }}</h1>
+            </div>
+
+            <div class="reservation-grid">
+                {% for book in bookings %}
+                <div class="reservation-card" onclick="openModal('modal-{{ book.id }}')">
+                    <h2 class="course-title">{{ book.corso.nome }}</h2>
+                    <p class="course-status">Stato: <strong>{{ book.state }}</strong></p>
+                </div>
+
+                <!-- Modal per i dettagli di ogni prenotazione -->
+                <div id="modal-{{ book.id }}" class="modal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeModal('modal-{{ book.id }}')">&times;</span>
+                        <h2>{{ book.corso.nome }}</h2>
+                        <p><strong>Utente:</strong> {{ user.nome }}</p>
+                        <p><strong>Stato:</strong> {{ book.state }}</p>
+                        <p><strong>Data Prenotazione:</strong> {{ book.bdate }}</p>
+
+                        <br>
+                        {% if book.state == "Pending" %}
+                            <a href="{{ url_for('main.pconfirm', id=book.id) }}" class="btn btn-confirm">
+                                <i class="fa fa-check-circle"></i> Conferma
+                            </a>
+                        {% elif book.state == "Rejected" %}
+                            <span class="badge bg-rejected">
+                                <i class="fa fa-times-circle"></i> Rifiutata
+                            </span>
+                        {% else %}
+                            <span class="badge bg-success"><i class="fa fa-check"></i> Confermata</span>
+                        {% endif %}
+                        <br><br>
+
+                        <button class="btn btn-close" onclick="closeModal('modal-{{ book.id }}')"><i class="fa fa-solid fa-x"></i></button>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <script>
+            function openModal(id) {
+                document.getElementById(id).style.display = "block";
+            }
+
+            function closeModal(id) {
+                document.getElementById(id).style.display = "none";
+            }
+        </script>
+    {% endblock %}

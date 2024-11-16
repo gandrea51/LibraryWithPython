@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+    {% block title %}Gestione Pagamenti{% endblock %}
+
+    {% block css %}
+        <link rel="stylesheet" href="/static/css/ppayments.css">
+    {% endblock %}
+
+    {% block content %}
+        <div class="container payment-container">
+            <div class="header text-center">
+                <h1 class="display-4">Gestione Pagamenti</h1>
+                <p>Visualizza e gestisci i pagamenti delle prenotazioni.</p>
+            </div>
+
+            <div class="grid">
+                {% for payment in payments %}
+                    <div class="payment-card">
+                        <div class="payment-header">
+                            <h3 class="user-name">{{ payment.utente }}</h3>
+                            <p class="user-email">{{ payment.email }}</p>
+                        </div>
+                        <div class="payment-details">
+                            <p class="course"><strong>Corso:</strong> {{ payment.corso }}</p>
+                            <p class="price"><strong>Prezzo:</strong> €{{ payment.prezzo }}</p>
+                            <p class="membership"><strong>Tessera:</strong> €{{ payment.tessera }}</p>
+                            <p class="date"><strong>Data Prenotazione:</strong> {{ payment.data_prenotazione }}</p>
+                        </div>
+                        <div class="payment-status">
+                            <span class="status {% if payment.pagato == 'Si' %}paid{% else %}pending{% endif %}">
+                                {% if payment.pagato == 'Si' %}Pagato{% else %}Non Pagato{% endif %}
+                            </span>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            {% if payments|length == 0 %}
+                <div class="alert alert-warning text-center" role="alert">
+                    Non ci sono pagamenti registrati.
+                </div>
+            {% endif %}
+        </div>
+    {% endblock %}

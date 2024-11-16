@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+    {% block title %}Prenotazioni{% endblock %}
+
+    {% block css %}
+        <link rel="stylesheet" href="/static/css/pusers.css">
+    {% endblock %}
+
+    {% block content %}
+        <div class="container my-5">
+            <div class="text-center mb-5">
+                <h1 class="display-4">Panoramica Prenotazioni per Utente</h1>
+            </div>
+
+            <section class="users-grid">
+                <!-- Ciclo per ogni utente -->
+                {% for user in users %}
+                <div class="user-card" onclick="sendUser('{{ user.email }}')">
+                    <div class="user-header">
+                        <!-- Selezione dell'immagine dinamica -->
+                        <div class="user-photo">
+                            {% if user.genere == "M" %}
+                                <img src="{{ url_for('static', filename='images/user_' ~ (user.id % 2) ~ '.jpg') }}" alt="User Photo">
+                            {% elif user.genere == "F" %}
+                                <img src="{{ url_for('static', filename='images/utente_' ~ (user.id % 2) ~ '.jpg') }}" alt="User Photo">                                
+                            {% else %}
+                                <img src="/static/images/fluido.jpg" alt="User Photo">
+                            {% endif %}
+                        </div>
+                        <h3 class="user-name">{{ user.nome }}</h3>
+                    </div>
+                    <p class="user-email">{{ user.email }}</p>
+                    <div class="user-footer">
+                        <button class="btn btn-view">Visualizza Prenotazioni</button>
+                    </div>
+                </div>
+                {% endfor %}
+            </section>
+            
+
+            <form id="userForm" method="POST" action="/booking/user" style="display:none;">
+                <input type="hidden" name="user" id="userInput">
+            </form>
+        </div>
+
+        <script>
+            function sendUser(user) {
+                // Imposta il valore del form nascosto e lo invia
+                document.getElementById('userInput').value = user;
+                document.getElementById('userForm').submit();
+            }
+        </script>
+    {% endblock %}

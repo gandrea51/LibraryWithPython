@@ -1,0 +1,105 @@
+{% extends "layout.html" %}
+    {% block title %}Corso{% endblock %}
+    {% block css %}
+        <link rel="stylesheet" href="/static/css/bcreate.css">
+    {% endblock %}
+
+    {% block content %}
+        <div class="container">
+            <div class="row text-center mb-4">
+                <div class="col-md-12">
+                    <h1 class="display-4">Aggiungi un Nuovo Corso</h1>
+                </div>
+            </div>
+            <hr>
+
+            <form action="/course/create" method="POST" class="custom-form">
+                <!-- Nome del Corso -->
+                <div class="form-group mb-4">
+                    <label for="nome">Nome del Corso</label>
+                    <input required id="nome" class="form-control" name="nome" type="text" placeholder="Inserisci il nome del corso">
+                    <small class="form-text">Nome del corso</small>
+                </div>
+    
+                <!-- Dettagli Corso -->
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="docente">Docente</label>
+                            <input required id="docente" class="form-control" name="docente" type="text" placeholder="Nome del docente">
+                            <small class="form-text">Docente che tiene il corso</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="giorno">Giorno</label>
+                            <input required id="giorno" class="form-control" name="giorno" type="text" placeholder="Giorno del corso">
+                            <small class="form-text">Giorni in cui si tiene il corso</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="lezioni">N. Lezioni</label>
+                            <input required id="lezioni" class="form-control" name="lezioni" type="number" min="0" placeholder="Numero di lezioni">
+                            <small class="form-text">Numero di lezioni del corso</small>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Programma e Note -->
+                <div class="form-group mb-4">
+                    <label for="programma">Programma</label>
+                    <textarea id="programma" class="form-control" name="programma" rows="3" placeholder="Descrivi il programma del corso"></textarea>
+                    <small class="form-text">Programma del Corso</small>
+                </div>
+    
+                <!-- Inizio, Minimo, Massimo -->
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="inizio">Data di Inizio</label>
+                            <input required id="inizio" class="form-control" name="inizio" type="date">
+                            <small class="form-text">Data di inizio del corso</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="minimo">Minimo Iscritti</label>
+                            <input required id="minimo" class="form-control" name="minimo" type="number" min="0" placeholder="Minimo iscritti">
+                            <small class="form-text">Numero minimo di iscritti</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="massimo">Massimo Iscritti</label>
+                            <input required id="massimo" class="form-control" name="massimo" type="number" min="0" placeholder="Massimo iscritti">
+                            <small class="form-text">Numero massimo di iscritti</small>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Contributo e Tessera -->
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="prezzo">Contributo</label>
+                            <input required id="prezzo" class="form-control" name="prezzo" type="number" step="0.01" min="0" max="999.99" placeholder="Contributo per l'iscrizione">
+                            <small class="form-text">Contributo per l'iscrizione</small>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="tessera">Tessera</label>
+                            <input required id="tessera" class="form-control" name="tessera" type="number" step="0.01" min="0" max="999.99" placeholder="Importo tessera">
+                            <small class="form-text">Importo per l'emissione della tessera</small>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Pulsante di conferma -->
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Aggiungi Corso</button>
+                </div>
+            </form>
+        </div>
+    {% endblock %}

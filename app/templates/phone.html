@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-    {% block title %}Reset Email{% endblock %}
+    {% block title %}Reset Telefono{% endblock %}
     {% block css %}
         <link rel="stylesheet" href="/static/css/register.css">
     {% endblock %}
@@ -8,19 +8,19 @@
         <div class="register-wrapper d-flex align-items-center justify-content-center vh-100">
             <div class="register-card shadow-lg p-4">
                 <div class="register-header mb-4">
-                    <h2>Modifica l'email del Tuo Account</h2>
+                    <h2>Modifica il Telefono del Tuo Account</h2>
                     <p class="text-muted">Benvenuto! Inserisci le credenziali per completare l'operazione.</p>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="/email">
+                    <form method="POST" action="/phone">
                         <div class="form-group mb-3">
-                            <label for="vecchia" class="form-label">Indirizzo Email Attuale</label>
-                            <input id="vecchia" type="email" class="form-control" name="vecchia" placeholder="Inserisci la tua email attuale" required>
+                            <label for="vecchio" class="form-label">Telefono Attuale</label>
+                            <input id="vecchio" type="text" class="form-control" name="vecchio" placeholder="Inserisci il tuo telefono attuale" required>
                         </div>
 
                         <div class="form-group mb-4">
-                            <label for="nuova" class="form-label">Indirizzo Email Nuova</label>
-                            <input id="nuova" type="email" class="form-control" name="nuova" placeholder="Inserisci la tua email nuova" required>
+                            <label for="nuovo" class="form-label">Telefono Nuova</label>
+                            <input id="nuovo" type="text" class="form-control" name="nuovo" placeholder="Inserisci il tuo telefono nuova" required>
                         </div>
 
                         <div class="d-grid mb-3">

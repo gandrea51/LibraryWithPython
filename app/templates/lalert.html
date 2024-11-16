@@ -1,50 +1,52 @@
 {% extends "layout.html" %}
-{% block css %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/lalert.css') }}">
-{% endblock %}
-{% block title %}Report Prestiti Anomali{% endblock %}
+    {% block css %}
+        <link rel="stylesheet" href="/static/css/lalert.css">
+    {% endblock %}
+    {% block title %}Biblioteca{% endblock %}
 
-{% block content %}
-<div class="container report-container">
-    <h1 class="main-title">Report Prestiti Anomali</h1>
+    {% block content %}
+        <div class="container report-container">
+            <h1 class="main-title">Report Prestiti Anomali</h1>
 
-    <div class="section unusual-duration">
-        <h2 class="section-title">Durata Insolita dei Prestiti</h2>
-        <div class="section-content">
-            {% if unusual_duration_loans %}
-                {% for loan in unusual_duration_loans %}
-                    <div class="loan-item">
-                        <h5 class="loan-id">Prestito ID: {{ loan.id }}</h5>
-                        <p><strong>Libro:</strong> {{ loan.libro.titolo }}</p>
-                        <p><strong>Utente:</strong> {{ loan.user.nome }}</p>
-                        <p><strong>Data Inizio:</strong> {{ loan.uscita.strftime('%Y-%m-%d') }}</p>
-                        <p><strong>Data Scadenza:</strong> {{ loan.rientro.strftime('%Y-%m-%d') }}</p>
-                        <p><strong>Durata:</strong> {{ (loan.rientro - loan.uscita).days }} giorni</p>
+            <div class="sections-container">
+                <div class="section unusual-duration">
+                    <h2 class="section-title">Durata Insolita dei Prestiti</h2>
+                    <div class="cards-container">
+                        {% if unusual_duration_loans %}
+                            {% for loan in unusual_duration_loans %}
+                                <div class="loan-card">
+                                    <h5 class="loan-id">Prestito ID: {{ loan.id }}</h5>
+                                    <p><strong>Libro:</strong> {{ loan.libro.titolo }}</p>
+                                    <p><strong>Utente:</strong> {{ loan.user.nome }}</p>
+                                    <p><strong>Data Inizio:</strong> {{ loan.uscita.strftime('%Y-%m-%d') }}</p>
+                                    <p><strong>Data Scadenza:</strong> {{ loan.rientro.strftime('%Y-%m-%d') }}</p>
+                                    <p><strong>Durata:</strong> {{ (loan.rientro - loan.uscita).days }} giorni</p>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <p class="no-data">Nessun prestito con durata insolita trovato.</p>
+                        {% endif %}
                     </div>
-                {% endfor %}
-            {% else %}
-                <p class="no-data">Nessun prestito con durata insolita trovato.</p>
-            {% endif %}
-        </div>
-    </div>
+                </div>
 
-    <div class="section overdue-loans">
-        <h2 class="section-title">Prestiti Non Restituiti</h2>
-        <div class="section-content">
-            {% if overdue_loans %}
-                {% for loan in overdue_loans %}
-                    <div class="loan-item overdue">
-                        <h5 class="loan-id">Prestito ID: {{ loan.id }}</h5>
-                        <p><strong>Libro:</strong> {{ loan.libro.titolo }}</p>
-                        <p><strong>Utente:</strong> {{ loan.user.nome }}</p>
-                        <p><strong>Data Inizio:</strong> {{ loan.uscita.strftime('%Y-%m-%d') }}</p>
-                        <p><strong>Data Scadenza:</strong> {{ loan.rientro.strftime('%Y-%m-%d') }}</p>
+                <div class="section overdue-loans">
+                    <h2 class="section-title">Prestiti Non Restituiti</h2>
+                    <div class="cards-container">
+                        {% if overdue_loans %}
+                            {% for loan in overdue_loans %}
+                                <div class="loan-card overdue">
+                                    <h5 class="loan-id">Prestito ID: {{ loan.id }}</h5>
+                                    <p><strong>Libro:</strong> {{ loan.libro.titolo }}</p>
+                                    <p><strong>Utente:</strong> {{ loan.user.nome }}</p>
+                                    <p><strong>Data Inizio:</strong> {{ loan.uscita.strftime('%Y-%m-%d') }}</p>
+                                    <p><strong>Data Scadenza:</strong> {{ loan.rientro.strftime('%Y-%m-%d') }}</p>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <p class="no-data">Nessun prestito non restituito trovato.</p>
+                        {% endif %}
                     </div>
-                {% endfor %}
-            {% else %}
-                <p class="no-data">Nessun prestito non restituito trovato.</p>
-            {% endif %}
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-{% endblock %}
+    {% endblock %}

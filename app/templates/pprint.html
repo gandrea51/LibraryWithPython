@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Prenotazioni</title>       
+        <style>
+            body{
+                text-align: center;
+                font-size: larger;
+            }
+        </style>      
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Le mie prenotazioni</h1>
+                </div>
+            </div>
+            <br><hr><br>
+            {% for booking in bookings %}
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>{{booking.corso.nome}}</h3><br>
+                        <p>Stato prenotazione: {{"Pagamento in attesa" if booking.state == "Pending" else "Confermato"}}</p>
+                        <p>Data prenotazione: {{booking.bdate.strftime('%d/%m/%Y')}}</p>
+                        <p>
+                            {% if booking.state == "Pending" %}
+                                <strong>Stato: </strong> Prenotazione in attesa di pagamento. Richiedi le informazioni di pagamento, per non perdere il posto.
+                            {% else %}
+                                <strong>Stato: </strong> Iscritto. Ti aspettiamo per iniziare questa esperienza formativa. Se hai bisogno di ulteriori informazioni, non esitare a contattarci.<br>
+                                Ricorda, il corso inizia il {{booking.corso.inizio.strftime('%d/%m/%Y')}}, e continua i {{booking.corso.giorno}}
+                            {% endif %}
+                        </p><br><hr><br>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </body>
+</html>

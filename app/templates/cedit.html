@@ -1,0 +1,141 @@
+{% extends "layout.html" %}
+    {% block title %}Corso{% endblock %}
+    {% block css %}
+        <link rel="stylesheet" href="/static/css/bcreate.css">
+    {% endblock %}
+
+    {% block content %}
+        <div class="container">
+            <div class="row text-center mb-4">
+                <div class="col-md-12">
+                    <h1 class="display-4">{{ course.nome }}</h1>
+                </div>
+            </div>
+            <hr>
+
+            <!-- Modulo -->
+            <form action="{{ url_for('main.cedit', id=course.id) }}" method="POST" class="custom-form">
+                <!-- Nome -->
+                <div class="form-group mb-4">
+                    <label for="nome">Nome</label>
+                    <input id="nome" name="nome" class="form-control" value="{{ course.nome }}" type="text" required>
+                    <small class="form-text">Nome del corso</small>
+                </div>
+
+                <!-- Programma -->
+                <div class="form-group mb-4">
+                    <label for="programma">Programma</label>
+                    <textarea id="programma" name="programma" class="form-control" rows="4" required>{{ course.programma }}</textarea>
+                    <small class="form-text">Programma del Corso</small>
+                </div>
+                <hr>
+
+                <!-- Docente, Giorno, Lezioni -->
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="docente">Docente</label>
+                            <input id="docente" name="docente" class="form-control" value="{{ course.docente }}" type="text" required>
+                            <small class="form-text">Docente che tiene il corso</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="giorno">Giorno</label>
+                            <input id="giorno" name="giorno" class="form-control" value="{{ course.giorno }}" type="text" required>
+                            <small class="form-text">Giorni in cui si tiene il corso</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="lezioni">Lezioni</label>
+                            <input id="lezioni" name="lezioni" class="form-control" value="{{ course.lezioni }}" type="number" min="0" required>
+                            <small class="form-text">N. di lezioni del corso</small>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+
+                <!-- Note -->
+                <div class="form-group mb-4">
+                    <label for="note">Note</label>
+                    <textarea id="note" name="note" class="form-control" rows="2">{{ course.note }}</textarea>
+                    <small class="form-text">Note sul corso</small>
+                </div>
+                <hr>
+
+                <!-- Inizio, N. minimo, N. massimo -->
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="inizio">Data di Inizio</label>
+                            <input id="inizio" name="inizio" class="form-control" value="{{ course.inizio }}" type="date" required>
+                            <small class="form-text">Data di inizio corso</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="minimo">Minimo Iscritti</label>
+                            <input id="minimo" name="minimo" class="form-control" value="{{ course.minimo }}" type="number" min="0" required>
+                            <small class="form-text">N. minimo di iscritti</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="massimo">Massimo Iscritti</label>
+                            <input id="massimo" name="massimo" class="form-control" value="{{ course.massimo }}" type="number" min="0" required>
+                            <small class="form-text">N. massimo di iscritti</small>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+
+                <!-- Contributo, Tessera, Prenotazioni, Iscrizioni -->
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="prezzp">Contributo</label>
+                            <input id="prezzo" name="prezzo" class="form-control" value="{{ course.prezzo }}" type="number" step="0.01" min="0" max="999.99" required>
+                            <small class="form-text">Contributo per l'iscrizione</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="tessera">Tessera</label>
+                            <input id="tessera" name="tessera" class="form-control" value="{{ course.tessera }}" type="number" step="0.01" min="0" max="999.99" required>
+                            <small class="form-text">Importo per l'emissione della tessera</small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="prenotazioni">Prenotazioni</label>
+                            <input id="prenotazioni" name="prenotazioni" class="form-control" value="{{ course.prenotazioni }}" type="number" min="0" required>
+                            <small class="form-text">N. di prenotazioni</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="iscrizioni">Iscrizioni</label>
+                            <input id="iscrizioni" name="iscrizioni" class="form-control" value="{{ course.iscrizioni }}" type="number" min="0" required>
+                            <small class="form-text">N. di iscrizioni</small>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="viste">Viste</label>
+                            <input id="viste" class="form-control" name="viste" type="number" value="{{ course.viste }}" placeholder="Viste del libro" required>
+                            <small class="form-text">Viste del libro</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modifica -->
+                <div class="text-center mb-4">
+                    <button type="submit" class="btn btn-warning">Modifica</button>
+                </div>
+            </form>
+        </div>
+    {% endblock %}

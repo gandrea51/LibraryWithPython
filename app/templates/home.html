@@ -2,150 +2,181 @@
 <html lang="it">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Web application for the Centro Acquedotto of Ferrara.">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="author" content="Andrea Gabrieli jr.">
+        <meta name="description" content="Web application for Centro Acquedotto of Ferrara">
+        <meta name="robots" content="index, follow">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta property="og:title" content="APS Ferrara">
+        <meta property="og:description" content="Web application for Centro Acquedotto of Ferrara">
+        <meta property="og:type" content="website">
+        <meta name="twitter:card" content="APS Ferrara">
+        <meta name="twitter:title" content="APS Ferrara">
+        <meta name="twitter:description" content="Web application for Centro Acquedotto of Ferrara">
 
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;500;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">  
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui/1.12.1/jquery-ui.min.css"> 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
 
-        <title>Library</title>    
-        <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/icon.png') }}">  
+        <title>Dashboard - ANCeSCAO</title>
+        <link rel="icon" type="image/png" href="/static/images/logo.png">
     </head>
-    <body class="container text-center">
-        <section class="top-bar">
-            <div class="branding">
-                <h1>Aqueduct Centre</h1>
-            </div>
+    <body class="bg-light">
 
-            <button class="btn btn-primary d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu">
-                <i class="fa fa-bars"></i> Menu
-            </button>
-        
-            <div class="offcanvas offcanvas-start d-md-none" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasMenuLabel">Menu</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <!-- Navbar with Offcanvas for mobile -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+            <section class="container">
+                <a class="navbar-brand d-flex align-items-center">
+                    <img src="/static/images/logo.png" alt="Logo" width="40" height="40" loading="lazy">
+                    ANCeSCAO
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">ANCeSCAO</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{{ url_for('main.uprofile', id=current_user.id) }}"><i class="fa fa-solid fa-user-gear"></i> My Profile</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/book"><i class="fa fa-solid fa-book"></i> Libri</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/course"><i class="fa fa-solid fa-graduation-cap"></i> Corsi</a>
+                            </li>
+                            {% if user.ruolo == "Manager" %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/loan"><i class="fa fa-folder"></i> Prestiti</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/booking"><i class="fa fa-solid fa-calendar-days"></i> Prenotazioni</a>
+                                </li>
+                            {% endif %}                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/doc"><i class="fa fa-solid fa-pen-clip"></i> Contatti</a>
+                            </li>  
+                            <li class="nav-item">
+                                <a class="nav-link" href="/message"><i class="fa fa-envelope"></i> Messaggi</a>
+                            </li>                            
+                            <li>
+                                <a class="nav-link" href="/logout"><i class="fa fa-sign-out"></i> Logout</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="offcanvas-body">
-                    <ul>
-                        <li><a href="{{ url_for('main.uprofile', id=current_user.id) }}"><i class="fa fa-solid fa-user"></i> My Profile</a></li>                    
-                        <li><a href="/doc"><i class="fa fa-question-circle"></i> Info</a></li>
-                        <li><a href="/book"><i class="fa fa-book"></i> Books</a></li>
-                        <li><a href="/course"><i class="fa fa-graduation-cap"></i> Courses</a></li>
-                        {% if current_user.ruolo == "Amministratore" %}
-                        <li><a href="/loan"><i class="fa fa-folder"></i> Loans</a></li>
-                        <li><a href="/booking"><i class="fa fa-calendar-check-o"></i> Bookings</a></li>
-                        {% endif %}
-                        <li><a href="/logout"><i class="fa fa-sign-out"></i> Logout</a></li>
-                    </ul>
-                </div>
-            </div>
+            </section>
+        </nav>
 
-            <nav class="menu d-none d-md-block">
-                <ul>
-                    <li><a href="{{ url_for('main.uprofile', id=current_user.id) }}"><i class="fa fa-solid fa-user"></i> My Profile</a></li>                    
-                    <li><a href="/doc"><i class="fa fa-question-circle"></i> Info</a></li>
-                    <li><a href="/book"><i class="fa fa-book"></i> Books</a></li>
-                    <li><a href="/course"><i class="fa fa-graduation-cap"></i> Courses</a></li>
-                    {% if current_user.ruolo == "Amministratore" %}
-                    <li><a href="/loan"><i class="fa fa-folder"></i> Loans</a></li>
-                    <li><a href="/booking"><i class="fa fa-calendar-check-o"></i> Bookings</a></li>
-                    {% endif %}
-                    <li><a href="/logout"><i class="fa fa-sign-out"></i> Logout</a></li>
-                </ul>
-            </nav>
-        </section>
-
-
-        <header class="hero-section">
-            <div class="hero-image">
-                <img src="{{ url_for('static', filename='images/title.jpg') }}" alt="Title image">
-            </div>
-            <div class="hero-text">
-                <h2>Welcome to the Aqueduct Centre</h2> 
-                <p>Discover our courses and our library!</p>
+        <!-- Dashboard Header -->
+        <header class="bg-primary text-white text-center py-4">
+            <div class="container">
+                <h1 class="display-5">Welcome, {{ user.nome }}</h1>
+                <p class="lead">Siamo felici di averti con noi! Esplora i nostri servizi per arricchire la tua cultura.</p>
             </div>
         </header>
-    
-        <section class="welcome-section">
-            <div class="welcome-message">
-                <h3>Welcome, {{ current_user.nome }}!</h3>
-                <p>You are now one of us! Looking for a course to improve your personal culture or deepen some technique? 
-                   Or can’t imagine your life without books and want to have one on the nightstand for 365 days a year? 
-                   Continue browsing and discover our proposals.</p>
+
+        <!-- Main Content Area -->
+        <div class="container mt-5">
+
+            <!-- Dashboard Overview -->
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="card p-4 shadow-sm bg-white">
+                        <h3 class="card-title">Il Tuo Profilo</h3>
+                        <p class="card-text">
+                            <strong>Email:</strong> {{ user.email }}<br>
+                            <strong>Ruolo:</strong> {{ user.ruolo }}
+                        </p>
+                        <a href="/logout" class="btn btn-outline-danger mt-3"><i class="fa fa-solid fa-right-from-bracket"></i> Logout</a>
+                    </div>
+                </div>
             </div>
-            <p class="contact-info">
-                For further information: <a href="https://forms.gle/CxCMDByTULSW4Nsn8" target="_blank">contact request</a>
-            </p>
-        </section>
-        
-        <section class="welcome-section">
-            <div class="welcome-message">
-                <h3>Discover Our Library</h3>
-                <p>Our library is the result of years of donations and the passion of our collaborators, giving a second chance to titles that seemed to have said it all. 
-                   With a careful cataloging distinguished by genre and author, browse our catalog or do a free search, and be inspired by our book of the month.</p>
+
+            <!-- Services Section -->
+            <div class="row text-center mt-5">
+                
+                    <!-- Biblioteca -->
+                <div class="col-lg-6 col-md-6 mb-4">
+                    <a href="/book" class="libri">
+                        <div class="card shadow-sm border-0">
+                            <div class="card-body">
+                                <i class="fas fa-book fa-3x text-primary mb-3"></i>
+                                <h5 class="card-title">Biblioteca</h5>
+                                <p class="card-text">Scopri i nostri libri e fai una prenotazione per ritirarne uno.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Corsi -->
+                <div class="col-lg-6 col-md-6 mb-4">
+                    <a href="/course" class="corsi">
+                        <div class="card shadow-sm border-0">
+                            <div class="card-body">
+                                <i class="fas fa-graduation-cap fa-3x text-success mb-3"></i>
+                                <h5 class="card-title">Corsi</h5>
+                                <p class="card-text">Partecipa ai nostri corsi e prenota la tua prossima lezione.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             </div>
-            <p class="contact-info">
-                {% if current_user.ruolo == "Amministratore" %}
-                For further information visit our <a href="/book">books</a> and <a href="/loan">borrow</a> one.
-                {% else %}
-                For further information visit our <a href="/book">books</a> and borrow one.
-                {% endif %}
-            </p>
-        </section>
-        
-        <section class="welcome-section">
-            <div class="welcome-message">
-                <h3>Enhance Your Skills with Our Courses</h3>
-                <p>The Aqueduct Centre has as its main mission the social and cultural promotion. For years, we have offered short training courses taught by qualified professionals, 
-                   useful for improving your knowledge or introducing you to computer science, photography, and finance. Attention, places are limited! 
-                   Scroll down the program and book your seat.</p>
+
+            {% if user.ruolo == "Manager" %}
+            <div class="row text-center mt-5">
+                <div class="col-lg-4 col-md-4 mb-4"></div>
+                <!-- Utenti (solo per manager) -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <a href="/user" class="utenti">
+                        <div class="card shadow-sm border-0">
+                            <div class="card-body">
+                                <i class="fas fa-users fa-3x text-warning mb-3"></i>
+                                <h5 class="card-title">Gestione Utenti</h5>
+                                <p class="card-text">Amministra gli utenti registrati, controlla i prestiti e le prenotazioni.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-4 mb-4"></div>
             </div>
-            <p class="contact-info">
-                {% if current_user.ruolo == "Amministratore" %}
-                For further information visit our <a href="/course">courses</a> and <a href="/booking">book</a> one of them.
-                {% else %}
-                For further information visit our <a href="/course">courses</a> and book one of them.
-                {% endif %}
-            </p>
-        </section>
-        
-        {% if current_user.ruolo == "Amministratore" %}
-        <section class="welcome-section">
-            <div class="welcome-message">
-                <h3>User Hub</h3>
-                <p>The User Hub is dedicated to fostering a vibrant community focused on personal growth and skill development. 
-                   We provide a range of interactive workshops led by experienced professionals, designed to enhance your expertise or introduce you to new fields such as digital marketing, graphic design, and entrepreneurship. 
-                   Don't miss out—spaces are limited! Explore our upcoming events below and secure your spot today.</p>
+            {% endif %}
+
+            <!-- Contact Info Section -->
+            <div class="row justify-content-center mt-5">
+                <div class="col-lg-8 text-center">
+                    <a href="https://forms.gle/CxCMDByTULSW4Nsn8" class="contatto" target="_blank">
+                        <div class="card p-4 shadow-sm bg-white">
+                            <h3 class="card-title">Hai domande?</h3>
+                            <p class="card-text">Se hai bisogno di ulteriori informazioni o assistenza, non esitare a contattarci!</p>
+                        </div>
+                    </a>
+                </div>
             </div>
-            <p class="contact-info">
-                For further information visit all the <a href="/user">users</a>.
-            </p>
-        </section>
-        {% endif %}
-           
-    
-        <footer>
-            <div class="footer-content">
-                <p>© 2024 Aqueduct Centre of Ferrara</p>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center py-4 mt-5 bg-dark text-white">
+            <div class="container">
+                <p class="mb-0">© 2024 Centro Acquedotto APS ANCeSCAO</p>
+                <div class="social-media mt-3">
+                    <a href="https://www.facebook.com/centro.acquedotto/?locale=it_IT" target="_blank" class="text-white me-3"><i class="fab fa-facebook fa-lg"></i></a>
+                    <a href="https://x.com/CAcquedotto" target="_blank" class="text-white me-3"><i class="fab fa-twitter fa-lg"></i></a>
+                    <a href="https://it.linkedin.com/in/cpsacquedottofe" target="_blank" class="text-white me-3"><i class="fab fa-linkedin fa-lg"></i></a>
+                    <a href="https://www.instagram.com/cps.acquedotto/" target="_blank" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                    <a href="https://www.youtube.com/@centroacquedottocorsoisonz1405" target="_blank" class="text-white"><i class="fab fa-youtube fa-lg"></i></a>
                 </div>
             </div>
         </footer>
 
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
     </body>
-    
-    
 </html>

@@ -1,26 +1,42 @@
 {% extends "layout.html" %}
-{% block css %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
-{% endblock %}
-{% block title %}Login{% endblock %}
+    {% block title %}Login{% endblock %}
 
-{% block content %}
-<div class="login-container">
-    <h1 class="login-title">Login</h1>
-    <form method="post" action="/login" class="login-form">
-        <div class="form-group">
-            <label for="email" class="form-label">Indirizzo Mail</label>
-            <input id="email" type="email" class="form-input" name="email" required>
-        </div>
+    {% block css %}
+        <link rel="stylesheet" href="/static/css/register.css">
+    {% endblock %}
 
-        <div class="form-group">
-            <label for="password" class="form-label">Password</label>
-            <input id="password" type="password" class="form-input" name="password" required>
-        </div>
+    {% block content %}
+        <div class="register-wrapper d-flex align-items-center justify-content-center vh-100">
+            <div class="register-card shadow-lg p-4">
+                <div class="register-header mb-4">
+                    <h2>Accedi al Tuo Account</h2>
+                    <p class="text-muted">Benvenuto! Inserisci le tue credenziali per accedere.</p>
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="/login">
+                        <div class="form-group mb-3">
+                            <label for="email" class="form-label">Indirizzo Email</label>
+                            <input id="email" type="email" class="form-control" name="email" placeholder="Inserisci la tua email" required>
+                        </div>
 
-        <div class="form-group">
-            <input type="submit" class="btn btn-submit" value="Login">
+                        <div class="form-group mb-4">
+                            <label for="password" class="form-label">Password</label>
+                            <input id="password" type="password" class="form-control" name="password" placeholder="Inserisci la tua password" required>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <a href="/password" class="text-primary">Password dimenticata?</a>
+                        </div>
+
+                        <div class="d-grid mb-3">
+                            <input type="submit" class="btn btn-primary btn-block" value="Accedi">
+                        </div>
+                    </form>
+
+                    <div class="mt-4">
+                        <p class="text-muted">Non hai un account? <a href="/register" class="text-primary">Registrati</a></p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </form>
-</div>
-{% endblock %}
+    {% endblock %}

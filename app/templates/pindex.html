@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+    {% block title %}Corsi{% endblock %}
+    {% block css %}
+        <link rel="stylesheet" href="/static/css/pindex.css">
+    {% endblock %}
+
+    {% block content %}
+        <div class="content-wrapper">
+            <!-- Messaggi di notifica -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }} flash-message">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            
+            <!-- Titolo principale -->
+            <section class="intro-section">
+                <h1 class="main-title">Panoramica delle Prenotazioni ai Corsi</h1>
+                <p class="main-description">
+                    Scopri tutte le prenotazioni attive per i corsi offerti. Gestisci le prenotazioni con facilità e accedi ai dettagli degli utenti, ai corsi prenotati e agli stati delle prenotazioni.
+                </p>
+            </section>
+
+            <!-- Sezione navigazione prenotazioni -->
+            <section class="reservation-overview">
+                <h2 class="text-center">Navigazione Prenotazioni</h2>
+                <div class="reservation-grid">
+                    <a href="/booking/list" class="reservation-item" id="details">
+                        <h2>Dettagli Prenotazione</h2>
+                        <p>Accedi a tutti i dettagli delle prenotazioni specifiche.</p>
+                    </a>
+                    <a href="/booking/users" class="reservation-item" id="user">
+                        <h2>Prenotazioni per Utente</h2>
+                        <p>Visualizza le prenotazioni per ciascun utente.</p>
+                    </a>
+                    <a href="/booking/stats" class="reservation-item" id="stats">
+                        <h2>Statistiche Prenotazioni</h2>
+                        <p>Visualizza statistiche dettagliate su tutte le prenotazioni.</p>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Sezione gestione prenotazioni -->
+            <section class="management-section">
+                <h2 class="text-center">Gestione Prenotazioni</h2>
+                <div class="management-grid">
+                    <a href="/booking/payments" class="management-item" id="manage-payments">
+                        <h2>Gestione Pagamenti</h2>
+                        <p>Monitora e gestisci i pagamenti associati alle prenotazioni.</p>
+                    </a>
+                    <a href="/booking/pending" class="management-item" id="manage-payments">
+                        <h2>Prenotazioni in Attesa</h2>
+                        <p>Visualizza le prenotazioni che sono in attesa di conferma o rifiuto.</p>
+                    </a>
+                </div>
+            </section>
+        </div>
+    {% endblock %}

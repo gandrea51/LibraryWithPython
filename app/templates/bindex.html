@@ -1,115 +1,318 @@
 {% extends "layout.html" %}
-{% block css %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bindex.css') }}">
-{% endblock %}
-{% block title %}Book{% endblock %}
+    {% block title %}Biblioteca{% endblock %}
 
-{% block content %}
-    <div class="container my-5">
-        <header class="page-header">
-            <h1 class="bh">Browse the Books</h1>
-        </header>
+    {% block css %}
+        <link rel="stylesheet" href="/static/css/bindex.css">
+    {% endblock %}
 
-        {% if current_user.ruolo == "Amministratore" %}
-        <section>
-            <a href="/book/create" class="custom-btn">
-                <i class="fa fa-solid fa-book-open"></i> Add new book
-                <span class="notification-badge">
-                    <span class="visually-hidden">Nuove notifiche</span>
-                </span>
-            </a>
-            <br>
-        </section>
-        {% endif %}        
-
-        <section class="search-section">
-            <div class="search-box">
-                <h2 class="bh">Search by Title</h2>
-                <form action="/book/search/titolo" method="POST">
-                    <input type="text" name="titolo" placeholder="Enter book title" required>
-                    <button type="submit"><i class="fas fa-search"></i> Search</button>
-                </form>
-            </div>
-
-            <div class="search-box">
-                <h2 class="bh">Search by Author</h2>
-                <form action="/book/search/autore" method="POST">
-                    <input type="text" name="autore" placeholder="Enter author name" required>
-                    <button type="submit"><i class="fas fa-search"></i> Search</button>
-                </form>
-            </div>
-
-            <div class="search-box">
-                <h2 class="bh">Search by Genre</h2>
-                <form action="/book/search/genere" method="POST">
-                    <input type="text" name="genere" placeholder="Enter book genre" required>
-                    <button type="submit"><i class="fas fa-search"></i> Search</button>
-                </form>
-            </div>
-        </section>
-
-        {% if month %}
-        <div class="book-of-the-month-container mb-5">
-            <div class="book-card">
-                <div class="book-image">
-                    <img src="{{ url_for('static', filename='images/libro.jpg') }}" alt="Immagine del libro" class="img-fluid" />
-                </div>
-                <div class="book-details">
-                    <h5 class="card-title display-6">📚 Book of the Month</h5>
-                    <p class="card-text">The book of this month is {{ month.titolo }}<br>
-                        Discover the reading group today <a href="/group">here</a>
-                    </p>
+    {% block content %}
+        <div class="library-wrapper container my-5">
+            <!-- Intestazione Principale con immagine di sfondo -->
+            <div class="header-section mb-5 position-relative">
+                <!-- Immagine di sfondo -->
+                <img src="/static/images/bnull.jpg" alt="Biblioteca" class="header-image img-fluid" style="max-height: 450px;">
+                
+                <!-- Testo sovrapposto -->
+                <div class="overlay position-absolute top-50 start-50 translate-middle text-white">
+                    <h1 class="header-title">Esplora la Nostra Biblioteca</h1>
+                    <p class="header-subtitle">Scopri nuovi libri e lasciati ispirare dalle nostre collezioni.</p>
                 </div>
             </div>
-        </div>
-        {% endif %}
 
-
-        <section class="stats-section">
-            <div class="stats-container">
-                <h3>Library Stats</h3>
-                <p>Total Books: {{ stats.tbooks }}</p>
-                <p>Total Views: {{ stats.tviews }}</p>
-                <p>Total Downloads: {{ stats.tdowns }}</p>
-            </div>
-
-            <div class="most-viewed">
-                <h3 class="bh">Most Viewed Books</h3>
-                <ul>
-                    {% for book in stats.mbooks %}
-                    <strong>{{ book.titolo }}</strong>, {{ book.autore }} ({{ book.viste }} view)<br>
-                    {% endfor %}
-                </ul>
-            </div>
-        </section>
-
-        <section class="row">
-            <div class="accordion-container">
-                <!-- Ciclo per ogni genere -->
-                {% for genere, count in genres %}
-                <div class="accordion-item">
-                    
-                    <div class="accordion-header" onclick="sendGenre('{{ genere }}')">
-                        {{ genere }} ({{ count }})
+            {% if current_user.ruolo == "Manager" %}
+                <section class="area-manager text-center">
+                    <div class="container">
+                        <h2 class="display-4">Benvenuto nella tua Area Manager</h2>
+                        <p class="lead">
+                            Questa è l'area dedicata alle operazioni manageriali sui libri. Qui puoi gestire, modificare e monitorare tutti i titoli disponibili nel sistema. 
+                            Per favore, utilizza il pulsante sottostante per accedere a tutte le funzioni disponibili.
+                        </p>
+                        <a href="/book/manager" class="btn btn-primary btn-lg">
+                            Apri Area Manager
+                        </a>
                     </div>
-                    
-                </div>
-                {% endfor %}
-            </div>
+                </section>
+            {% endif %}
 
-            <form id="genreForm" method="POST" action="/book/genere" style="display:none;">
-                <input type="hidden" name="genere" id="genereInput">
-            </form>
-        </section>
+
+            <section class="search-section">
+                <div class="container">
+                    <h2 class="text-center display-4 mb-4">Cerca un Libro</h2>
+                    
+                    <!-- Tab per selezionare il tipo di ricerca -->
+                    <div class="search-tabs">
+                        <button class="tab-button active" onclick="openSearchForm('title')">Cerca per Titolo</button>
+                        <button class="tab-button" onclick="openSearchForm('author')">Cerca per Autore</button>
+                        <button class="tab-button" onclick="openSearchForm('genre')">Cerca per Genere</button>
+                    </div>
+            
+                    <!-- Form per la ricerca per Titolo -->
+                    <div id="search-title" class="search-form active">
+                        <h3>Cerca per Titolo</h3>
+                        <form action="/book/search/titolo" method="POST">
+                            <input type="text" name="titolo" placeholder="Inserisci il titolo del libro" required>
+                            <button type="submit"><i class="fas fa-search"></i> Cerca</button>
+                        </form>
+                    </div>
+            
+                    <!-- Form per la ricerca per Autore -->
+                    <div id="search-author" class="search-form">
+                        <h3>Cerca per Autore</h3>
+                        <form action="/book/search/autore" method="POST">
+                            <input type="text" name="autore" placeholder="Inserisci il nome dell'autore" required>
+                            <button type="submit"><i class="fas fa-search"></i> Cerca</button>
+                        </form>
+                    </div>
+            
+                    <!-- Form per la ricerca per Genere -->
+                    <div id="search-genre" class="search-form">
+                        <h3>Cerca per Genere</h3>
+                        <form action="/book/search/genere" method="POST">
+                            <input type="text" name="genere" placeholder="Inserisci il genere del libro" required>
+                            <button type="submit"><i class="fas fa-search"></i> Cerca</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+            
+            <br><br>
+            
+            <!-- Libro del Mese con Offcanvas -->
+            {% if month %}
+                <section class="featured-book py-5 bg-light">
+                    <div class="container">
+                        <h2 class="display-4 text-center mb-5">Libro del Mese</h2>
+                
+                        <!-- Selezione della tipologia di libro del mese -->
+                        <div class="row justify-content-center mb-4">
+                            <div class="col-lg-8 text-center">
+                                <div class="book-type-tabs">
+                                    <button class="tab-button active" onclick="openBookType('featured')">In Evidenza</button>
+                                    <button class="tab-button" onclick="openBookType('classic')">Classico del Mese</button>
+                                    <button class="tab-button" onclick="openBookType('newrelease')">Nuova Uscita</button>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <!-- Schede del libro del mese -->
+                        <div id="featured-book" class="book-card active">
+                            <div class="row align-items-center">
+                                <div class="col-md-6">
+                                    <img src="/static/images/featuredbook.jpg" class="img-fluid rounded shadow" alt="Libro In Evidenza">
+                                </div>
+                                <div class="col-md-6">
+                                    <h3>{{ month.titolo }}</h3>
+                                    <p class="lead">Scelto per la sua qualità narrativa e l'impatto culturale, questo è il libro in evidenza per il mese.</p>
+                                    <button class="btn btn-dark" data-bs-toggle="offcanvas" data-bs-target="#bookOfMonthCanvas" aria-controls="bookOfMonthCanvas">
+                                        Scopri di Più
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div id="classic-book" class="book-card">
+                            <div class="row align-items-center">
+                                <div class="col-md-6">
+                                    <img src="/static/images/classicbook.jpg" class="img-fluid rounded shadow" alt="Classico del Mese">
+                                </div>
+                                <div class="col-md-6">
+                                    <h3>{{ month.titolo }}</h3>
+                                    <p class="lead">Questo classico ha superato la prova del tempo, offrendo una lettura senza tempo.</p>
+                                    <button class="btn btn-dark" data-bs-toggle="offcanvas" data-bs-target="#bookOfMonthCanvas" aria-controls="bookOfMonthCanvas">
+                                        Scopri di Più
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div id="newrelease-book" class="book-card">
+                            <div class="row align-items-center">
+                                <div class="col-md-6">
+                                    <img src="/static/images/newreleasebook.jpg" class="img-fluid rounded shadow" alt="Nuova Uscita del Mese">
+                                </div>
+                                <div class="col-md-6">
+                                    <h3>{{ month.titolo }}</h3>
+                                    <p class="lead">La novità del mese, fresca di stampa e pronta per essere scoperta.</p>
+                                    <button class="btn btn-dark" data-bs-toggle="offcanvas" data-bs-target="#bookOfMonthCanvas" aria-controls="bookOfMonthCanvas">
+                                        Scopri di Più
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Offcanvas: Dettagli del Libro del Mese -->
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="bookOfMonthCanvas" aria-labelledby="bookOfMonthCanvasLabel">
+                    <div class="offcanvas-header">
+                        <h5 id="bookOfMonthCanvasLabel">Dettagli Libro del Mese</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <!-- Dettagli del libro in evidenza -->
+                        <p><strong>Autore:</strong> {{ month.autore }}</p>
+                        <p><strong>Genere:</strong> {{ month.genere }}</p>
+                        <p><strong>Pubblicato il:</strong> {{ month.anno }}</p>
+
+                        <p>
+                            {% if month.copie >= 2 %}
+                                <p class="loan-status available stats">
+                                    Ci sono ancora <span class="copies">{{ month.copie }}</span> copie di questo libro.<br>
+                                    <strong>Prendilo in prestito!</strong>
+                                </p>
+                                <a type="button" class="btn btn-custom loan-button bstats" href="/loan/create">
+                                    <i class="fas fa-book-open"></i> Nuovo prestito
+                                </a>
+                                
+                            {% elif month.copie == 1 %}
+                                <p class="loan-status limited stats">
+                                    È rimasta soltanto <span class="copies">una</span> copia di questo libro.<br>
+                                    <strong>Prendilo in prestito, ora!</strong>
+                                </p>
+                                <a type="button" class="btn btn-custom loan-button bstats" href="/loan/create">
+                                    <i class="fas fa-book-open"></i> Nuovo prestito
+                                </a>
+                                
+                            {% else %}
+                                <p class="loan-status unavailable stats">
+                                    Attualmente non vi sono copie disponibili per il prestito.<br><br>
+                                    Il libro ritornerà disponibile il: <strong>{{ends[month.id]}}</strong>
+                                </p>
+                            {% endif %}
+                        </p>
+
+                        <p class="group"><strong>Vieni a scoprire il gruppo di lettura!</strong></p>
+                        <a href="/group" class="reading-grup"><i class="fa fa-solid fa-magnifying-glass"></i> Scopri di più</a>
+
+                        <br><br>
+                        <p class="scheda"><strong>Scarica la scheda del libro!</strong></p>
+                        <a href="{{ url_for('main.bdownload', id=month.id) }}" class="dscheda"><i class="fa fa-solid fa-download"></i> Scarica ora</a>
+
+                        <br><br>
+                        <p class="related"><strong>Scopri i libri correlati!</strong></p>
+                        <a href="{{ url_for('main.brelated', id=month.id) }}" class="brelated"><i class="fa fa-solid fa-paperclip"></i> Mostrali tutti</a>
+                    
+                        <br><br>
+                        <p class="stats"><strong>Scopri le statistiche  su questo libro!</strong></p>
+                        <a href="{{ url_for('main.bstats', id=month.id) }}" class="bstats"><i class="fa fa-solid fa-bolt"></i> Scopri di più</a>
+                    
+                    </div>
+                </div>            
+            {% endif %}
+            <br><br>
+            <section class="stats-section py-5 bg-light">
+                <div class="container">
+                    <h2 class="text-center mb-5">Statistiche della Biblioteca</h2>
+                    <div class="row text-center">
+                        
+                        <!-- Card Libri Totali -->
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="stat-card shadow-sm p-4 rounded">
+                                <i class="fas fa-book fa-3x mb-3"></i>
+                                <h4>Libri Totali</h4>
+                                <p class="stat-value">{{ stats.tbooks }}</p>
+                            </div>
+                        </div>
+            
+                        {% if current_user.ruolo == 'Manager' %}
+                        <!-- Card Visualizzazioni Totali -->
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="stat-card shadow-sm p-4 rounded">
+                                <i class="fas fa-eye fa-3x mb-3"></i>
+                                <h4>Visualizzazioni Totali</h4>
+                                <p class="stat-value">{{ stats.tviews }}</p>
+                            </div>
+                        </div>
+            
+                        <!-- Card Download Totali -->
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="stat-card shadow-sm p-4 rounded">
+                                <i class="fas fa-download fa-3x mb-3"></i>
+                                <h4>Download Totali</h4>
+                                <p class="stat-value">{{ stats.tdowns }}</p>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+            
+                    <!-- Sezione Libri più Visti -->
+                    <div class="mt-5">
+                        <h4 class="text-center">Libri più Visti</h4>
+                        <div class="row">
+                            {% for libro in stats.mbooks %}
+                                <div class="col-lg-4 col-md-6 mb-4">
+                                    <div class="book-card shadow-sm p-3 rounded text-center">
+                                        <h5>{{ libro.titolo }}</h5>
+                                        <p><em>{{ libro.autore }}</em></p>
+                                        <p>{{ libro.viste }} visualizzazioni</p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </section> 
+
+            <br><br>
+
+            <div class="genres-section container my-5">
+                <h2 class="text-center mb-5">Esplora i Generi</h2>
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    {% set images = ["/static/images/genre_0.jpg", "/static/images/genre_1.jpg", "/static/images/genre_2.jpg", "/static/images/genre_3.jpg"] %}
+                    
+                    {% for genere, conteggio in genres %}
+                    <div class="col">
+                        <!-- Form per inviare il genere selezionato tramite POST -->
+                        <form action="/book/genere" method="POST" class="genre-card-form">
+                            <input type="hidden" name="genere" value="{{ genere }}">
+            
+                            <!-- Card con l'invio del form al click -->
+                            <button type="submit" class="genre-card-btn">
+                                <div class="genre-card h-100 p-4 text-center position-relative shadow-sm">
+                                    <div class="genre-icon position-absolute top-0 end-0 p-3">
+                                        <i class="fas fa-book"></i>
+                                    </div>
+                                    <img src="{{ images[loop.index0 % 4] }}" alt="{{ genere }}" class="img-fluid rounded-circle mb-3" loading="lazy">
+                                    <h4>{{ genere }}</h4>
+                                    <p>Libri Disponibili: <strong>{{ conteggio }}</strong></p>
+                                    <div class="genre-overlay"></div>
+                                </div>
+                            </button>
+                        </form>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+                     
+            
+        </div>
 
         <script>
-            function sendGenre(genere) {
-                // Aggiorna il valore dell'input hidden con il genere selezionato
-                document.getElementById('genereInput').value = genere;
-        
-                // Invia il form al server
-                document.getElementById('genreForm').submit();
+            function openSearchForm(formType) {
+                // Rimuove la classe "active" da tutti i tab e form
+                const buttons = document.querySelectorAll('.tab-button');
+                buttons.forEach(btn => btn.classList.remove('active'));
+                
+                const forms = document.querySelectorAll('.search-form');
+                forms.forEach(form => form.classList.remove('active'));
+                
+                // Aggiunge la classe "active" al tab e form selezionato
+                document.querySelector(`.tab-button[onclick="openSearchForm('${formType}')"]`).classList.add('active');
+                document.getElementById(`search-${formType}`).classList.add('active');
             }
+
+
+            function openBookType(bookType) {
+                const buttons = document.querySelectorAll('.tab-button');
+                buttons.forEach(btn => btn.classList.remove('active'));
+
+                const cards = document.querySelectorAll('.book-card');
+                cards.forEach(card => card.classList.remove('active'));
+
+                document.querySelector(`.tab-button[onclick="openBookType('${bookType}')"]`).classList.add('active');
+                document.getElementById(`${bookType}-book`).classList.add('active');
+            }
+
         </script>
-    </div>
-{% endblock %}
+
+    {% endblock %}

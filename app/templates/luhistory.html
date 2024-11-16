@@ -1,32 +1,35 @@
 {% extends "layout.html" %}
-{% block title %}Cronologia Prestiti{% endblock %}
+    {% block title %}Cronologia Prestiti{% endblock %}
+    {% block css %}
+        <link rel="stylesheet" href="/static/css/lbhistory.css">
+    {% endblock %}
 
-{% block css %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/lbhistory.css') }}">
-{% endblock %}
-
-{% block content %}
-<div class="history-container">
-    <h1 class="page-title">Cronologia Prestiti per l'utente "{{ user.nome }}"</h1>
-
-    {% if loans %}
-        <section class="books-grid">
-            {% for loan in loans %}
-            <div class="book-item">
-                <h4>Prestito #{{ loan.id }}</h4>
-                <div class="loan-details">
-                    <p><strong><i class="fa fa-regular fa-clock"></i> Data Prestito:</strong> {{ loan.uscita.strftime('%d %B %Y') }}</p>
-                    <p><strong><i class="fa fa-regular fa-clock"></i> Data Restituzione:</strong> {{ loan.rientro.strftime('%d %B %Y') }}</p>
-                    <p><strong><i class="fa fa-solid fa-bookmark"></i> Libro:</strong> {{ loan.libro.titolo }}</p>
-                    <p><strong><i class="fa fa-user"></i> Utente:</strong> <a href="{{ url_for('main.uprofile', id=loan.utente_id) }}">{{ loan.utente.nome }}</a></p>
+    {% block content %}
+        <div class="container mt-5">
+            <div class="row text-center mb-4">
+                <div class="col-md-12">
+                    <h1 class="display-4">Cronologia Prestiti per l'utente "{{ user.nome }}"</h1>
                 </div>
             </div>
-            {% endfor %}
-        </section>
-    {% else %}
-        <div class="alert alert-warning">
-            Nessuna cronologia di prestiti disponibile.
+
+            {% if loans %}
+                <section class="books-grid">
+                    {% for loan in loans %}
+                    <div class="book-item">
+                        <h4 class="loan-title">Prestito #{{ loan.id }}</h4>
+                        <div class="loan-details">
+                            <p><strong><i class="fa fa-regular fa-clock"></i> Data Prestito:</strong> {{ loan.uscita.strftime('%d %B %Y') }}</p>
+                            <p><strong><i class="fa fa-regular fa-clock"></i> Data Restituzione:</strong> {{ loan.rientro.strftime('%d %B %Y') }}</p>
+                            <p><strong><i class="fa fa-solid fa-bookmark"></i> Libro:</strong> {{ loan.libro.titolo }}</p>
+                            <p><strong><i class="fa fa-user"></i> Utente:</strong> <a href="{{ url_for('main.uprofile', id=loan.utente_id) }}">{{ loan.utente.nome }}</a></p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </section>
+            {% else %}
+                <div class="alert alert-warning mt-5 text-center">
+                    Nessuna cronologia di prestiti disponibile.
+                </div>
+            {% endif %}
         </div>
-    {% endif %}
-</div>
-{% endblock %}
+    {% endblock %}

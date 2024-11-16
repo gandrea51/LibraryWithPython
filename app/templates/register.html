@@ -1,58 +1,76 @@
 {% extends "layout.html" %}
-{% block css %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
-{% endblock %}
-{% block title %}Registrazione{% endblock %}
+    {% block css %}
+        <link rel="stylesheet" href="/static/css/register.css">
+    {% endblock %}
 
-{% block content %}
+    {% block title %}Registrazione{% endblock %}
 
-{% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-        <div class="alert-container">
-            <ul>
-                {% for category, message in messages %}
-                    <li class="alert alert-{{ category }}">{{ message }}</li>
-                {% endfor %}
-            </ul>
+    {% block content %}
+        <div class="register-wrapper d-flex align-items-center justify-content-center vh-100">
+            <div class="register-card shadow-lg p-4">
+                <div class="register-header mb-4">
+                    <h2>Crea un Nuovo Account</h2>
+                    <p class="text-muted">Inserisci le tue informazioni per registrarti.</p>
+                </div>
+                <div class="card-body">
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            <ul class="list-unstyled">
+                                {% for category, message in messages %}
+                                    <li class="alert alert-{{ category }}">{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    {% endwith %}
+                    
+                    <form method="post" action="/register">
+                        <div class="form-group mb-3">
+                            <label for="nome" class="form-label">Nome e Cognome</label>
+                            <input id="nome" type="text" class="form-control" name="nome" placeholder="Inserisci il tuo nome" required>
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label for="genere" class="form-label">Sesso</label>
+                            <select class="form-select" name="genere" id="genere" required>
+                                <option value="M">Maschio</option>
+                                <option value="F">Femmina</option>
+                                <option value="N">Non specificato</option> <!-- Opzione aggiuntiva per neutralità -->
+                                <option value="A">Altro</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="email" class="form-label">Indirizzo Email</label>
+                            <input id="email" type="email" class="form-control" name="email" placeholder="Inserisci la tua email" required>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input id="password" type="password" class="form-control" name="password" placeholder="Crea una password" required>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="telefono" class="form-label">Telefono</label>
+                            <input id="telefono" type="text" class="form-control" name="telefono" placeholder="Inserisci il tuo numero di telefono" required>
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label for="ruolo" class="form-label">Ruolo</label>
+                            <select class="form-select" name="ruolo" id="ruolo" required>
+                                <option selected value="Partner">Socio</option>
+                                <option value="Manager">Manager</option>
+                            </select>
+                        </div>
+
+                        <div class="d-grid mb-3">
+                            <input type="submit" class="btn btn-primary btn-block" value="Registrati">
+                        </div>
+                    </form>
+
+                    <div class="mt-4">
+                        <p class="text-muted">Hai già un account? <a href="/login" class="text-primary">Accedi</a></p>
+                    </div>
+                </div>
+            </div>
         </div>
-    {% endif %}
-{% endwith %}
-
-<div class="register-container">
-    <h1 class="register-title">Registrati</h1>
-    <form method="post" action="/register" class="register-form">
-        <div class="form-group">
-            <label for="nome" class="form-label">Nome e Cognome</label>
-            <input id="nome" type="text" class="form-input" name="nome" required>
-        </div>
-
-        <div class="form-group">
-            <label for="email" class="form-label">Indirizzo Mail</label>
-            <input id="email" type="email" class="form-input" name="email" required>
-        </div>
-
-        <div class="form-group">
-            <label for="password" class="form-label">Password</label>
-            <input id="password" type="password" class="form-input" name="password" required>
-        </div>
-
-        <div class="form-group">
-            <label for="telefono" class="form-label">Telefono</label>
-            <input id="telefono" type="text" class="form-input" name="telefono" required>
-        </div>
-
-        <div class="form-group">
-            <label for="ruolo" class="form-label">Ruolo</label>
-            <select class="form-select" name="ruolo" id="ruolo" required>
-                <option selected value="Socio">Socio</option>
-                <option value="Amministratore">Amministratore</option>
-            </select>                                
-        </div>
-
-        <div class="form-group">
-            <input type="submit" class="btn btn-submit" value="Registrati">
-        </div>
-    </form>
-</div>
-
-{% endblock %}
+    {% endblock %}

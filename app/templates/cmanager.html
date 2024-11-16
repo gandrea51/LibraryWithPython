@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+    {% block css %}
+        <link rel="stylesheet" href="/static/css/bmanager.css">
+    {% endblock %}
+
+    {% block title %}Gestione Corsi{% endblock %}
+
+    {% block content %}
+        <div class="container-fluid book-management">
+            <h1 class="text-center">Gestione dei Corsi</h1>
+
+            <div class="text-center mb-4">
+                <a href="/course/create" class="btn btn-success btn-lg">Inserisci Nuovo Corso</a>
+            </div>
+
+            <div class="search-container mb-4">
+                <input type="text" id="searchInput" class="form-control" placeholder="Cerca un corso...">
+            </div>
+
+            <div class="course-list">
+                <h4 class="text-center">Tutti i Corsi</h4>
+                <ul id="courseList" class="list-group">
+                    {% for corso in courses %}
+                    <li class="list-group-item course-item">
+                        <strong>{{ corso.nome }}</strong> - {{ corso.docente }} ({{ corso.giorno }})
+                        <div class="course-actions">
+                            <a href="{{ url_for('main.cedit', id=corso.id) }}" class="btn btn-warning btn-sm">Modifica</a>
+                            <form action="{{ url_for('main.cdrop', id=corso.id) }}" method="post" style="display:inline;">
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Sei sicuro di voler eliminare questo corso?');">Elimina</button>
+                            </form>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <script>
+            // Funzione di ricerca
+            document.getElementById("searchInput").addEventListener("input", function() {
+                let filter = this.value.toLowerCase();
+                let items = document.querySelectorAll(".course-item");
+
+                items.forEach(item => {
+                    let name = item.querySelector("strong").innerText.toLowerCase();
+                    let teacher = item.innerText.toLowerCase();
+
+                    if (name.includes(filter) || teacher.includes(filter)) {
+                        item.style.display = "";
+                    } else {
+                        item.style.display = "none";
+                    }
+                });
+            });
+        </script>
+    {% endblock %}

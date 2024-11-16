@@ -1,78 +1,154 @@
 {% extends "layout.html" %}
-{% block css %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/doc.css') }}">
-{% endblock %}
-{% block title %}Useful information{% endblock %}
+    {% block title %}Informazioni{% endblock %}
+    {% block css %}
+        <link rel="stylesheet" href="/static/css/doc.css">
+    {% endblock %}
 
-{% block content %}
-    <div class="info-container my-5">
+    {% block content %}
 
-        <div class="header-section mb-5">
-            <h1 class="main-title">Useful information</h1>
-            <p class="description-text">Here you can find all the information about our site and the services we offer.</p>
+        <div class="container my-5 py-5">
+
+            <header class="my-4 animated fadeIn">
+                <img src="/static/images/logo.jpg" class="img-fluid rounded shadow" alt="Logo APS FErrara" loading="lazy">
+            </header> 
+            
+            <!-- Intestazione della Pagina -->
+            <div class="row mb-5">
+                <div class="col">
+                    <h1 class="display-4 title">Informazioni Utili</h1>
+                    <p class="lead intro-text">Esplora tutte le informazioni relative ai nostri servizi e scopri un mondo di lettura!</p>
+                </div>
+            </div>
+
+            <!-- Sezione delle Carte Informative -->
+            <div class="row grid-section justify-content-center">
+                <div class="col-md-4 mb-4">
+                    <div class="card card-custom hover-effect" data-toggle="modal" data-target="#searchModal">
+                        <div class="card-body text-center">
+                            <div class="icon-container">
+                                <i class="fa fa-search fa-2x"></i>
+                            </div>
+                            <h5 class="card-title">Come Cercare un Libro</h5>
+                            <p class="card-text">Scopri i modi per cercare i tuoi libri preferiti.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <div class="card card-custom hover-effect" data-toggle="modal" data-target="#borrowModal">
+                        <div class="card-body text-center">
+                            <div class="icon-container">
+                                <i class="fa fa-book fa-2x"></i>
+                            </div>
+                            <h5 class="card-title">Come Prendere in Prestito un Libro</h5>
+                            <p class="card-text">Segui i passaggi per prendere in prestito un libro.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <div class="card card-custom hover-effect" data-toggle="modal" data-target="#loanModal">
+                        <div class="card-body text-center">
+                            <div class="icon-container">
+                                <i class="fa fa-book-open fa-2x"></i>
+                            </div>
+                            <h5 class="card-title">Regolamento dei Prestiti</h5>
+                            <p class="card-text">Leggi il regolamento per i prestiti di libri.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <div class="card card-custom hover-effect" data-toggle="modal" data-target="#courseModal">
+                        <div class="card-body text-center">
+                            <div class="icon-container">
+                                <i class="fa fa-calendar-alt fa-2x"></i>
+                            </div>
+                            <h5 class="card-title">Come Prenotarti a un Corso</h5>
+                            <p class="card-text">Prenota un corso seguendo i nostri semplici passaggi.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sezione Contatti -->
+            <div class="row text-center mt-5 contact-section">
+                <div class="col">
+                    <h2 class="display-6 contact-title">Contattaci</h2>
+                    <p>Hai domande o feedback? <a href="https://forms.gle/CxCMDByTULSW4Nsn8" target="_blank">Contattaci qui</a>.</p>
+                </div>
+            </div>
         </div>
 
-        <div class="info-section mb-4">
-            <h2 class="section-title">How can you search for a book</h2>
-            <p id="searchInfo" class="info-text d-none">
-                You can search for books in different ways: You can scroll through the various genres, choose one, and search through all those in that genre.<br>
-                If you have an author or genre in mind, you can use the search field provided to search for either all those written by your favorite author or that belong to your favorite genre
-            </p>
-            <button onclick="toggleVisibility('searchInfo')" class="btn-custom">Show more</button>
+        <!-- Modali Informativi -->
+        <!-- Modal Come Cercare un Libro -->
+        <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="searchModalLabel"><i class="fa fa-search"></i> Come Cercare un Libro</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>I libri possono essere cercati in vari modi: scorri i generi, seleziona quello che preferisci o usa il campo di ricerca per trovare il tuo autore o genere preferito!</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="info-section mb-4">
-            <h2 class="section-title">How can you borrow a book</h2>
-            <p id="borrowInfo" class="info-text d-none">
-                To borrow a book, follow these steps: Check that the book you have in mind is actually available, that is, that there is at least one copy available.<br> 
-                If so, you will find the “borrow” link. All you have to do is type in the title of it, choose the date on which you will pick it up, and confirm.
-            </p>
-            <button onclick="toggleVisibility('borrowInfo')" class="btn-custom">Show more</button>
+        <!-- Modal Come Prendere in Prestito un Libro -->
+        <div class="modal fade" id="borrowModal" tabindex="-1" role="dialog" aria-labelledby="borrowModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="borrowModalLabel"><i class="fa fa-book"></i> Come Prendere in Prestito un Libro</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Per prendere in prestito un libro: controlla la disponibilità, clicca su "prendi in prestito", inserisci il titolo e scegli la data di ritiro.</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="info-section mb-4">
-            <h2 class="section-title">Settlement of loans</h2>
-            <p id="loanInfo" class="info-text d-none">
-                To make a loan, each user must be registered as an ANSEC member. The material shall not be taken outside the room without proper signposting. 
-                The user must present to the operator the chosen material and the card to receive the loan coupon.<br>
-                The material must be delivered within 30 days, unless a regular request for an extension of 2 weeks has been made, if it has not already been requested by another user. 
-                An email or SMS will be sent to remind you of the loan’s expiration date. Magazines can be borrowed for 15 days without extension.<br> 
-                It is forbidden to take outside the material for consultation only. 
-                In case of non-repayment, compensation equal to the value of the material and eventual cancellation of the card will be requested.
-            </p>
-            <button onclick="toggleVisibility('loanInfo')" class="btn-custom">Show more</button>
+        <!-- Modal Regolamento dei Prestiti -->
+        <div class="modal fade" id="loanModal" tabindex="-1" role="dialog" aria-labelledby="loanModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="loanModalLabel"><i class="fa fa-book-open"></i> Regolamento dei Prestiti</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Restituisci il materiale entro 30 giorni, con proroga di 2 settimane se non richiesto da altri. Le riviste possono essere prese in prestito per 15 giorni non prorogabili.</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="info-section mb-4">
-            <h2 class="section-title">How to book a course</h2>
-            <p id="courseInfo" class="info-text d-none">
-                To book, follow these steps: Go to the "courses" section and check the available places for that course.<br>
-                Once you enter the "more information" page of that course, use the "book now" link. Enter the name of the course you are interested in and confirm. 
-                You have officially booked, all you have to do is pay the registration fee to sign up permanently.
-            </p>
-            <button onclick="toggleVisibility('courseInfo')" class="btn-custom">Show more</button>
+        <!-- Modal Come Prenotarti a un Corso -->
+        <div class="modal fade" id="courseModal" tabindex="-1" role="dialog" aria-labelledby="courseModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="courseModalLabel"><i class="fa fa-calendar-alt"></i> Come Prenotarti a un Corso</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Accedi alla sezione "corsi", verifica la disponibilità e prenota con il link "prenotati ora". Ricordati di pagare la quota di iscrizione per confermare la tua prenotazione.</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="contact-section mb-5">
-            <h2 class="section-title">Contact us</h2>
-            <p class="info-text">For any questions or feedback, please feel free to <a href="https://forms.gle/CxCMDByTULSW4Nsn8" target="_blank" class="contact-link">contact</a> us.</p>
-        </div>
-
-    </div>
-
-    <!-- Script for Toggle Information -->
-    <script>
-        function toggleVisibility(id) {
-            var element = document.getElementById(id);
-            element.classList.toggle('d-none');
-        }
-
-        $(document).ready(function(){
-            $(".info-text").hover(function(){
-                $(this).css("font-size", "18px");
-            }, function(){
-                $(this).css("font-size", "16px");
-            });
-        });
-    </script>
-{% endblock %}
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    {% endblock %}

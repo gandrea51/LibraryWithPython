@@ -1,103 +1,139 @@
 {% extends "layout.html" %}
-{% block css %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/uindex.css') }}">
-{% endblock %}
-{% block title %}User{% endblock %}
+    {% block title %}Dashboard Utenti{% endblock %}
+    {% block css %}
+        <link rel="stylesheet" href="/static/css/uindex.css"> 
+        <link rel="stylesheet" href="/static/css/cindex.css"> 
+    {% endblock %}
 
-{% block content %}
-    <div class="user-dashboard">
-        <h1 class="dashboard-title">User Dashboard</h1>
-
-        <div class="dashboard-intro">
-            <p>
-                Benvenuto nella gestione utenti. Puoi visualizzare, modificare o eliminare gli utenti registrati nell'applicazione.
-                Usa la dashboard per tenere traccia di ogni utente.
-            </p>
-        </div>
-
-        <div class="download-btn">
-            <a href="/user/pdf" class="btn-download">
-                <i class="fa fa-download"></i> Scarica PDF
-            </a>
-        </div>
-
-        <!-- Griglia di utenti -->
-        <div class="user-grid">
-            {% for user in users %}
-            <div class="user-row">
-                <div class="user-info">
-                    <span class="user-name">{{ user.name }}</span>
-                    <span class="user-role">{{ user.ruolo }}</span>
-                    <span class="user-email">Email: {{ user.email }}</span>
-                    <span class="user-phone">Telefono: {{ user.telefono }}</span>
-                </div>
-
-                <div class="user-actions">
-                    <a href="#" class="btn-action btn-edit" onclick="openEditModal('{{ user.id }}')">
-                        <i class="fa fa-edit"></i> Modifica
-                    </a>
-                    <form action="{{ url_for('main.udrop', id=user.id) }}" method="POST">
-                        <button type="submit" class="btn-action btn-delete">
-                            <i class="fa fa-trash"></i> Elimina
-                        </button>
-                    </form>
-                </div>
-
-                <div id="editModal" class="modal">
-                    <div class="modal-content">
-                        <span class="close-btn" onclick="closeEditModal()">&times;</span>
-                        <h2>Modifica Utente</h2>
-                        <form id="editUserForm" method="POST" action="{{ url_for('main.uedit', id=0) }}">
-                            <label for="email">Email:</label>
-                            <input type="email" id="modal-email" name="email" required><br>
-                            
-                            <label for="telefono">Telefono:</label>
-                            <input type="text" id="modal-telefono" name="telefono" required><br>
-                
-                            <label for="ruolo">Ruolo:</label>
-                            <select id="modal-ruolo" name="ruolo">
-                                <option value="Amministratore">Admin</option>
-                                <option value="Socio">Utente</option>
-                            </select>
-                            
-                            <button type="submit" class="btn-action btn-save">Salva</button>
-                        </form>
+    {% block content %}
+        <br>
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-md-12 text-center">
+                    <div class="title-container">
+                        <h1 class="main-title">Dashboard Utenti</h1>
+                        <a href="/user/print"><h2 class="sub-title">Scopri i Nostri Utenti</h2></a>
+                    </div>
+                    <div class="photo-placeholder">
+                        <img src="/static/images/user1.jpg" alt="Corsi" class="header-photo" loading="lazy">
                     </div>
                 </div>
             </div>
-            {% endfor %}
-        </div>
+            <br>
 
-        <script>
-            function openEditModal(userId) {
-                // Fai una chiamata AJAX per ottenere i dettagli dell'utente
-                fetch(`/user/${userId}/edit`)
-                    .then(response => response.json())
-                    .then(data => {
-                        // Popola il form con i dati dell'utente
-                        document.getElementById('modal-email').value = data.email;
-                        document.getElementById('modal-telefono').value = data.telefono;
-                        document.getElementById('modal-ruolo').value = data.ruolo;
-        
-                        // Aggiorna l'azione del form con l'ID dell'utente
-                        document.getElementById('editUserForm').action = `/user/${userId}/edit`;
-        
-                        // Mostra il modal
-                        document.getElementById('editModal').style.display = 'block';
-                    });
-            }
-        
-            function closeEditModal() {
-                document.getElementById('editModal').style.display = 'none';
-            }
-        
-            // Chiudi il modal se si clicca fuori dalla finestra del modal
-            window.onclick = function(event) {
-                if (event.target == document.getElementById('editModal')) {
-                    closeEditModal();
+            <!-- Intro -->
+            <div class="row">
+                <div class="col-md-12 dashboard-intro">
+                    <p>Benvenuto nella sezione di gestione degli utenti. Qui puoi visualizzare tutti gli utenti registrati nella nostra applicazione, 
+                    indipendentemente dal loro ruolo. Puoi vedere i dati che ogni utente ha inserito e anche modificarli se richiesto.</p>
+                </div> 
+            </div>
+            <br>
+
+            <!-- Risultati -->
+            <div class="row">
+                <div class="col-md-12">
+                    
+                    <div class="row">
+                        {% for user in users %}
+                            <div class="col-md-4">
+                                <div class="user-card justify-content-center">
+                                    <div class="card-body">
+                                        <div class="profile-picture">
+                                            {% if user.genere == "M" %}
+                                                <img src="{{ url_for('static', filename='images/user_' ~ (user.id % 2) ~ '.jpg') }}" alt="User Photo">
+                                            {% elif user.genere == "F" %}
+                                                <img src="{{ url_for('static', filename='images/utente_' ~ (user.id % 2) ~ '.jpg') }}" alt="User Photo">                                
+                                            {% else %}
+                                                <img src="/static/images/fluido.jpg" alt="User Photo">
+                                            {% endif %}
+                                        </div>
+                                        <h5 class="card-title"><i class="fa fa-user"></i> {{ user.nome }} ({{ user.genere}})</h5>
+                                        <p class="card-text"><strong><i class="fa fa-solid fa-hashtag"></i> Email: </strong>{{ user.email }}</p>
+                                        <p class="card-text"><strong><i class="fa fa-solid fa-hashtag"></i> Telefono: </strong>{{ user.telefono }}</p>
+                                        <p class="card-text"><strong><i class="fa fa-solid fa-hashtag"></i> Ruolo: </strong>{{ user.ruolo }}</p>
+                                        <p class="card-text"><strong><i class="fa fa-solid fa-check"></i> Prestiti: </strong>{{ user.lcount }}</p>
+                                        <p class="card-text"><strong><i class="fa fa-solid fa-check"></i> Prenotazioni: </strong>{{ user.bcount }}</p>
+                                        <div class="d-flex justify-content-between">
+                                            <a href="#" class="btn-action btn-edit" onclick="openEditModal('{{ user.id }}')">
+                                                <i class="fa fa-edit"></i> Modifica
+                                            </a>
+                                            <form action="{{ url_for('main.udrop', id=user.id) }}" method="POST" class="delete-form">
+                                                <button type="submit" class="btn btn-drop">
+                                                    <i class="fa fa-solid fa-delete-left"> Elimina</i>
+                                                </button>
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div id="editModal" class="modal">
+                                    <div class="modal-content">
+                                        <span class="close-btn" onclick="closeEditModal()">&times;</span>
+                                        <h2>Modifica Utente</h2>
+                                        <form id="editUserForm" method="POST" action="{{ url_for('main.uedit', id=0) }}">
+                                            <label for="genere">Genere:</label>
+                                            <select id="modal-ruolo" name="genere">
+                                                <option value="M">Maschio</option>
+                                                <option value="F">Femmina</option>
+                                                <option value="N">Non specificato</option> <!-- Opzione aggiuntiva per neutralità -->
+                                                <option value="A">Altro</option>
+                                            </select>
+                                            
+                                            <label for="email">Email:</label>
+                                            <input type="email" id="modal-email" name="email" required><br>
+                                            
+                                            <label for="telefono">Telefono:</label>
+                                            <input type="text" id="modal-telefono" name="telefono" required><br>
+                                
+                                            <label for="ruolo">Ruolo:</label>
+                                            <select id="modal-ruolo" name="ruolo">
+                                                <option value="Manager">Manager</option>
+                                                <option value="Partner">Partner</option>
+                                            </select>
+                                            
+                                            <button type="submit" class="btn-action btn-save">Salva</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                function openEditModal(userId) {
+                    // Fai una chiamata AJAX per ottenere i dettagli dell'utente
+                    fetch(`/user/${userId}/edit`)
+                        .then(response => response.json())
+                        .then(data => {
+                            // Popola il form con i dati dell'utente
+                            document.getElementById('modal-email').value = data.email;
+                            document.getElementById('modal-telefono').value = data.telefono;
+                            document.getElementById('modal-ruolo').value = data.ruolo;
+            
+                            // Aggiorna l'azione del form con l'ID dell'utente
+                            document.getElementById('editUserForm').action = `/user/${userId}/edit`;
+            
+                            // Mostra il modal
+                            document.getElementById('editModal').style.display = 'block';
+                        });
                 }
-            }
-        </script>
+            
+                function closeEditModal() {
+                    document.getElementById('editModal').style.display = 'none';
+                }
+            
+                // Chiudi il modal se si clicca fuori dalla finestra del modal
+                window.onclick = function(event) {
+                    if (event.target == document.getElementById('editModal')) {
+                        closeEditModal();
+                    }
+                }
+            </script>
 
-    </div>
-{% endblock %}
+        </div>
+    {% endblock %}

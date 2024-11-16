@@ -1,42 +1,79 @@
 {% extends "layout.html" %}
+{% block title %}Biblioteca{% endblock %}
 {% block css %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bindex.css') }}">
+    <link rel="stylesheet" href="/static/css/bnull.css">
 {% endblock %}
-{% block title %}Book{% endblock %}
 
 {% block content %}
-    <div class="container my-5">
-        <header class="page-header">
-            <h1 class="bh">Browse the Books</h1>
-        </header>
-       
-        <section class="row">
-            <div class="accordion-container">
-                <!-- Ciclo per ogni genere -->
-                {% for genere, count in genres %}
-                <div class="accordion-item">
-                    
-                    <div class="accordion-header">
-                        {{ genere }} ({{ count }})
+<div class="container-fluid px-0">
+    
+    <!-- Hero Section with Background Image -->
+    <section class="hero-section text-white text-center d-flex align-items-center" style="background: url('/static/images/bnull.jpg') no-repeat center center; background-size: cover; height: 70vh;">
+        <div class="container">
+            <h1 class="display-3 fw-bold">Esplora i Nostri Libri</h1>
+            <p class="lead">Scopri nuovi mondi, fatti ispirare dai nostri generi e immergiti in storie senza tempo.</p>
+            
+        </div>
+    </section>
+    
+    <!-- Generi Disponibili -->
+    <section class="genres-section py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center display-4 mb-5">Generi Disponibili</h2>
+            <div class="row" id="genreList">
+                {% for genere, conteggio in genres %}
+                    {% set index = loop.index0 % 4 %}
+                    <div class="col-lg-4 col-md-6 mb-4 d-flex align-items-stretch genre-item" data-genre="{{ genere | lower }}">
+                        <div class="card genre-card shadow-sm flex-fill" onclick="openGenreModal('{{ genere }}')">
+                            <img src="/static/images/genre_{{ index }}.jpg" class="card-img-top" alt="{{ genere }}">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">{{ genere }}</h5>
+                                <p class="card-text">Numero di titoli: {{ conteggio }}</p>
+                            </div>
+                        </div>
                     </div>
-                    
-                </div>
+
+                    <!-- Modale per mostrare i libri per il genere -->
+                    <div id="modal-{{ genere }}" class="modal">
+                        <div class="modal-content">
+                            <span class="close-btn" onclick="closeGenreModal('{{ genere }}')">&times;</span>
+                            <h2>Libri nel genere: {{ genere }}</h2>
+                            <ul class="list-group">
+                                {% for book in books[genere] %}
+                                    <li class="list-group-item">{{ book.titolo }} di {{ book.autore }}</li>
+                                {% endfor %}
+                                {% if books[genere]|length == 0 %}
+                                    <li class="list-group-item">Nessun libro trovato per questo genere.</li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
                 {% endfor %}
             </div>
+        </div>
+    </section>
 
-            <form id="genreForm" method="POST" action="/book/genere" style="display:none;">
-                <input type="hidden" name="genere" id="genereInput">
-            </form>
-        </section>
+    <script>
 
-        <script>
-            function sendGenre(genere) {
-                // Aggiorna il valore dell'input hidden con il genere selezionato
-                document.getElementById('genereInput').value = genere;
-        
-                // Invia il form al server
-                document.getElementById('genreForm').submit();
-            }
-        </script>
-    </div>
+        function openGenreModal(genre) {
+            const modal = document.getElementById(`modal-${genre}`);
+            modal.style.display = "block";
+        }
+    
+        function closeGenreModal(genre) {
+            const modal = document.getElementById(`modal-${genre}`);
+            modal.style.display = "none";
+        }
+    
+        // Chiudi il modale quando si clicca fuori
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                }
+            });
+        }
+    </script>
+</div>
 {% endblock %}

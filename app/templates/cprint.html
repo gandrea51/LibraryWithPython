@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Corsi</title>
+        <style>
+            @page {
+                size: landscape;
+            }
+            h1{
+                padding-top: 20px;
+                text-align: center;
+                font-size: 2.5rem;
+            }  
+            .course{
+                margin-left: 30px;
+                
+            }
+        </style>   
+    </head>
+    <body>
+        <h1>I corsi attualmente attivi sono i seguenti</h1>
+        <br><br><hr>
+
+        {% for course in courses %}
+            <span class="course">
+                <h2>{{course.nome}}, tenuto da {{course.docente}}</h2>
+                <br>
+                <p>Inizia il {{course.inizio.strftime('%d %B %Y')}} e si svolgerà il {{course.giorno}} per {{course.lezioni}} lezioni.<br>
+                Sono previsti da {{course.minimo}} a {{course.massimo}} posti.<br>
+                Partecipazione: {{course.prezzo}}€ + ({{course.tessera}}€ per la card).<br></p>
+                <hr>
+            </span>
+        {% endfor %}
+    </body>
+</html>

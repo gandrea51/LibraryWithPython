@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+    {% block title %}Statistiche{% endblock %}
+
+    {% block css %}
+        <link rel="stylesheet" href="/static/css/pstats.css">
+    {% endblock %}
+
+    {% block content %}
+        <div class="container my-5">
+            <h1 class="display-4 text-center">Statistiche Prenotazioni</h1>
+
+            <div class="statistic-summary mt-4 text-center">
+                <h3>Numero totale di prenotazioni: <span class="highlight">{{ total_bookings }}</span></h3>
+            </div>
+
+            <div class="statistic-cards mt-5">
+                {% for stat in stats %}
+                <div class="statistic-card">
+                    <div class="statistic-icon">
+                        <i class="fas fa-book"></i> <!-- Icona del corso -->
+                    </div>
+                    <div class="statistic-info">
+                        <h4 class="course-title">{{ stat.corso }}</h4>
+                        <div class="statistic-details">
+                            <div class="statistic-detail">
+                                <p><strong>Prenotazioni:</strong> {{ stat.prenotazioni }}</p>
+                            </div>
+                            <div class="statistic-detail">
+                                <p><strong>Iscrizioni:</strong> {{ stat.iscrizioni }}</p>
+                            </div>
+                            <div class="statistic-detail">
+                                <p><strong>Posti Massimi:</strong> {{ stat.posti_max }}</p>
+                            </div>
+                            <div class="statistic-detail">
+                                <p><strong>% Riempimento:</strong> {{ stat.riempimento }}%</p>
+                            </div>
+                            <div class="statistic-detail">
+                                <p><strong>Visualizzazioni:</strong> {{ stat.viste }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endblock %}

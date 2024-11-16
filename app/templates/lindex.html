@@ -1,108 +1,101 @@
 {% extends "layout.html" %}
-{% block title %}Prestiti{% endblock %}
+    {% block title %}Biblioteca{% endblock %}
 
-{% block css %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/lindex.css') }}">
-{% endblock %}
+    {% block css %}
+        <link rel="stylesheet" href="/static/css/lindex.css">
+    {% endblock %}
 
-{% block content %}
-    <div class="container my-5">
+    {% block content %}
+        <div class="container my-5">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }} text-center display-6">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
         
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                {% for category, message in messages %}
-                    <div class="alert alert-{{ category }} text-center display-6">
-                        {{ message }}
+            <div class="row text-center mb-4">
+                <div class="col-md-12">
+                    <h1 class="display-4">Overview of all loans</h1>
+                </div>
+            </div>
+        
+            <div class="row text-center mb-4">
+                <div class="col-md-12">
+                    <p class="intro-text">
+                        This page provides a comprehensive overview of all current loans, specifically designed for managers who need a detailed 
+                        view of loan management. The display is organized by a series of tabs that allow you to navigate between the different loans, 
+                        each identified by a unique ID. For each loan, the page shows key information such as the name of the user who borrowed the book, 
+                        the title of the book itself, and the related deadlines. The deadline is highlighted with colour codes that indicate the proximity 
+                        of the deadline, giving a clear view of urgency. The content section allows managers to download a report in PDF format for offline 
+                        consultation. In addition, for each unterminated loan, there is an option to close the loan directly from the page, thus improving 
+                        efficiency in managing and updating loan information.
+                    </p>
+                </div>
+            </div>
+        
+            <div class="row feature-boxes">
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <a href="/loan/expiring">
+                            <h3><i class="fa fa-calendar-alt"></i> Loans due to maturity</h3>
+                        </a>
+                        <p>View loans that are about to expire by a certain date.</p>
                     </div>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
-
-        <div class="row text-center mb-4">
-            <div class="col-md-12">
-                <h1 class="display-4">Overview of all loans</h1>
-            </div>
-        </div>
-
-        <div class="row text-center mb-4">
-            <div class="col-md-12">
-                <p class="intro-text">
-                    This page provides a comprehensive overview of all current loans, specifically designed for managers who need a detailed 
-                    view of loan management. The display is organized by a series of tabs that allow you to navigate between the different loans, 
-                    each identified by a unique ID. For each loan, the page shows key information such as the name of the user who borrowed the book, 
-                    the title of the book itself, and the related deadlines. The deadline is highlighted with colour codes that indicate the proximity 
-                    of the deadline, giving a clear view of urgency. The content section allows managers to download a report in PDF format for offline 
-                    consultation. In addition, for each unterminated loan, there is an option to close the loan directly from the page, thus improving 
-                    efficiency in managing and updating loan information.
-                </p>
-            </div>
-        </div>
-
-        <div class="row mt-5">
-            <div class="col-md-4">
-                <div class="feature-box">
-                    <a href="{{ url_for('main.lexpiring') }}">
-                        <h3>Loans due to maturity</h3>
-                    </a>
-                    <p>View loans that are about to expire by a certain date.</p>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <a href="/loan/history">
+                            <h3><i class="fa fa-history"></i> History of loans</h3>
+                        </a>
+                        <p>Lists loans terminated and not repaid on time.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <a href="/loan/overdue">
+                            <h3><i class="fa fa-exclamation-circle"></i> Loans not repaid</h3>
+                        </a>
+                        <p>Elenca i prestiti terminati e non restituiti nei tempi previsti.</p>
+                    </div>
                 </div>
             </div>
-    
-            <!-- Cronologia dei prestiti -->
-            <div class="col-md-4">
-                <div class="feature-box">
-                    <a href="{{ url_for('main.lshistory') }}">
-                        <h3>History of loans</h3>
-                    </a>
-                    <p>Lists loans terminated and not repaid on time.</p>
+        
+            <div class="row feature-boxes">
+                <div class="col-md-4 offset-md-2">
+                    <div class="feature-box">
+                        <a href="/loan/stats">
+                            <h3><i class="fa fa-chart-bar"></i> Statistics on loans</h3>
+                        </a>
+                        <p>Access detailed loan statistics.</p>
+                    </div>
+                </div>
+        
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <a href="/loan/reports/alerts">
+                            <h3><i class="fa fa-exclamation-triangle"></i> Abnormal Loans</h3>
+                        </a>
+                        <p>It looks at loans with unusual maturities or defaulting users.</p>
+                    </div>
                 </div>
             </div>
-    
-            <!-- Prestiti terminati non restituiti -->
-            <div class="col-md-4">
-                <div class="feature-box">
-                    <a href="/loan/overdue">
-                        <h3>Loans not repaid</h3>
-                    </a>
-                    <p>Elenca i prestiti terminati e non restituiti nei tempi previsti.</p>
+        
+            <div class="row mt-5">
+                <div class="col-md-12">
+                    <div class="feature-box feature-large">
+                        <a href="/loan/all">
+                            <h3><i class="fa fa-book"></i> View all the loans</h3>
+                        </a>
+                        <p>Lists all the loans made so far in the library.</p>
+                    </div>
                 </div>
             </div>
         </div>
     
-        <div class="row mt-5">
-            <div class="col-md-2"></div>
-            <!-- Statistiche sui prestiti -->
-            <div class="col-md-4">
-                <div class="feature-box">
-                    <a href="/loan/stats">
-                        <h3>Statistics on loans</h3>
-                    </a>
-                    <p>Access detailed loan statistics.</p>
-                </div>
-            </div>
-    
-            <!-- Report di prestiti anomali -->
-            <div class="col-md-4">
-                <div class="feature-box">
-                    <a href="/loan/reports/alerts">
-                        <h3>Abnormal Loans</h3>
-                    </a>
-                    <p>It looks at loans with unusual maturities or defaulting users.</p>
-                </div>
-            </div>
-            <div class="col-md-2"></div>
-        </div>
-    
-        <div class="row mt-5">
-            <!-- Tutti i prestiti -->
-            <div class="col-md-12">
-                <div class="feature-box feature-large">
-                    <a href="/loan/all">
-                        <h3>View all the loans</h3>
-                    </a>
-                    <p>Lists all the loans made so far in the library.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-{% endblock %}
+    {% endblock %}

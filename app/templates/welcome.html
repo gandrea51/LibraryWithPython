@@ -2,146 +2,162 @@
 <html lang="it">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Web application for the Centro Acquedotto of Ferrara.">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="author" content="Andrea Gabrieli jr.">
+        <meta name="description" content="Web application for Centro Acquedotto of Ferrara">
+        <meta name="robots" content="index, follow">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta property="og:title" content="APS Ferrara">
+        <meta property="og:description" content="Web application for Centro Acquedotto of Ferrara">
+        <meta property="og:type" content="website">
+        <meta name="twitter:card" content="APS Ferrara">
+        <meta name="twitter:title" content="APS Ferrara">
+        <meta name="twitter:description" content="Web application for Centro Acquedotto of Ferrara">
 
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/welcome.css') }}">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">  
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui/1.12.1/jquery-ui.min.css"> 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+        <!-- Font and icon libraries -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">    
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap">
 
-        <title>Library</title>    
-        <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/icon.png') }}">
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/static/css/welcome.css">
+
+        <title>APS Ferrara</title>
+        <link rel="icon" type="image/png" href="/static/images/logo.png">
     </head>
+    <body class="bg-light text-center">
 
-    <body class="text-center">
-        <section class="top-bar">
-            <div class="branding">
-                <h1>Aqueduct Centre</h1>
-            </div>
-        
-            <button class="btn btn-primary d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu">
-                <i class="fa fa-bars"></i> Menu
-            </button>
-        
-            <div class="offcanvas offcanvas-start d-md-none" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasMenuLabel">Menu</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <!-- Navbar with Offcanvas for mobile -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+            <section class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="/static/images/logo.png" alt="Logo" width="40" height="40" loading="lazy">
+                    ANCeSCAO
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">ANCeSCAO</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            {% if current_user.is_authenticated %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/home"><i class="fa fa-home"></i> Home</a>
+                                </li>    
+                            {% endif %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/book"><i class="fa fa-solid fa-book"></i> Libri</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/course"><i class="fa fa-solid fa-graduation-cap"></i> Corsi</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/doc"><i class="fa fa-solid fa-pen-clip"></i> Contatti</a>
+                            </li>
+                            {% if not current_user.is_authenticated %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/register"><i class="fa fa-solid fa-user-plus"></i> Registrati</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/login"><i class="fa fa-solid fa-right-to-bracket"></i> Accedi</a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </div>
                 </div>
-                <div class="offcanvas-body">
-                    <ul>
-                        {% if current_user.is_authenticated %}
-                        <li><a href="{{ url_for('main.uprofile', id=current_user.id) }}"><i class="fa fa-solid fa-user"></i> My Profile</a></li>
-                        <li><a href="/home"><i class="fa fa-home"></i> Home page</a></li>
-                        {% else %}
-                        <li><a href="/home"><i class="fa fa-home"></i> Home page</a></li>
-                        <li><a href="/login"><i class="fa fa-sign-in"></i> Sign in</a></li>
-                        <li><a href="/register"><i class="fa fa-user-plus"></i> Sign up</a></li>
-                        {% endif %}
-                    </ul>
-                </div>
-            </div>
-        
-            <nav class="menu d-none d-md-block">
-                <ul>
-                    {% if current_user.is_authenticated %}
-                    <li><a href="{{ url_for('main.uprofile', id=current_user.id) }}"><i class="fa fa-solid fa-user"></i> My Profile</a></li>
-                    <li><a href="/home"><i class="fa fa-home"></i> Home page</a></li>
-                    {% else %}
-                    <li><a href="/home"><i class="fa fa-home"></i> Home page</a></li>
-                    <li><a href="/login"><i class="fa fa-sign-in"></i> Sign in</a></li>
-                    <li><a href="/register"><i class="fa fa-user-plus"></i> Sign up</a></li>
-                    {% endif %}
-                </ul>
-            </nav>
-        </section>
-    
-        <header class="hero-section">
-            <div class="hero-image">
-                <img src="{{ url_for('static', filename='images/title.jpg') }}" alt="Title image">
-            </div>
-            <div class="hero-text">
-                <h2>Welcome to the Aqueduct Centre</h2> 
-                <p>Discover our courses and our library!</p>
-            </div>
-        </header>
-    
-        <main>
-            <section class="intro-text">
-                <div class="content">
-                    <h2>Explore the Centre</h2>
-                    <p>
-                        Welcome to the app ANCeSCAO Aqueduct Center. Through simple steps and screens, you will have access to our course proposal and the complete catalog of our library. By registering, you can also easily contact us, sign up and manage the loan of your favorite books. Start exploring now! <br>
-                        Want to know more? Visit our books and courses!
+            </section>
+        </nav>
+
+        <!-- Main content -->
+        <section class="container">
+            <header class="my-4 animated fadeIn">
+                <img src="/static/images/logo.jpg" class="img-fluid rounded shadow" alt="Logo APS FErrara" loading="lazy">
+            </header>
+
+            <!-- New content under the image -->
+            <section class="row mt-5 text-start">
+                <div class="col-12 col-md-10 offset-md-1 animated fadeIn">
+                    <h2 class="display-5 text-dark">Benvenuti nell'app del Centro Acquedotto ANCeSCAO</h2>
+                    <p class="lead text-muted mt-3">
+                        Esplora le nostre risorse con semplicità! Troverai informazioni sui corsi, il nostro catalogo di libri e molto altro. Sei pronto a scoprire tutto?
                     </p>
-                    <div class="buttons">
-                        <a href="/book" class="custom-button"><i class="fa fa-book"></i> Books</a>
-                        <a href="/corsi" class="custom-button"><i class="fa fa-graduation-cap"></i> Courses</a>
-                    </div>
                 </div>
             </section>
 
-            <section class="transport-section my-5">
-                <div class="container">
-                    <h2 class="transport-title text-center">How to get there</h2>
-                    <p class="transport-subtitle text-center">We are easily accessible by various means of transport. Here’s how:</p>
-        
-                    <div class="row transport-options">
-                        <!-- Auto Section -->
-                        <div class="col-md-4 transport-option">
-                            <div class="transport-card" style="height: 500px;">
-                                <img src="{{ url_for('static', filename='images/auto.jpg') }}" alt="Raggiungere in auto" class="transport-image">
-                                <h3>By Car</h3>
-                                <p id="auto-directions">
-                                    Once you have taken the A13 motorway exit Ferrara Sud, continue towards Ferrara Centro. When you reach Via Darsena, at the roundabout, take Corso Isonzo. We are 300 meters on the left.
-                                </p>
-                            </div>
-                        </div>
-        
-                        <!-- Train Section -->
-                        <div class="col-md-4 transport-option">
-                            <div class="transport-card">
-                                <img src="{{ url_for('static', filename='images/treno.jpg') }}" alt="Raggiungere in treno" class="transport-image">
-                                <h3>By Train</h3>
-                                <p id="train-directions">From the central station, take line 1, 6 or 9. Get off at Cavour Isonzo and continue for 500 meters on Corso Isonzo.
-                                    You will find us on the right. Or go for Corso Piave and at the roundabout with Via Piagipane for Corso Isonzo and proceed for 100 meters. You’ll find us on the right.</p>
-                            </div>
-                        </div>
+            <!-- Sezione "Come Raggiungerci" -->
+            <section class="container my-5">
+                <h2 class="text-center text-dark mb-4"><i class="fa fa-solid fa-question"></i> Come Raggiungerci</h2>
+                <div class="row">
 
-                        <!-- Bus Section -->
-                        <div class="col-md-4 transport-option">
-                            <div class="transport-card" style="height: 500px;">
-                                <img src="{{ url_for('static', filename='images/autobus.jpg') }}" alt="Raggiungere in bus" class="transport-image">
-                                <h3>By Bus</h3>
-                                <p id="bus-directions">
-                                    From the central station, take line 1, 6 or 9. Get off at Cavour Isonzo and continue for 500 meters on Corso Isonzo. We are on the right.
+                    <!-- Card Bus -->
+                    <section class="col-lg-4 col-md-6 mb-4">
+                        <div class="card shadow border-light">
+                            <img src="/static/images/bus.jpg" class="external-card" alt="Raggiungerci in bus" loading="lazy">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fa fa-solid fa-bus"></i> In Bus</h5>
+                                <p class="card-text">
+                                    Con la linea urbana 1, 6, 9 scendere a "Cavour Isonzo". Al semaforo proseguire per Corso Isonzo per 400 mentri. Superata la rotatoria, ci puoi trovare alla tua destra.
                                 </p>
                             </div>
                         </div>
-        
-                    </div>
+                    </section>
+
+                    <!-- Card Auto -->
+                    <section class="col-lg-4 col-md-6 mb-4">
+                        <div class="card shadow border-light">
+                            <img src="/static/images/auto.jpg" class="card-img-top" alt="Raggiungerci in auto" loading="lazy">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fa fa-solid fa-car"></i> In Auto</h5>
+                                <p class="card-text">
+                                    Uscito a "Ferrara Sud" dell'A13, procedi per la SS723 verso il Centro. Arrivato su Via Darsena, procedi fino alla rotonsa con Corso Isonzo e procedi per 200 metri. Ci troverai alla tua sinistra.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Card Treno -->
+                    <section class="col-lg-4 col-md-6 mb-4">
+                        <div class="card shadow border-light">
+                            <img src="/static/images/treno.jpg" class="external-card" alt="Raggiungerci in treno" loading="lazy">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fa fa-solid fa-train-subway"></i> In Treno</h5>
+                                <p class="card-text">
+                                    Sceso alla stazione di Ferrara, prendi la linea urbana 1, 6, 9 e scendi a "Cavour Isonzo". Al semaforo prosegui per Corso Isonzo per 400 mentri. Superata la rotatoria, ci puoi trovare alla tua destra.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
                 </div>
             </section>
-        </main>
-    
-        <footer>
-            <div class="footer-content">
-                <p>© 2024 Aqueduct Centre of Ferrara</p>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-        </footer>
-    
+
+            <!-- Footer -->
+            <footer class="mt-5 pt-4 border-top animated fadeIn">
+                <p>© 2024 Centro Acquedotto APS ANCeSCAO</p>
+                <section class="social-media">
+                    <a href="https://www.facebook.com/centro.acquedotto/?locale=it_IT" target="_blank" class="social-icon me-3"><i class="fab fa-facebook"></i></a>
+                    <a href="https://x.com/CAcquedotto" target="_blank" class="social-icon me-3"><i class="fab fa-twitter"></i></a>
+                    <a href="https://it.linkedin.com/in/cpsacquedottofe" target="_blank" class="social-icon me-3"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/cps.acquedotto/" target="_blank" class="social-icon me-3"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@centroacquedottocorsoisonz1405" target="_blank" class="social-icon"><i class="fab fa-youtube"></i></a>
+                </section>
+            </footer>
+        </section>
+
+        <!-- Scripts -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+        <script>
+            function topFunction() {
+                document.body.scrollTop = 0; // Per Safari
+                document.documentElement.scrollTop = 0; // Per Chrome, Firefox, IE e Opera
+            }
+        </script>
     </body>
 </html>

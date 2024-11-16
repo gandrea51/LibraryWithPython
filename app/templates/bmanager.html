@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+    {% block css %}
+        <link rel="stylesheet" href="/static/css/bmanager.css">
+    {% endblock %}
+
+    {% block title %}Gestione Libri{% endblock %}
+
+    {% block content %}
+        <div class="container-fluid book-management">
+            <h1 class="text-center">Gestione dei Libri</h1>
+
+            <div class="text-center mb-4">
+                <a href="/book/create" class="btn btn-success btn-lg">Inserisci Nuovo Libro</a>
+            </div>
+
+            <div class="search-container mb-4">
+                <input type="text" id="searchInput" class="form-control" placeholder="Cerca un libro...">
+            </div>
+
+            <div class="book-list">
+                <h4 class="text-center">Tutti i Libri</h4>
+                <ul id="bookList" class="list-group">
+                    {% for book in books %}
+                    <li class="list-group-item book-item">
+                        <strong>{{ book.titolo }}</strong> di {{ book.autore }}
+                        <div class="book-actions">
+                            <a href="{{ url_for('main.bedit', id=book.id) }}" class="btn btn-warning btn-sm">Modifica</a>
+                            <form action="{{ url_for('main.bdrop', id=book.id) }}" method="post" style="display:inline;">
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Sei sicuro di voler eliminare questo libro?');">Elimina</button>
+                            </form>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <script>
+            // Funzione di ricerca
+            document.getElementById("searchInput").addEventListener("input", function() {
+                let filter = this.value.toLowerCase();
+                let items = document.querySelectorAll(".book-item");
+
+                items.forEach(item => {
+                    let title = item.querySelector("strong").innerText.toLowerCase();
+                    let author = item.innerText.toLowerCase();
+
+                    if (title.includes(filter) || author.includes(filter)) {
+                        item.style.display = "";
+                    } else {
+                        item.style.display = "none";
+                    }
+                });
+            });
+        </script>
+    {% endblock %}

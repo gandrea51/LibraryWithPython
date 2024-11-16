@@ -1,33 +1,33 @@
 {% extends "layout.html" %}
-{% block css %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/brelated.css') }}">
-{% endblock %}
-{% block title %}Libri Correlati a {{ book.titolo }}{% endblock %}
+    {% block css %}
+        <link rel="stylesheet" href="/static/css/brelated.css">
+    {% endblock %}
+    {% block title %}Libri Correlati a {{ book.titolo }}{% endblock %}
 
-{% block content %}
-<section class="related-container">
-    <h1 class="related-title">Libri Correlati a "<span>{{ book.titolo }}</span>"</h1>
-    
-    {% if books %}
-    <div class="related-books">
-        {% for rbook in books %}
-        <div class="related-book">
-            <div class="related-book-cover">
-                {% if rbook.id % 2 == 0 %}
-                    <img src="{{ url_for('static', filename='images/libro1.jpg') }}" alt="Libro 1" style="width: 25%;">
-                {% else %}
-                    <img src="{{ url_for('static', filename='images/libro3.jpg') }}" alt="Libro 3" style="width: 25%;">
-                {% endif %}
+    {% block content %}
+        <section class="related-container">
+            <h1 class="related-title">Scopri i Libri Correlati a "<span>{{ book.titolo }}</span>"</h1>
+            
+            <p class="related-description">
+                Immergiti in un mondo di avventure e scoperte con questi libri selezionati per te. Ogni titolo offre una nuova esperienza di lettura, ricca di emozioni e ispirazione. Non perdere l'occasione di esplorare!
+            </p>
+            
+            {% if books %}
+            <div class="related-books">
+                {% for rbook in books %}
+                <div class="related-book-card">
+                    <div class="related-book-cover">
+                        <img src="{{ url_for('static', filename='images/libro' ~ (loop.index % 4 + 1) ~ '.jpg') }}" alt="{{ rbook.titolo }}" loading="lazy">
+                    </div>
+                    <div class="related-book-info">
+                        <h5>{{ rbook.titolo }}</h5>
+                        <p>di {{ rbook.autore }}</p>
+                    </div>
+                </div>
+                {% endfor %}
             </div>
-            <div class="related-book-info">
-                <h5>{{ rbook.titolo }}</h5>
-                <p>di {{ rbook.autore }}</p>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-    {% else %}
-    <p class="no-books">Non ci sono libri correlati a questo titolo.</p>
-    {% endif %}
-</section>
-{% endblock %}
+            {% else %}
+            <p class="no-books">Non ci sono libri correlati a questo titolo.</p>
+            {% endif %}
+        </section>
+    {% endblock %}

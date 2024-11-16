@@ -1,31 +1,32 @@
 {% extends "layout.html" %}
-{% block css %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/loverdue.css') }}">
-{% endblock %}
-{% block title %}Prestiti Scaduti e Non Restituiti{% endblock %}
+    {% block css %}
+        <link rel="stylesheet" href="/static/css/loverdue.css">
+    {% endblock %}
+    {% block title %}Prestiti Scaduti e Non Restituiti{% endblock %}
 
-{% block content %}
-<div class="container mt-5">
-    <h1 class="display-4 mb-5">Prestiti Scaduti e Non Restituiti</h1>
+    {% block content %}
+        <div class="container mt-5">
+            <h1 class="display-4 mb-5 text-center">Prestiti Scaduti e Non Restituiti</h1>
 
-    {% if loans %}
-    <div class="loan-overdue-list">
-        {% for loan in loans %}
-        <div class="loan-item">
-            <div class="loan-header">
-                <strong><i class="fa fa-solid fa-bookmark"></i> Libro:</strong> {{ loan.libro.titolo }}
-            </div>
-            <div class="loan-info">
-                <p><strong><i class="fa fa-user"></i> Utente:</strong> {{ loan.utente.nome }}</p>
-                <p><strong><i class="fa fa-regular fa-clock"></i> Data di Fine Prestito:</strong> {{ loan.rientro.strftime('%d/%m/%Y') }}</p>
-            </div>
+            {% if loans %}
+                <section class="loan-overdue-grid">
+                    {% for loan in loans %}
+                    <div class="loan-item">
+                        <div class="loan-header">
+                            <h5><i class="fa fa-solid fa-bookmark"></i> Libro:</h5>
+                            <p class="book-title">{{ loan.libro.titolo }}</p>
+                        </div>
+                        <div class="loan-info">
+                            <p><strong><i class="fa fa-user"></i> Utente:</strong> {{ loan.utente.nome }}</p>
+                            <p><strong><i class="fa fa-regular fa-clock"></i> Data di Fine Prestito:</strong> {{ loan.rientro.strftime('%d/%m/%Y') }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </section>
+            {% else %}
+                <div class="alert alert-info text-center mt-4" role="alert">
+                    Nessun prestito scaduto e non restituito.
+                </div>
+            {% endif %}
         </div>
-        {% endfor %}
-    </div>
-    {% else %}
-    <div class="alert alert-info" role="alert">
-        Nessun prestito scaduto e non restituito.
-    </div>
-    {% endif %}
-</div>
-{% endblock %}
+    {% endblock %}

@@ -1,67 +1,140 @@
 {% extends "layout.html" %}
-{% block css %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/cindex.css') }}">
-{% endblock %}
-{% block title %}Courses{% endblock %}
+    {% block title %}Corsi{% endblock %}
+    {% block css %}
+        <link rel="stylesheet" href="/static/css/cindex.css">
+    {% endblock %}
+    {% block content %}
+        <div class="container">
 
-{% block content %}
-    <div class="container">
-        <!-- Titolo della pagina -->
-        <h1 class="page-title">The way to learning</h1>
-
-        <!-- Sezione di introduzione -->
-        <p class="intro">
-            Welcome to our learning centre. Discover our courses, taught by experts in the field. Whether you are interested in improving your personal 
-            skills or exploring new areas of study, we have a course for you. Don’t miss the chance to learn from qualified professionals. Places are limited, so hurry up and sign up!
-        </p>
-
-        {% if current_user.ruolo == 'Amministratore' %}
-            <div class="stats-container">
-                <h2 class="stats-title">Course Statistics</h2>
-                <ul class="stats-list">
-                    <li>Total views: {{ stats.tview }}</li>
-                    <li>Most Viewed Courses: {{ stats.mcourses|map(attribute='nome')|join(', ') }}</li>
-                </ul>
-            </div>
-        {% endif %}
-
-        <div class="pdf-btn">
-            <a href="/course/pdf" class="btn-action">Scarica PDF</a>
-        </div>
-
-        <!-- Lista corsi -->
-        <div class="courses-list">
-            {% for course in courses %}
-                <div class="course-item" onclick="toggleDetails('{{ course.id }}')">
-                    <div class="course-header">{{ course.nome }}</div>
-                    <div class="course-docente">Teacher: {{ course.docente }}</div>
-                    <div class="course-info">Bookings: {{ course.prenotazioni }} | Registrations: {{ course.iscrizioni }}</div>
-                    <div id="details-{{ course.id }}" class="course-details">
-                        <p><strong>Course program:</strong><br>{{ course.programma|replace('\n', '<br>')|safe }}</p>
-                        <p><strong>Start:</strong> {{ course.inizio.strftime('%d/%m/%Y') if course.inizio else 'Data da definire' }}</p>
-                        <p><strong>Price:</strong> €{{ course.prezzo }} (Card: €{{ course.tessera }})</p>
-                        {% if course.place > 0 %}
-                            <p class="prenotati">Places left: {{ course.place }}</p>
-                            <a href="/prenotazione/create" class="btn-action">Booking now</a>
-                        {% else %}
-                            <p class="prenotati">Full course</p>
-                        {% endif %}
+            <div class="row mb-4">
+                <div class="col-md-12 text-center">
+                    <div class="title-container">
+                        <h1 class="main-title">La Via per l'Apprendimento</h1>
+                        <a href="/course/print"><h2 class="sub-title">Scopri i Nostri Corsi</h2></a>
                     </div>
-                    <button class="toggle-btn">Maggiori info</button>
+                    <div class="photo-placeholder">
+                        <img src="/static/images/course.jpg" alt="Corsi" class="header-photo" loading="lazy">
+                    </div>
                 </div>
-            {% endfor %}
-        </div>
-    </div>
+            </div>
 
-    <!-- JavaScript per mostrare/nascondere i dettagli del corso -->
-    <script>
-        function toggleDetails(corsoId) {
-            const details = document.getElementById('details-' + corsoId);
-            if (details.style.display === "none" || details.style.display === "") {
-                details.style.display = "block";
-            } else {
-                details.style.display = "none";
+            <!-- Intro e Azioni -->
+            <div class="row mb-4">
+                <div class="col-md-12 intro-container">
+                    <p class="intro-text">
+                        Il Centro Acquedotto promuove la cultura con corsi formativi tenuti da professionisti altamente qualificati. Unisciti a noi per scoprire il nostro programma e prenota il tuo posto!
+                    </p>
+                </div>
+            </div>
+            <br><br>
+
+            {% if current_user.ruolo == "Manager" %}
+                <section class="area-manager-corsi text-center">
+                    <div class="container">
+                        <h2 class="display-4">Benvenuto nella tua Area Manager Corsi</h2>
+                        <p class="lead">
+                            Questa è l'area dedicata alla gestione dei corsi. Qui puoi aggiungere, modificare e monitorare tutti i corsi disponibili nel sistema. 
+                            Per favore, utilizza il pulsante sottostante per accedere a tutte le funzioni disponibili.
+                        </p>
+                        <a href="/course/manager" class="btn btn-primary btn-lg">
+                            Apri Area Manager Corsi
+                        </a>
+                    </div>
+                </section>
+            {% endif %}
+
+            <br><br>
+
+            <!-- Statistiche -->
+            <div class="row mb-5 justify-content-center">
+                <div class="col-md-8 animated fadeInUp slower">
+                    <div class="card text-center mb-3 statistics-card">
+                        <div class="card-body">
+                            <div class="photo-placeholder">
+                                <img src="/static/images/scourse.jpg" alt="Statistiche" class="photo" loading="lazy">
+                            </div>
+                            <h5 class="card-title stats-title">Statistiche</h5>
+                            <p class="card-text">
+                                {% if current_user.ruolo == 'Manager' %}
+                                    <span class="total-views">Visualizzazioni totali: <strong>{{ stats.tview }}</strong></span><br>
+                                {% endif %}
+                                <h6 class="top-courses-title">Corsi più Visti</h6>
+                                <ul class="list-group mb-3">
+                                    {% for corso in stats.mcourses %}
+                                    <li class="list-group-item">
+                                        <strong>{{ corso.nome }}</strong> di {{ corso.docente }} - <span class="views">{{ corso.viste }} views</span>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br><br>
+            
+            <div class="row">
+                {% for corso in courses %}
+                    <div class="col-md-4 mb-4">
+                        <div class="card text-center corso-card" style="border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);" data-bs-toggle="modal" data-bs-target="#corsoModal{{ corso.id }}">
+                            <div class="card-body">
+                                <h4 class="card-title display-6">{{ corso.nome }}</h4>
+                                <p class="card-text lead">Docente: {{ corso.docente }}</p>
+                                <p class="card-text">
+                                    Prenotazioni: <strong>{{ corso.prenotazioni }}</strong>, Iscrizioni: <strong>{{ corso.iscrizioni }}</strong>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <!-- Modal -->
+                    <div class="modal fade" id="corsoModal{{ corso.id }}" tabindex="-1" aria-labelledby="corsoModalLabel{{ corso.id }}" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="corsoModalLabel{{ corso.id }}">{{ corso.nome }}</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Inizio: {{ corso.inizio.strftime('%d %B %Y') }}<br>
+                                    {{ corso.programma|replace('\n', '<br>')|safe }}<br><br>
+                                    <span class="corso_desc">Si tiene {{ corso.giorno }} per {{ corso.lezioni }} lezioni<br>
+                                    Contributo per l'iscrizione: {{ corso.prezzo }}€ + {{ corso.tessera }}€ per la tessera</span><br><br>
+                                    {% if corso.prenotazioni <= corso.massimo or corso.iscrizioni <= corso.massimo %}
+                                        <span class="prenotati">    
+                                            {% if corso.place >= 8 %}
+                                                Ancora molti posti disponibili! Prenota ora!
+                                            {% elif corso.place > 5 %}
+                                                Affrettati, i posti stanno finendo! Solo {{ corso.place }} posti rimasti.
+                                            {% elif corso.place >= 2 %}
+                                                Ultimi posti disponibili! Solo {{ corso.place }} posti rimasti.
+                                            {% else %}
+                                                Ultimo posto disponibile!
+                                            {% endif %} 
+                                        </span>
+                                        <br>
+                                        <a href="/booking/create" class="btn btn-prenota">Prenota ora</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            
+            
+        </div>
+
+        <!-- JavaScript -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            function toggleVisibilityAndUpdate(corsoId) {
+                // Toggle visibility
+                $("#programma" + corsoId).slideToggle("slow");
+
+                // Increment visit count via AJAX
+                $.post('/corso/' + corsoId + '/incrementa_visite');
             }
-        }
-    </script>
+        </script>
 {% endblock %}

@@ -1,138 +1,105 @@
 {% extends "layout.html" %}
-{% block css %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bview.css') }}">
-{% endblock %}
-{% block title %}Book{% endblock %}
+    {% block title %}Biblioteca{% endblock %}
 
-{% block content %}
-    <div class="container">
-        <section class="title-section">
-            <h1 class="genre-title">
-                <a href="{{ url_for('main.bprint', genere=genre) }}">{{ genre }}</a>
-            </h1>
-        </section>
+    {% block css %}
+        <link rel="stylesheet" href="/static/css/bview.css">
+    {% endblock %}
 
-        {% if current_user.ruolo != "Socio" %}
-        <section class="edit-genre-section">
-            <button class="toggle-button" onclick="toggleEditGenre()">Modifica Genere</button>
-        </section>
-        {% endif %}
-        
-        <div id="editGenreSection" class="hidden-section">
-            <form method="POST" action="/book/genere/update" class="genre-form">
-                <input type="hidden" name="old_genere" value="{{ genre }}">
-                <label for="new_genere" class="form-label">Nuovo Genere:</label>
-                <input type="text" name="new_genere" id="new_genere" required class="form-input">
-                <button type="submit" class="submit-button">Aggiorna Genere</button>
-            </form>
-        </div>
+    {% block content %}
+        <div class="container my-5">
+            <!-- Titolo e introduzione -->
+            <div class="row mb-4">
+                <div class="col-md-12 text-center"> <!-- Aggiunto text-center per centrare il titolo -->
+                    <a href="{{ url_for('main.bprint', genere=genre) }}" class="download-title">
+                        <h1 class="display-4 title-main">
+                            Scopri i Libri del Genere:<br> <span class="genre-highlight">{{ genre }}</span> <!-- Spezzato in due righe -->
+                        </h1>
+                    </a>
+                </div>
+            </div>
+            
 
-        <section class="intro-sections">
-            <p class="intro-texts">
-                Our library is the result of years of donations or the flair of our contributors, who have given a second chance to titles that seemed to have said it all. 
-                And it is above all the work of careful cataloguing, distinguished by genre and author. 
-                Browse our catalogue or do a free search. Get inspired by our book of the month.
-            </p>
-        </section>
+            <!-- Introduzione -->
+            <div class="row mb-4">
+                <div class="col-md-12">
+                    <p class="lead intro-text">
+                        Esplora una selezione curata di libri che ti porteranno in nuove avventure, ti faranno riflettere e ti ispireranno. Ogni libro è una finestra su un mondo unico, pronto per essere scoperto!
+                    </p>
+                </div>
+            </div>
 
-        <section class="accordion-section">
-            <div class="accordion-container">
-                {% for book in books %}
-                <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                       {{ book.titolo }} ({{ book.copie }} copie)
-                    </div>
-                    <div class="accordion-body">
-                        <div class="book-details">
-                            <p>
-                                <span class="book-label">Author:</span> {{ book.autore }}<br>
-                                <span class="book-label">Publisher:</span> {{ book.editore }}<br>
-                                <span class="book-label">Published:</span> {{ book.anno }}<br>
-                                <span class="book-label">Genre:</span> {{ book.genere }}<br>
-                                <span class="book-label">Related books:</span> <a href="{{ url_for('main.brelated', id=book.id) }}" class="btn btn-related">
-                                    <i class="fa fa-solid fa-bookmark"></i> Libri Correlati</a><br><br>
-                                <span class="book-label">Scheda del libro:</span> <a class="btn btn-print" href="{{ url_for('main.bdownload', id=book.id) }}">
-                                    <i class="fa fa-solid fa-download"></i> Scarica PDF</a><br><br>
-                                <span class="book-label">Statistiche:</span> <a href="{{ url_for('main.bstats', id=book.id) }}" class="btn btn-stats">
-                                    <i class="fa fa-solid fa-chart-simple"></i> Statistiche</a><br><br>
-                            </p>
-                    
-                            {% if book.copie >= 2 %}
-                                <p class="loan-status available">
-                                    Ci sono ancora <span class="copies">{{ book.copie }}</span> copie di questo libro.<br>
-                                    <strong>Prendilo in prestito!</strong>
-                                </p>
-                                <a type="button" class="btn btn-custom loan-button" href="{{ url_for('main.lcreate') }}">
-                                    <i class="fas fa-book-open"></i> New loan
-                                </a>
-                    
-                            {% elif book.copie == 1 %}
-                                <p class="loan-status limited">
-                                    È rimasta soltanto <span class="copies">una</span> copia di questo libro.<br>
-                                    <strong>Prendilo in prestito, ora!</strong>
-                                </p>
-                                <a type="button" class="btn btn-custom loan-button" href="{{ url_for('main.lcreate') }}">
-                                    <i class="fas fa-book-open"></i> New loan
-                                </a>
-                    
-                            {% else %}
-                                <p class="loan-status unavailable">
-                                    Attualmente non vi sono copie disponibili per il prestito.<br><br>
-                                    Il libro ritornerà disponibile il: <strong>{{ends[book.id]}}</strong>
-                                </p>
-                            {% endif %}
-                            <br><br><br>
 
-                            <span class="book-label">Recensioni:</span><br>
-                            {% if reviews[book.id] %}
-                                <div class="review-section">
-                                    {% for review in book.reviews[:3] %}
-                                        <li class="list-group-item">
-                                            <small><strong>{{ review.utente.nome }}</strong>: 
-                                                {% for i in range(1, 6) %}
-                                                    {% if i <= review.rating %}
-                                                        ★
-                                                    {% else %}
-                                                        ☆
-                                                    {% endif %}
-                                                {% endfor %}
-                                            </small>
-                                            <p>{{ review.comment[:100] }}...</p>
-                                        </li>
-                                    {% endfor %}
-                                    <a href="{{ url_for('main.breviews', id=book.id) }}" class="btn btn-rev">Visualizza tutte le recensioni</a>
-                                </div>
-                            {% else %}
-                            <p class="no-reviews">Nessuna recensione disponibile per questo libro.</p>
-                            {% endif %}
-                    
-                            {% if current_user.ruolo != "Socio" %}
-                                <div class="admin-buttons">
-                                    <a href="{{ url_for('main.bookedit', id=book.id) }}" class="btn btn-warning">Modifica</a>
-                                    <a href="{{ url_for('main.bdrop', id=book.id) }}" class="btn btn-danger">Elimina</a>
-                                </div>
-                            {% endif %}
+            <!-- Sezione dei Libri -->
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                {% for libro in books %}
+                <div class="col mb-4">
+                    <div class="card h-100 shadow libro-card" data-bs-toggle="modal" data-bs-target="#bookModal{{ loop.index }}">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">{{ libro.titolo }}</h5>
+                            <p class="card-text">Autore: {{ libro.autore }}</p>
                         </div>
                     </div>
+                </div>
+            
+                <!-- Modal per i dettagli del libro -->
+                <div class="modal fade" id="bookModal{{ loop.index }}" tabindex="-1" aria-labelledby="bookModalLabel{{ loop.index }}" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="bookModalLabel{{ loop.index }}">{{ libro.titolo }}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p><strong>Autore:</strong> {{ libro.autore }}</p>                                
+                                <p><strong>Editore:</strong> {{ libro.editore }}</p>
+                                <p><strong>Anno di Pubblicazione:</strong> {{ libro.anno }}</p>
+
+                                <p>
+                                    {% if libro.copie >= 2 %}
+                                        <p class="loan-status available stats">
+                                            Ci sono ancora <span class="copies">{{ libro.copie }}</span> copie di questo libro.<br>
+                                            <strong>Prendilo in prestito!</strong>
+                                        </p>
+                                        <a type="button" class="btn btn-custom loan-button bstats" href="/loan/create">
+                                            <i class="fas fa-book-open"></i> Nuovo prestito
+                                        </a>
+                                        
+                                    {% elif libro.copie == 1 %}
+                                        <p class="loan-status limited stats">
+                                            È rimasta soltanto <span class="copies">una</span> copia di questo libro.<br>
+                                            <strong>Prendilo in prestito, ora!</strong>
+                                        </p>
+                                        <a type="button" class="btn btn-custom loan-button bstats" href="/loan/create">
+                                            <i class="fas fa-book-open"></i> Nuovo prestito
+                                        </a>
+                                        
+                                    {% else %}
+                                        <p class="loan-status unavailable stats">
+                                            Attualmente non vi sono copie disponibili per il prestito.<br><br>
+                                            Il libro ritornerà disponibile il: <strong>{{ends[libro.id]}}</strong>
+                                        </p>
+                                    {% endif %}
+                                </p>
+                                
+
+                                <p class="related"><strong>Scopri i libri correlati!</strong></p>
+                                <a href="{{ url_for('main.brelated', id=libro.id) }}" class="brelated"><i class="fa fa-solid fa-paperclip"></i> Mostrali tutti</a>
                     
+                                <p class="stats"><strong>Scopri le statistiche  su questo libro!</strong></p>
+                                <a href="{{ url_for('main.bstats', id=libro.id) }}" class="bstats"><i class="fa fa-solid fa-bolt"></i> Scopri di più</a>
+                    
+                                <p class="scheda"><strong>Scarica la scheda del libro!</strong></p>
+                                <a href="{{ url_for('main.bdownload', id=libro.id) }}" class="dscheda"><i class="fa fa-solid fa-download"></i> Scarica ora</a>
+                    
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 {% endfor %}
             </div>
-        </section>
-
-    </div>
-
-    <script>
-
-        function toggleEditGenre() {
-            var section = document.getElementById('editGenreSection');
-            section.style.display = (section.style.display === "none") ? "block" : "none";
-        }
-        function toggleAccordion(header) {
-            const body = header.nextElementSibling;
-            body.classList.toggle('active');
-            header.classList.toggle('open');
-        }
-        
-    </script>
-{% endblock %}
+            
+        </div>
+    {% endblock %}

@@ -1,76 +1,76 @@
 <!DOCTYPE html>
 <html lang="it">
-<head>
-    <meta charset="UTF-8">    
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Scheda del Libro: {{ book.titolo }}</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
-        }
-        .content {
-            max-width: 600px;
-            padding: 20px;
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        h1, h2 {
-            margin: 0;
-        }
-        h1 {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-        h2 {
-            font-size: 18px;
-            margin-bottom: 20px;
-            color: #333;
-        }
-        p {
-            margin: 8px 0;
-            font-size: 16px;
-        }
-        .section {
-            margin-bottom: 20px;
-        }
-        .section-title {
-            font-weight: bold;
-            margin-bottom: 5px;
-            font-size: 18px;
-        }
-    </style>
-</head>
-<body>
-    <div class="content">
-        <h1>Scheda del Libro</h1>
-        
-        <h2>{{ book.titolo }} scritto da {{ book.autore }}</h2>
+    <head>
+        <meta charset="UTF-8">    
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Scheda del Libro: {{ book.titolo }}</title>
+        <style>
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                margin: 0;
+                font-family: Arial, sans-serif;
+                background-color: #f8f9fa;
+            }
+            .content {
+                max-width: 600px;
+                padding: 20px;
+                background-color: #ffffff;
+                border-radius: 8px;
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            }
+            h1, h2 {
+                margin: 0;
+            }
+            h1 {
+                font-size: 24px;
+                margin-bottom: 10px;
+            }
+            h2 {
+                font-size: 18px;
+                margin-bottom: 20px;
+                color: #333;
+            }
+            p {
+                margin: 8px 0;
+                font-size: 16px;
+            }
+            .section {
+                margin-bottom: 20px;
+            }
+            .section-title {
+                font-weight: bold;
+                margin-bottom: 5px;
+                font-size: 18px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="content">
+            <h1>Scheda del Libro</h1>
+            
+            <h2>{{ book.titolo }} scritto da {{ book.autore }}</h2>
 
-        <div class="section">
-            <p class="section-title">Dettagli del Libro</p>
-                <strong><i class="fa fa-solid fa-hashtag"></i> Anno di Pubblicazione: </strong> {{ book.anno }}<br><br>
-                <strong><i class="fa fa-solid fa-hashtag"></i> Autore: </strong> {{ book.autore }}<br><br>
-                <strong><i class="fa fa-solid fa-hashtag"></i> Genere: </strong> {{ book.genere }}<br><br>
-                <strong><i class="fa fa-solid fa-hashtag"></i> Editore: </strong> {{ book.editore }}<br><br>
-                {% if book.collana %}
-                    <p><strong><i class="fa fa-solid fa-hashtag"></i> Collana:</strong> {{ book.collana }}<br><br>
-                {% endif %}
-                <strong><i class="fa fa-solid fa-hashtag"></i> Note: </strong><br> {{ book.note }}<br>
-            </p>
-        </div>
+            <div class="section">
+                <p class="section-title">Dettagli del Libro</p>
+                    <strong><i class="fa fa-solid fa-hashtag"></i> Anno di Pubblicazione: </strong> {{ book.anno }}<br><br>
+                    <strong><i class="fa fa-solid fa-hashtag"></i> Autore: </strong> {{ book.autore }}<br><br>
+                    <strong><i class="fa fa-solid fa-hashtag"></i> Genere: </strong> {{ book.genere }}<br><br>
+                    <strong><i class="fa fa-solid fa-hashtag"></i> Editore: </strong> {{ book.editore }}<br><br>
+                    {% if book.collana %}
+                        <p><strong><i class="fa fa-solid fa-hashtag"></i> Collana:</strong> {{ book.collana }}<br><br>
+                    {% endif %}
+                    <strong><i class="fa fa-solid fa-hashtag"></i> Note: </strong><br> {{ book.note }}<br>
+                </p>
+            </div>
 
-        <div class="section">
-            <p class="section-title">Altre Informazioni</p>
-            <p><strong>È un magazine:</strong> {{ 'Sì' if book.rivista == 'Si' else 'No' }}</p>
-            <p><strong>Copie disponibili al momento:</strong> {{ book.copie }}</p>
+            <div class="section">
+                <p class="section-title">Altre Informazioni</p>
+                <p><strong>È un magazine:</strong> {{ 'Sì' if book.rivista == 'Si' else 'No' }}</p>
+                <p><strong>Copie disponibili al momento:</strong> {{ book.copie }}</p>
+            </div>
         </div>
-    </div>
-</body>
+    </body>
 </html>

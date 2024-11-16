@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-    {% block title %}Biblioteca{% endblock %}
+    {% block title %}Corsi{% endblock %}
     {% block css %}
         <link rel="stylesheet" href="/static/css/lcreate.css">
     {% endblock %}
@@ -8,8 +8,8 @@
             <!-- Titolo -->
             <div class="row mb-4 text-center">
                 <div class="col-md-12">
-                    <h1 class="display-4">Crea un Nuovo Prestito</h1>
-                    <p class="lead">Completa il modulo sottostante per registrare un nuovo prestito. Assicurati di inserire tutte le informazioni richieste.</p>
+                    <h1 class="display-4">Crea una Nuova Prenotazione</h1>
+                    <p class="lead">Completa il modulo sottostante per registrare una nuova prenotazione. Assicurati di inserire tutte le informazioni richieste.</p>
                 </div>
             </div>
             <br>
@@ -17,27 +17,19 @@
             <br>
         
             <!-- Modulo -->
-            <form action="/loan/create" method="post" class="custom-form">
+            <form action="/booking/create" method="post" class="custom-form">
                 <div class="row">
                     <!-- Selezione Libro -->
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="form-group">
-                            <label for="titolo" class="form-label">Titolo del Libro</label>
-                            <input type="text" id="titolo" name="titolo" class="form-control" required>
+                            <label for="name" class="form-label">Nome del corso</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
                             <div class="suggestions" id="suggestions"></div>
                 
-                            <div class="form-text">Inserisci il titolo del libro che desideri prendere in prestito.</div>
+                            <div class="form-text">Inserisci il nome del corso a cui desideri iscriverti.</div>
                         </div>
                     </div>
         
-                    <!-- Data di inizio -->
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="uscita" class="form-label">Data di Uscita</label>
-                            <input id="uscita" name="uscita" class="form-control" type="date" required>
-                            <div class="form-text">Seleziona la data in cui ritirerai il libro.</div>
-                        </div>
-                    </div>
                 </div>
                 <br>
         
@@ -54,10 +46,10 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
             $(document).ready(function() {
-                $('#titolo').on('input', function() {
+                $('#name').on('input', function() {
                     let query = $(this).val();
                     if (query.length >= 2) {
-                        $.get('/suggest', { query: query }, function(data) {
+                        $.get('/suggests', { query: query }, function(data) {
                             $('#suggestions').empty();
                             data.forEach(function(title) {
                                 $('#suggestions').append('<div class="suggestion">' + title + '</div>');
@@ -69,7 +61,7 @@
                 });
 
                 $(document).on('click', '.suggestion', function() {
-                    $('#titolo').val($(this).text());
+                    $('#name').val($(this).text());
                     $('#suggestions').empty();
                 });
             });

@@ -56,7 +56,7 @@
                                     Ci sono ancora <span class="copies">{{ book.copie }}</span> copie di questo libro.<br>
                                     <strong>Prendilo in prestito!</strong>
                                 </p>
-                                <a type="button" class="btn btn-custom loan-button" href="{{ url_for('main.lcreate') }}">
+                                <a type="button" class="btn btn-custom loan-button" href="/loan/create">
                                     <i class="fas fa-book-open"></i> New loan
                                 </a>
                     
@@ -65,7 +65,7 @@
                                     È rimasta soltanto <span class="copies">una</span> copia di questo libro.<br>
                                     <strong>Prendilo in prestito, ora!</strong>
                                 </p>
-                                <a type="button" class="btn btn-custom loan-button" href="{{ url_for('main.lcreate') }}">
+                                <a type="button" class="btn btn-custom loan-button" href="/loan/create">
                                     <i class="fas fa-book-open"></i> New loan
                                 </a>
                     
@@ -95,18 +95,10 @@
                                             <p>{{ review.comment[:100] }}...</p>
                                         </li>
                                     {% endfor %}
-                                    <a href="{{ url_for('main.breviews', id=book.id) }}" class="btn btn-rev">Visualizza tutte le recensioni</a>
+                                    <a href="" class="btn btn-rev">Visualizza tutte le recensioni</a>
                                 </div>
                             {% else %}
                             <p class="no-reviews">Nessuna recensione disponibile per questo libro.</p>
-                            {% endif %}
-                        </p>
-                        <p>
-                            {% if current_user.ruolo != "Socio" %}
-                                <div class="admin-buttons">
-                                    <a href="{{ url_for('main.bookedit', id=book.id) }}" class="btn btn-warning">Modifica</a>
-                                    <a href="{{ url_for('main.bdrop', id=book.id) }}" class="btn btn-danger">Elimina</a>
-                                </div>
                             {% endif %}
                         </p>
                     </div>
