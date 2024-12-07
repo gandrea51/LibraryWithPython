@@ -1,4 +1,4 @@
-# Python Application
+# Project2: A Simple Library
 
 ## Description
 - Welcome to the repository of the Library and Courses project. This web application allows users to manage books, courses and related bookings. It is developed in Python using the Flask framework.
